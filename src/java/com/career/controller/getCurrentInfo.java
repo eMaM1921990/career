@@ -86,7 +86,7 @@ public class getCurrentInfo extends HttpServlet {
         if (i.getId() > 0) {
             buffer = "<div class=\"box box-bordered\">"
                     + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i> المعلومات الشخصية</h3><i class=\"icon-edit\"></i><a id='editifno'>تعديل</a>"
+                    + "<h3><i class=\"icon-edit\"></i> المعلومات الشخصية</h3><i class=\"icon-edit\"></i><a id='editinfo'>تعديل</a>"
                     + "</div>"
                     + " <div class=\"box-content nopadding\">"
                     + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
@@ -95,8 +95,8 @@ public class getCurrentInfo extends HttpServlet {
                     + "<label for=\"textfield\" class=\"control-label\">اﻻسم اﻻول</label>"
                     + " <div class=\"controls\">"
                     + "<div class=\"input-prepend\">"
-                    + "<input type=\"hidden\"  id=\"id\" value='"+i.getId()+"'>"
-                    + "<input type=\"text\" placeholder=\"First Name\" id=\"f_name\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getFname()+"'>"
+                    + "<input type=\"hidden\"  id=\"id\" value='" + i.getId() + "'>"
+                    + "<input type=\"text\" placeholder=\"First Name\" id=\"f_name\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='" + i.getFname() + "'>"
                     + "</div>"
                     + "</div>"
                     + "</div>";
@@ -107,7 +107,7 @@ public class getCurrentInfo extends HttpServlet {
                     + "<label for=\"textfield\" class=\"control-label\">الاسم الثانى</label>"
                     + " <div class=\"controls\">"
                     + "<div class=\"input-prepend\">"
-                    + "<input type=\"text\" placeholder=\"Sur name\" id=\"surename\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getSurename()+"'>"
+                    + "<input type=\"text\" placeholder=\"Sur name\" id=\"surename\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='" + i.getSurename() + "'>"
                     + "</div>"
                     + "</div>"
                     + "</div>";
@@ -118,7 +118,7 @@ public class getCurrentInfo extends HttpServlet {
                     + "<label for=\"textfield\" class=\"control-label\">تاريخ الميلاد</label>"
                     + " <div class=\"controls\">"
                     + "<div class=\"input-prepend\">"
-                    + "<input name=\"dob\" id=\"dob\" class=\"input-medium datepick\" type=\"text\" style='pointer-events:none;border:none;background:#fff' value='"+i.getDob()+"'>"
+                    + "<input name=\"dob\" id=\"dob\" class=\"input-medium datepick\" type=\"text\" style='pointer-events:none;border:none;background:#fff' value='" + i.getDob() + "'>"
                     + "</div>"
                     + "</div>"
                     + "</div>";
@@ -128,11 +128,22 @@ public class getCurrentInfo extends HttpServlet {
             String rowgender = "<div class=\"control-group\">"
                     + "<label for=\"textfield\" class=\"control-label\">الجنس</label>"
                     + "<div class=\"controls\">"
-                    + "<div class=\"check-line\">"
-                    + "<input type=\"radio\"  id=\"gender\" value=\"m\" name=\"Gender\"> <label class='inline' for=\"c3\">ذكر</label>"
+                    + "<div class=\"check-line\">";
+            if ("m".equals(i.getGender())) {
+                rowgender = rowgender + "<input type=\"radio\"  id=\"gender\" value=\"m\" name=\"Gender\" checked> <label class='inline' for=\"c3\">ذكر</label>";
+            } else {
+                rowgender = rowgender + "<input type=\"radio\"  id=\"gender\" value=\"m\" name=\"Gender\"> <label class='inline' for=\"c3\">ذكر</label>";
+            }
+            rowgender = rowgender
                     + "</div>"
-                    + "<div class=\"check-line\">"
-                    + "<input type=\"radio\"  id=\"gender\" value=\"f\" name=\"Gender\"> <label class='inline' for=\"c3\">أنثى</label>"
+                    + "<div class=\"check-line\">";
+
+            if ("f".equals(i.getGender())) {
+                rowgender = rowgender + "<input type=\"radio\"  id=\"gender\" value=\"f\" name=\"Gender\" checked> <label class='inline' for=\"c3\">أنثى</label>";
+            } else {
+                rowgender = rowgender + "<input type=\"radio\"  id=\"gender\" value=\"f\" name=\"Gender\"> <label class='inline' for=\"c3\">أنثى</label>";
+            }
+            rowgender = rowgender
                     + "</div>"
                     + "</div>"
                     + "</div>";
@@ -147,13 +158,13 @@ public class getCurrentInfo extends HttpServlet {
                     + "<select name=\"nationality_id\" id=\"nationality_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
 
             for (National na : n) {
-                if(na.getId()==i.getNationalID()){
-                
+                if (na.getId() == i.getNationalID()) {
+
                     rowcombo = rowcombo + "<option value=" + na.getId() + " selected>" + na.getName() + "</option>";
-                }else{
+                } else {
                     rowcombo = rowcombo + "<option value=" + na.getId() + ">" + na.getName() + "</option>";
                 }
-                
+
             }
 
             rowcombo = rowcombo + "</select></div></div></div>";
@@ -168,13 +179,13 @@ public class getCurrentInfo extends HttpServlet {
                     + "<select name=\"visa_status_id\" id=\"visa_status_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
 
             for (VisaStatus vs : s) {
-                if(vs.getId()==i.getVisaStatusID()){
-                
+                if (vs.getId() == i.getVisaStatusID()) {
+
                     rowcombo2 = rowcombo2 + "<option value=" + vs.getId() + " selected>" + vs.getName() + "</option>";
-                }else{
+                } else {
                     rowcombo2 = rowcombo2 + "<option value=" + vs.getId() + ">" + vs.getName() + "</option>";
                 }
-                
+
             }
 
             rowcombo2 = rowcombo2 + "</select></div></div></div>";
@@ -184,14 +195,32 @@ public class getCurrentInfo extends HttpServlet {
             String materilrow = "<div class=\"control-group\">"
                     + "<label for=\"textfield\" class=\"control-label\">الحالة الاجتماعية</label>"
                     + "<div class=\"controls\">"
-                    + "<div class=\"check-line\">"
-                    + "<input type=\"radio\"  id=\"material_status\" value=\"غير محدد\" name=\"m\"> <label class='inline' for=\"c3\">غير محدد</label>"
+                    + "<div class=\"check-line\">";
+
+            if ("غير محدد".equals(i.getMaritalStatus())) {
+                materilrow = materilrow + "<input type=\"radio\"  id=\"material_status\" value=\"غير محدد\" name=\"m\" checked> <label class='inline' for=\"c3\">غير محدد</label>";
+            } else {
+                materilrow = materilrow + "<input type=\"radio\"  id=\"material_status\" value=\"غير محدد\" name=\"m\"> <label class='inline' for=\"c3\">غير محدد</label>";
+            }
+            materilrow = materilrow
                     + "</div>"
-                    + "<div class=\"check-line\">"
-                    + "<input type=\"radio\"  id=\"material_status\" value=\"اعزب\" name=\"m\"> <label class='inline' for=\"c3\">اعزب</label>"
+                    + "<div class=\"check-line\">";
+            if ("اعزب".equals(i.getMaritalStatus())) {
+                materilrow = materilrow + "<input type=\"radio\"  id=\"material_status\" value=\"اعزب\" name=\"m\" checked> <label class='inline' for=\"c3\">اعزب</label>";
+            } else {
+                materilrow = materilrow + "<input type=\"radio\"  id=\"material_status\" value=\"اعزب\" name=\"m\"> <label class='inline' for=\"c3\">اعزب</label>";
+            }
+
+            materilrow = materilrow
                     + "</div>"
-                    + "<div class=\"check-line\">"
-                    + "<input type=\"radio\"  id=\"material_status\" value=\"متزوج\" name=\"m\"> <label class='inline' for=\"c3\">متزوج</label>"
+                    + "<div class=\"check-line\">";
+
+            if ("متزوج".equals(i.getMaritalStatus())) {
+                materilrow = materilrow + "<input type=\"radio\"  id=\"material_status\" value=\"متزوج\" name=\"m\" checked> <label class='inline' for=\"c3\">متزوج</label>";
+            } else {
+                materilrow = materilrow + "<input type=\"radio\"  id=\"material_status\" value=\"متزوج\" name=\"m\"> <label class='inline' for=\"c3\">متزوج</label>";
+            }
+            materilrow = materilrow
                     + "</div>"
                     + "</div>"
                     + "</div>";
@@ -206,13 +235,13 @@ public class getCurrentInfo extends HttpServlet {
                     + "<select name=\"no_of_own\" id=\"no_of_own\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
 
             for (int z = 0; z < 21; z++) {
-                if(z==i.getNoofown()){
-                
+                if (z == i.getNoofown()) {
+
                     ownerrowcombo = ownerrowcombo + "<option value=" + z + " selected>" + z + "</option>";
-                }else{
+                } else {
                     ownerrowcombo = ownerrowcombo + "<option value=" + z + ">" + z + "</option>";
                 }
-                
+
             }
 
             ownerrowcombo = ownerrowcombo + "</select></div></div></div>";
@@ -227,13 +256,13 @@ public class getCurrentInfo extends HttpServlet {
                     + "<select name=\"driving_license\" id=\"driving_license\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
 
             for (National na : n) {
-                if(na.getId()==i.getLicense()){
-                
+                if (na.getId() == i.getLicense()) {
+
                     licensecombo = licensecombo + "<option value=" + na.getId() + " selected>" + na.getName() + "</option>";
-                }else{
+                } else {
                     licensecombo = licensecombo + "<option value=" + na.getId() + ">" + na.getName() + "</option>";
                 }
-                
+
             }
 
             licensecombo = licensecombo + "</select></div></div>";

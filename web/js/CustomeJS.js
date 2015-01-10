@@ -116,7 +116,25 @@ $(document).ready(function() {
         
         
         $('#editinfo').click(function(event) {
-            
+            var id = $('#id').val();
+            alert('pressed');
+             $.post('getEditInfo', {id: id}, function(responseText) {
+                 $('#info').html(responseText);
+                 $('#editinfo').click(function() {
+                    var f_name = $('#f_name').val();
+                    var surename = $('#surename').val();
+                    var dob = $('#dob').val();
+                    var gender = $('#gender').val();
+                    var nationality_id = $('#nationality_id').val();
+                    var visa_status_id = $('#visa_status_id').val();
+                    var material_status = $('#material_status').val();
+                    var no_of_own = $('#no_of_own').val();
+                    var driving_license = $('#driving_license').val();
+                    $.post('editInfo',{f_name:f_name,surename:surename,dob:dob,gender:gender,nationality_id:nationality_id,visa_status_id:visa_status_id,material_status:material_status,no_of_own:no_of_own,driving_license:driving_license,id:id},function(){
+                        
+                    });
+                 });
+             });
         });
 
     });

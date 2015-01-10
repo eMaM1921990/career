@@ -56,6 +56,18 @@
         <servlet-name>saveinfo</servlet-name>
         <servlet-class>com.career.controller.saveinfo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getEditInfo</servlet-name>
+        <servlet-class>com.career.controller.getEditInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editInfo</servlet-name>
+        <servlet-class>com.career.controller.editInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getCurrentContactInfo</servlet-name>
+        <servlet-class>com.career.controller.getCurrentContactInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -111,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>saveinfo</servlet-name>
         <url-pattern>/saveinfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEditInfo</servlet-name>
+        <url-pattern>/getEditInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editInfo</servlet-name>
+        <url-pattern>/editInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCurrentContactInfo</servlet-name>
+        <url-pattern>/getCurrentContactInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

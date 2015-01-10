@@ -102,7 +102,27 @@ public class Infodao implements dao<Info> {
 
     @Override
     public String update(Info o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.UPDATE_INFO);
+            db.pstm.setString(1, o.getFname());
+            db.pstm.setString(2, o.getSurename());
+            db.pstm.setString(3, o.getDob());
+            db.pstm.setString(4, o.getGender());
+            db.pstm.setInt(5, o.getNationalID());
+            db.pstm.setInt(6, o.getVisaStatusID());
+            db.pstm.setString(7, o.getMaritalStatus());
+            db.pstm.setInt(8, o.getNoofown());
+            db.pstm.setInt(9, o.getLicense());
+            db.pstm.setInt(10, o.getId());
+            db.pstm.executeUpdate();
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(Infodao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return "ok";
     }
 
 }

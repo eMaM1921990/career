@@ -81,4 +81,10 @@ public class SQLCommon {
             + "            material_status, no_of_own, driving_license, cv_user_id)"
             + "    VALUES (?, ?, ?::date, ?, ?, ?, "
             + "            ?, ?, ?, ?);";
+
+    public String UPDATE_INFO = "UPDATE employment.info"
+            + "   SET  f_name=?, surename=?, dob=?::date, gender=?, nationality_id=?, "
+            + "       visa_status_id=?, material_status=?, no_of_own=?, driving_license=? "
+
+            + " WHERE id=?;";
 }
