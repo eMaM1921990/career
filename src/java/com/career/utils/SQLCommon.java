@@ -85,6 +85,9 @@ public class SQLCommon {
     public String UPDATE_INFO = "UPDATE employment.info"
             + "   SET  f_name=?, surename=?, dob=?::date, gender=?, nationality_id=?, "
             + "       visa_status_id=?, material_status=?, no_of_own=?, driving_license=? "
-
             + " WHERE id=?;";
+
+    public String GET_CONTACT_INFO = "SELECT id, mail, phone1, phone2, counrty_id, citiy_id, if_other, address1, "
+            + "       address2, postalcode, box, fax, weburl, cv_id, mobile"
+            + "  FROM employment.contact_info WHERE cv_id=?::integer;";
 }

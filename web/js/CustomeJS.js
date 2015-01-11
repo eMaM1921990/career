@@ -92,7 +92,7 @@ $(document).ready(function() {
 
     $.post('getCurrentInfo', null, function(responseText) {
         $('#info').html(responseText);
-        
+
         $('#addinfo').click(function(event) {
             $.post('getInfo', null, function(responseText) {
                 $('#info').html(responseText);
@@ -106,21 +106,21 @@ $(document).ready(function() {
                     var material_status = $('#material_status').val();
                     var no_of_own = $('#no_of_own').val();
                     var driving_license = $('#driving_license').val();
-                    $.post('saveinfo',{f_name:f_name,surename:surename,dob:dob,gender:gender,nationality_id:nationality_id,visa_status_id:visa_status_id,material_status:material_status,no_of_own:no_of_own,driving_license:driving_license},function(){
-                        
+                    $.post('saveinfo', {f_name: f_name, surename: surename, dob: dob, gender: gender, nationality_id: nationality_id, visa_status_id: visa_status_id, material_status: material_status, no_of_own: no_of_own, driving_license: driving_license}, function() {
+
                     });
                 });
-                
+
             });
         });
-        
-        
+
+
         $('#editinfo').click(function(event) {
             var id = $('#id').val();
-            alert('pressed');
-             $.post('getEditInfo', {id: id}, function(responseText) {
-                 $('#info').html(responseText);
-                 $('#editinfo').click(function() {
+
+            $.post('getEditInfo', {id: id}, function(responseText) {
+                $('#info').html(responseText);
+                $('#editinfo').click(function() {
                     var f_name = $('#f_name').val();
                     var surename = $('#surename').val();
                     var dob = $('#dob').val();
@@ -130,11 +130,11 @@ $(document).ready(function() {
                     var material_status = $('#material_status').val();
                     var no_of_own = $('#no_of_own').val();
                     var driving_license = $('#driving_license').val();
-                    $.post('editInfo',{f_name:f_name,surename:surename,dob:dob,gender:gender,nationality_id:nationality_id,visa_status_id:visa_status_id,material_status:material_status,no_of_own:no_of_own,driving_license:driving_license,id:id},function(){
-                        
+                    $.post('editInfo', {f_name: f_name, surename: surename, dob: dob, gender: gender, nationality_id: nationality_id, visa_status_id: visa_status_id, material_status: material_status, no_of_own: no_of_own, driving_license: driving_license, id: id}, function() {
+
                     });
-                 });
-             });
+                });
+            });
         });
 
     });
@@ -144,9 +144,35 @@ $(document).ready(function() {
      });
      */
 
-    $.post('getContactInfo', null, function(responseText) {
+
+    $.post('getcurrentJob', null, function(responseText) {
         $('#contactinfo').html(responseText);
+        $('#addcontactinfo').click(function(event) {
+            $.post('getContactInfo', null, function(responseText) {
+                $('#contactinfo').html(responseText);
+                $('#savecontactinfo').click(function() {
+                    var mail=$('#mail').val();
+                    var phone1=$('#phone1').val();
+                    var phone2=$('#phone2').val();
+                    var counrty_id=$('#counrty_id').val();
+                    var citiy_id=$('#citiy_id').val();
+                    var if_other='';
+                    var address1=$('#address1').val();
+                    var address2=$('#address2').val();
+                    var postalcode=$('#postalcode').val();
+                    var box=$('#box').val();
+                    var fax=$('#fax').val();
+                    var weburl=$('#weburl').val();
+                    var mobile=$('#mobile').val();
+                });
+            });
+        });
     });
 
+    /*
+     $.post('getContactInfo', null, function(responseText) {
+     $('#contactinfo').html(responseText);
+     });
+     */
 
 });

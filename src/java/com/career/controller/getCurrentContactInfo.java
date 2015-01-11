@@ -7,8 +7,10 @@
 package com.career.controller;
 
 import com.career.DAO.Citiesdao;
+import com.career.DAO.Contactinfodao;
 import com.career.DAO.NationalDAO;
 import com.career.model.Cities;
+import com.career.model.ContactInfo;
 import com.career.model.National;
 import com.career.model.User;
 import java.io.IOException;
@@ -76,6 +78,37 @@ public class getCurrentContactInfo extends HttpServlet {
         
         Citiesdao c_dao=new Citiesdao();
         List<Cities> lc=c_dao.FindAll();
+        
+        ContactInfo i=new ContactInfo();
+        Contactinfodao cdao=new Contactinfodao();
+        i=cdao.Find(Integer.toString(u.getCv()));
+        
+        String buffer=null;
+        if(i.getID()>0){
+            
+        }else{
+             buffer = "<div class=\"box box-bordered\">"
+                    + "<div class=\"box-title\">"
+                    + "<h3><i class=\"icon-edit\"></i>المعلومات الشخصية</h3>"
+                    + "</div>"
+                    + " <div class=\"box-content nopadding\">"
+                    + "<form class='form-horizontal form-bordered'>";
+            String row = "<div class=\"controls\">"
+                    + "<label for=\"textfield\" class=\"control-label\"></label>"
+                    + " <div class=\"controls\">"
+                    + "<div class=\"input-prepend\">"
+                    + "<label for=\"textfield\" class=\"control-label\">معلومات الأتصال</label>"
+                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addcontactinfo\">"
+                    + "</div>"
+                    + "</div>"
+                    + "</div>";
+
+            buffer = buffer + row;
+        }
+        
+        response.getWriter().write(buffer);
+        
+        
     }
 
     /**
