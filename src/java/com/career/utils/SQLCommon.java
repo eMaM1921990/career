@@ -90,4 +90,10 @@ public class SQLCommon {
     public String GET_CONTACT_INFO = "SELECT id, mail, phone1, phone2, counrty_id, citiy_id, if_other, address1, "
             + "       address2, postalcode, box, fax, weburl, cv_id, mobile"
             + "  FROM employment.contact_info WHERE cv_id=?::integer;";
+    
+    public String INSERT_CONTACT_INFO="INSERT INTO employment.contact_info(" +
+"             mail, phone1, phone2, counrty_id, citiy_id, address1, " +
+"            address2, postalcode, box, fax, weburl, cv_id, mobile)" +
+"    VALUES ( ?, ?, ?, ?, ?, ?, " +
+"            ?, ?, ?, ?, ?, ?,?);";
 }

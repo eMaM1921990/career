@@ -145,7 +145,7 @@ $(document).ready(function() {
      */
 
 
-    $.post('getcurrentJob', null, function(responseText) {
+    $.post('getCurrentContactInfo', null, function(responseText) {
         $('#contactinfo').html(responseText);
         $('#addcontactinfo').click(function(event) {
             $.post('getContactInfo', null, function(responseText) {
@@ -164,6 +164,9 @@ $(document).ready(function() {
                     var fax=$('#fax').val();
                     var weburl=$('#weburl').val();
                     var mobile=$('#mobile').val();
+                    $.post('savecontactinfo',{mail:mail,phone1:phone1,phone2:phone2,counrty_id:counrty_id,citiy_id:citiy_id,address1:address1,address2:address2,postalcode:postalcode,box:box,fax:fax,weburl:weburl,mobile:mobile},function(responseText){
+                        
+                    });
                 });
             });
         });

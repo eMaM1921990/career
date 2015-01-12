@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.career.viewer;
 
-import com.career.DAO.cvdao;
-import com.career.model.Cv;
+package com.career.controller;
+
+import com.career.DAO.Contactinfodao;
+import com.career.model.ContactInfo;
 import com.career.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLEncoder;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author emam
  */
-public class myCvs extends HttpServlet {
+@WebServlet(name = "savecontactinfo", urlPatterns = {"/savecontactinfo"})
+public class savecontactinfo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,31 +37,7 @@ public class myCvs extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        User u = (User) request.getSession().getAttribute("login");
-
-        Cv c = new Cv();
-        cvdao dao = new cvdao();
-        c.setName(u.getU_name());
-        if (request.getParameterMap().containsKey("id")) {
-            String id = request.getParameter("id");
-            if (!"0".equals(id)) {
-                u.setCv(Integer.valueOf(id));
-            } else {
-                String data = dao.Presist(c);
-                u.setCv(Integer.valueOf(data));
-                u.setU_name(u.getU_name());
-                request.getSession().setAttribute("login", u);
-            }
-        } else {
-            u.setCv(u.getCv());
-            u.setU_name(u.getU_name());
-            request.getSession().setAttribute("login", u);
-
-        }
-
-        RequestDispatcher send = request.getRequestDispatcher("/mycvs/CVLayout.jsp");
-        send.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -90,6 +67,25 @@ public class myCvs extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        HttpSession session=request.getSession();
+        User u=(User)session.getAttribute("login");
+        ContactInfo info=new ContactInfo();
+        Contactinfodao dao=new Contactinfodao();
+        info.setMail(request.getParameter("mail"));
+        info.setPhone1(request.getParameter("phone1"));
+        info.setPhone2(request.getParameter("phone2"));
+        info.setCounrtyID(Integer.valueOf(request.getParameter("counrty_id")));
+        info.setCitiyID(Integer.valueOf(request.getParameter("citiy_id")));
+        info.setAddress1(request.getParameter("address1"));
+        info.setAddress2(request.getParameter("address2"));
+        info.setPostalCode(Integer.valueOf(request.getParameter("postalcode")));
+        info.setBox(request.getParameter("box"));
+        info.setFax(Integer.valueOf(request.getParameter("fax")));
+        info.setURL(request.getParameter("weburl"));
+        info.setCVID(u.getCv());
+        info.setMobile(request.getParameter("mobile"));
+        dao.Presist(info);
+        response.getWriter().write("ok");
     }
 
     /**

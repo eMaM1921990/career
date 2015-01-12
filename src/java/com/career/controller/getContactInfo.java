@@ -85,7 +85,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">البريد الالكترونى </label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"mail\" name=\"mail\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -96,7 +96,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">رقم الهاتف الجوال</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Mobile Number\" name=\"mobile\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Mobile Number\" id=\"mobile\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -107,7 +107,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">هاتف للاتصال اثناء النهار</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"phone1\" name=\"phone1\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"phone\" id=\"phone1\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -118,7 +118,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">هاتف للاتصال اثناء المساء</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"phone1\" name=\"phone2\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"phone\" id=\"phone2\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -130,7 +130,7 @@ public class getContactInfo extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<select name=\"national\" id=\"national\" class='chosen-select'>";
+                + "<select name=\"national\" id=\"counrty_id\" class='chosen-select'>";
                 
         for(National na:n){
             rowcombo=rowcombo+"<option value="+na.getId()+">"+na.getName()+"</option>";
@@ -145,7 +145,7 @@ public class getContactInfo extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<select name=\"city\" id=\"city\" class='chosen-select'>";
+                + "<select name=\"city\" id=\"citiy_id\" class='chosen-select'>";
                 
         for(Cities ci:lc){
             rowcombo2=rowcombo2+"<option value="+ci.getId()+">"+ci.getName()+"</option>";
@@ -157,10 +157,10 @@ public class getContactInfo extends HttpServlet {
         
         
         String row5="<div class=\"control-group\">"
-                + "<label for=\"textfield\" class=\"control-label\">العنوان   (السطر اﻻل)</label>"
+                + "<label for=\"textfield\" class=\"control-label\">العنوان   (السطر اﻻول)</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Address one\" name=\"address1\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Address one\" id=\"address1\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -170,7 +170,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">العنوان ( السطر الثانى )</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Address two\" name=\"address2\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Address two\" id=\"address2\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -181,7 +181,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">صندوق البريد</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Postal Box\" name=\"postal\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Postal Box\" id=\"box\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -192,7 +192,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">الرمز البريدى</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Postal Code\" name=\"postalcode\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Postal Code\" id=\"postalcode\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -202,7 +202,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">رقم الفاكس</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Fax Number\" name=\"fax\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Fax Number\" id=\"fax\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -213,12 +213,18 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">الموقع الالكترونى</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Web Site url\" name=\"weburl\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Web Site url\" id=\"weburl\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";
         
         buffer=buffer+row10;
+        String actionrow="<div class=\"form-actions\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"savecontactinfo\">"
+                + "<button type=\"button\" class=\"btn\">إلغاء</button>"
+                + "</div>";
+        buffer=buffer+actionrow;
+        
         
         response.getWriter().write(buffer);
     }
