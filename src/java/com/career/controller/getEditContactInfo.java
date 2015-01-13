@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author emam
  */
-public class getCurrentContactInfo extends HttpServlet {
+public class getEditContactInfo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -82,12 +82,10 @@ public class getCurrentContactInfo extends HttpServlet {
         ContactInfo i=new ContactInfo();
         Contactinfodao cdao=new Contactinfodao();
         i=cdao.Find(Integer.toString(u.getCv()));
-        
-        String buffer=null;
-        if(i.getID()>0){
-            buffer = "<div class=\"box box-bordered\">"
+                String buffer=null;
+                 buffer = "<div class=\"box box-bordered\">"
                 + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i> معلومات اﻻتصال</h3><i class=\"icon-edit\"></i><a id='editcontactinfo'>تعديل</a>"
+                + "<h3><i class=\"icon-edit\"></i> معلومات اﻻتصال</h3>"
                 + "</div>"
                 + " <div class=\"box-content nopadding\">"
                 + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
@@ -97,7 +95,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 +"<input type='hidden' id='id' value='"+i.getID()+"'/>"
-                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getMail()+"'>"
+                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\"  value='"+i.getMail()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -119,7 +117,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">هاتف للاتصال اثناء النهار</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"phone1\" id=\"phone1\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getPhone1()+"'>"
+                + "<input type=\"text\" placeholder=\"phone1\" id=\"phone1\" autocomplete=\"off\"  value='"+i.getPhone1()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -130,7 +128,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">هاتف للاتصال اثناء المساء</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"phone1\" id=\"phone2\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getPhone()+"'>"
+                + "<input type=\"text\" placeholder=\"phone1\" id=\"phone2\" autocomplete=\"off\"  value='"+i.getPhone()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -142,7 +140,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<select name=\"national\" id=\"counrty_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
+                + "<select name=\"national\" id=\"counrty_id\" class='chosen-select' >";
                 
         for(National na:n){
             if(na.getId()==i.getCountryID()){
@@ -162,7 +160,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<select name=\"city\" id=\"citiy_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
+                + "<select name=\"city\" id=\"citiy_id\" class='chosen-select' >";
                 
         for(Cities ci:lc){
             if(ci.getId()==i.getCity()){
@@ -182,7 +180,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">العنوان   (السطر اﻻل)</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Address one\" id=\"address1\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getAddress1()+"'>"
+                + "<input type=\"text\" placeholder=\"Address one\" id=\"address1\" autocomplete=\"off\"  value='"+i.getAddress1()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -192,7 +190,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">العنوان ( السطر الثانى )</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Address two\" id=\"address2\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getAddress2()+"'>"
+                + "<input type=\"text\" placeholder=\"Address two\" id=\"address2\" autocomplete=\"off\"  value='"+i.getAddress2()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -203,7 +201,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">صندوق البريد</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Postal Box\" id=\"box\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getBox()+"'>"
+                + "<input type=\"text\" placeholder=\"Postal Box\" id=\"box\" autocomplete=\"off\"  value='"+i.getBox()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -214,7 +212,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">الرمز البريدى</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Postal Code\" id=\"postalcode\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getPostalCode()+"'>"
+                + "<input type=\"text\" placeholder=\"Postal Code\" id=\"postalcode\" autocomplete=\"off\"  value='"+i.getPostalCode()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -224,7 +222,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">رقم الفاكس</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Fax Number\" id=\"fax\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getFax()+"'>"
+                + "<input type=\"text\" placeholder=\"Fax Number\" id=\"fax\" autocomplete=\"off\"  value='"+i.getFax()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -235,35 +233,20 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">الموقع الالكترونى</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Web Site url\" id=\"weburl\" autocomplete=\"off\" style='pointer-events:none;border:none;background:#fff' value='"+i.getURL()+"'>"
+                + "<input type=\"text\" placeholder=\"Web Site url\" id=\"weburl\" autocomplete=\"off\"  value='"+i.getURL()+"'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";
         
         buffer=buffer+row10;
-        }else{
-             buffer = "<div class=\"box box-bordered\">"
-                    + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i> معلومات اﻻتصال</h3>"
-                    + "</div>"
-                    + " <div class=\"box-content nopadding\">"
-                    + "<form class='form-horizontal form-bordered'>";
-            String row = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">معلومات الأتصال</label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addcontactinfo\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
-
-            buffer = buffer + row;
-        }
+        String actionrow="<div class=\"form-actions\">"
+                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"submit\" id=\"editcontactinfo\">"
+                + "<button type=\"button\" class=\"btn\">إلغاء</button>"
+                + "</div>";
+        buffer=buffer+actionrow;
         
         response.getWriter().write(buffer);
-        
-        
+
     }
 
     /**

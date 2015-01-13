@@ -110,7 +110,31 @@ public class Contactinfodao implements dao<ContactInfo> {
 
     @Override
     public String update(ContactInfo o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.UPDATE_CONTACT_INFO);
+            db.pstm.setString(1, o.getMail());
+            db.pstm.setString(2, o.getPhone1());
+            db.pstm.setString(3,o.getPhone());
+            db.pstm.setInt(4, o.getCountryID());
+            db.pstm.setInt(5, o.getCity());
+            db.pstm.setString(6, o.getAddress1());
+            db.pstm.setString(7, o.getAddress2());
+            db.pstm.setInt(8, o.getPostalCode());
+            db.pstm.setString(9, o.getBox());
+            db.pstm.setString(10, Integer.toString(o.getFax()));
+            db.pstm.setString(11,o.getURL());
+            db.pstm.setInt(12, o.getCVID());
+            db.pstm.setString(13, o.getMobile());
+            db.pstm.setInt(14, o.getID());
+            db.pstm.executeUpdate();
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(Contactinfodao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return "ok";
     }
 
 }

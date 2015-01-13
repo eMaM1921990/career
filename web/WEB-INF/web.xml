@@ -68,6 +68,14 @@
         <servlet-name>getCurrentContactInfo</servlet-name>
         <servlet-class>com.career.controller.getCurrentContactInfo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getEditContactInfo</servlet-name>
+        <servlet-class>com.career.controller.getEditContactInfo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editContactInfo</servlet-name>
+        <servlet-class>com.career.controller.editContactInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -135,6 +143,14 @@
     <servlet-mapping>
         <servlet-name>getCurrentContactInfo</servlet-name>
         <url-pattern>/getCurrentContactInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEditContactInfo</servlet-name>
+        <url-pattern>/getEditContactInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editContactInfo</servlet-name>
+        <url-pattern>/editContactInfo</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
