@@ -102,4 +102,23 @@ public class SQLCommon {
             + "       address1=?, address2=?, postalcode=?, box=?, fax=?, weburl=?,"
             + "       cv_id=?, mobile=?"
             + " WHERE id=?;";
+
+    public String INSERT_EXPERIENCE = "INSERT INTO employment.experience("
+            + "             startdate, enddate, national_id, address, companyname, company_industry_id, "
+            + "            career_role_id, role_name, jobdesc, cv_id)"
+            + "    VALUES (?::date, ?::date, ?, ?, ?, ?, ?, "
+            + "            ?, ?, ?);";
+
+    public String DELETE_EXPERINCE = "DELETE FROM employment.experience"
+            + " WHERE id=?;";
+
+    public String UPDATE_EXPERIENCE = "UPDATE employment.experience"
+            + "   SET  startdate=?, enddate=?, national_id=?, address=?, companyname=?, "
+            + "       company_industry_id=?, career_role_id=?, role_name=?, jobdesc=?, "
+            + "       cv_id=?"
+            + " WHERE id=?;";
+
+    public String GET_CURRENT_EXPER = "SELECT id, startdate, enddate, national_id, address, companyname, company_industry_id, "
+            + "       career_role_id, role_name, jobdesc, cv_id"
+            + "  FROM employment.experience WHERE cv_id=?;";
 }
