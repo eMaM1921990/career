@@ -151,57 +151,115 @@ $(document).ready(function() {
             $.post('getContactInfo', null, function(responseText) {
                 $('#contactinfo').html(responseText);
                 $('#savecontactinfo').click(function() {
-                    var mail=$('#mail').val();
-                    var phone1=$('#phone1').val();
-                    var phone2=$('#phone2').val();
-                    var counrty_id=$('#counrty_id').val();
-                    var citiy_id=$('#citiy_id').val();
-                    var if_other='';
-                    var address1=$('#address1').val();
-                    var address2=$('#address2').val();
-                    var postalcode=$('#postalcode').val();
-                    var box=$('#box').val();
-                    var fax=$('#fax').val();
-                    var weburl=$('#weburl').val();
-                    var mobile=$('#mobile').val();
-                    $.post('savecontactinfo',{mail:mail,phone1:phone1,phone2:phone2,counrty_id:counrty_id,citiy_id:citiy_id,address1:address1,address2:address2,postalcode:postalcode,box:box,fax:fax,weburl:weburl,mobile:mobile},function(responseText){
-                        
+                    var mail = $('#mail').val();
+                    var phone1 = $('#phone1').val();
+                    var phone2 = $('#phone2').val();
+                    var counrty_id = $('#counrty_id').val();
+                    var citiy_id = $('#citiy_id').val();
+                    var if_other = '';
+                    var address1 = $('#address1').val();
+                    var address2 = $('#address2').val();
+                    var postalcode = $('#postalcode').val();
+                    var box = $('#box').val();
+                    var fax = $('#fax').val();
+                    var weburl = $('#weburl').val();
+                    var mobile = $('#mobile').val();
+                    $.post('savecontactinfo', {mail: mail, phone1: phone1, phone2: phone2, counrty_id: counrty_id, citiy_id: citiy_id, address1: address1, address2: address2, postalcode: postalcode, box: box, fax: fax, weburl: weburl, mobile: mobile}, function(responseText) {
+
                     });
                 });
             });
         });
-        
+
         $('#editcontactinfo').click(function(event) {
-            var id=$('#id').val();
+            var id = $('#id').val();
             $.post('getEditContactInfo', null, function(responseText) {
                 $('#contactinfo').html(responseText);
                 $('#editcontactinfo').click(function() {
-                    var mail=$('#mail').val();
-                    var phone1=$('#phone1').val();
-                    var phone2=$('#phone2').val();
-                    var counrty_id=$('#counrty_id').val();
-                    var citiy_id=$('#citiy_id').val();
-                    var if_other='';
-                    var address1=$('#address1').val();
-                    var address2=$('#address2').val();
-                    var postalcode=$('#postalcode').val();
-                    var box=$('#box').val();
-                    var fax=$('#fax').val();
-                    var weburl=$('#weburl').val();
-                    var mobile=$('#mobile').val();
-                    $.post('editContactInfo',{mail:mail,phone1:phone1,phone2:phone2,counrty_id:counrty_id,citiy_id:citiy_id,address1:address1,address2:address2,postalcode:postalcode,box:box,fax:fax,weburl:weburl,mobile:mobile,id:id},function(responseText){
-                        
+                    var mail = $('#mail').val();
+                    var phone1 = $('#phone1').val();
+                    var phone2 = $('#phone2').val();
+                    var counrty_id = $('#counrty_id').val();
+                    var citiy_id = $('#citiy_id').val();
+                    var if_other = '';
+                    var address1 = $('#address1').val();
+                    var address2 = $('#address2').val();
+                    var postalcode = $('#postalcode').val();
+                    var box = $('#box').val();
+                    var fax = $('#fax').val();
+                    var weburl = $('#weburl').val();
+                    var mobile = $('#mobile').val();
+                    $.post('editContactInfo', {mail: mail, phone1: phone1, phone2: phone2, counrty_id: counrty_id, citiy_id: citiy_id, address1: address1, address2: address2, postalcode: postalcode, box: box, fax: fax, weburl: weburl, mobile: mobile, id: id}, function(responseText) {
+
                     });
                 });
             });
         });
-        
-        
-        
-        
-        
+
+
+
+
+
     });
 
+
+
+    $.get('getCurrentExperience', null, function(responseText) {
+
+        $('#experience').html(responseText);
+
+        $('#addexperince').click(function(event) {
+            $.post('getExperince', null, function(responseText) {
+                $('#experience').html(responseText);
+
+                $('#saveexp').click(function(event) {
+                    var startdate=$('#startdate').val();
+                    var enddate=$('#enddate').val();
+                    var national_id=$('#national_id').val();
+                    var address=$('#address').val();
+                    var companyname=$('#companyname').val();
+                    var company_industry_id=$('#company_industry_id').val();
+                    var career_role_id=$('#career_role_id').val();
+                    var role_name=$('#role_name').val();
+                    var jobdesc=$('#jobdesc').val();
+                    $.post('saveexperience', {startdate:startdate,enddate:enddate,national_id:national_id,address:address,companyname:companyname,company_industry_id:company_industry_id,career_role_id:career_role_id,role_name:role_name,jobdesc:jobdesc}, function(responseText) {
+                        $.get('getCurrentExperience', null, function(responseText) {
+                            $('#experience').html(responseText);
+                        });
+                    });
+                    
+                });
+            });
+        });
+        
+        $('#editexp').click(function(event) {
+            var id=$('#editexp').attr("class");
+            
+            $.post('getEditExperience', {id:id}, function(responseText) {
+                $('#experience').html(responseText);
+                $('# editexpert').click(function(event) {
+                    var startdate=$('#startdate').val();
+                    var enddate=$('#enddate').val();
+                    var national_id=$('#national_id').val();
+                    var address=$('#address').val();
+                    var companyname=$('#companyname').val();
+                    var company_industry_id=$('#company_industry_id').val();
+                    var career_role_id=$('#career_role_id').val();
+                    var role_name=$('#role_name').val();
+                    var jobdesc=$('#jobdesc').val();
+                    var id=$('#id').val();
+                    $.post('editExperince',{startdate:startdate,enddate:enddate,national_id:national_id,address:address,companyname:companyname,company_industry_id:company_industry_id,career_role_id:career_role_id,role_name:role_name,jobdesc:jobdesc,id:id}, function(responseText) {
+                        
+                    });
+                    
+                    
+                });
+            });
+            
+        });
+
+
+    });
     /*
      $.post('getContactInfo', null, function(responseText) {
      $('#contactinfo').html(responseText);

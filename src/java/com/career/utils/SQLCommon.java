@@ -121,4 +121,14 @@ public class SQLCommon {
     public String GET_CURRENT_EXPER = "SELECT id, startdate, enddate, national_id, address, companyname, company_industry_id, "
             + "       career_role_id, role_name, jobdesc, cv_id"
             + "  FROM employment.experience WHERE cv_id=?;";
+
+    public String GET_INDUSRTY = "SELECT id, name"
+            + "  FROM employment.company_industry_type;";
+
+    public String GET_CAREER_ROLE = "SELECT id, name"
+            + "  FROM employment.career_role;";
+    
+    public String GET_CURRENT_EXPER_BYID = "SELECT id, startdate, enddate, national_id, address, companyname, company_industry_id, "
+            + "       career_role_id, role_name, jobdesc, cv_id"
+            + "  FROM employment.experience WHERE id=?;";
 }

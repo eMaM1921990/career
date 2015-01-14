@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.career.controller;
 
 import com.career.DAO.Careerroledao;
@@ -27,7 +28,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author emam
  */
-public class getCurrentExperience extends HttpServlet {
+public class getEditExperience extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +42,7 @@ public class getCurrentExperience extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -57,7 +58,21 @@ public class getCurrentExperience extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+    }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+        
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("login");
 
@@ -71,14 +86,13 @@ public class getCurrentExperience extends HttpServlet {
         List<CareerRole> role_list = cdao.FindAll();
 
         Experincedao i_dao = new Experincedao();
-        List<Experince> e = i_dao.FindByParentId(u.getCv());
-
+        Experince e=i_dao.Find(request.getParameter("id"));
+        
         String buffer = null;
-        if (e.size() > 0) {
-            for (Experince ex : e) {
-                buffer = "<div class=\"box box-bordered\">"
+        
+        buffer = "<div class=\"box box-bordered\">"
                         + "<div class=\"box-title\">"
-                        + "<h3><i class=\"icon-edit\"></i>الخبرات</h3><i class=\"icon-edit\"></i><a id='editexp' class='"+ex.getID()+"'>تعديل</a>"
+                        + "<h3><i class=\"icon-edit\"></i>الخبرات</h3><i class=\"icon-edit\"></i><a id='editep' class='"+e.getID()+"'>تعديل</a>"
                         + "</div>"
                         + " <div class=\"box-content nopadding\">"
                         + "<form class='form-horizontal form-bordered'>";
@@ -87,7 +101,7 @@ public class getCurrentExperience extends HttpServlet {
                         + "<label for=\"textfield\" class=\"control-label\">تاريخ بدء العمل </label>"
                         + " <div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"startdate\" autocomplete=\"off\" value='"+ex.getStartdate()+"' style='pointer-events:none;border:none;background:#fff'>"
+                        + "<input type=\"text\"  id=\"startdate\" autocomplete=\"off\" value='"+e.getStartdate()+"'  >"
                         + "</div>"
                         + "</div>"
                         + "</div>";
@@ -98,7 +112,7 @@ public class getCurrentExperience extends HttpServlet {
                         + "<label for=\"textfield\" class=\"control-label\">تاريخ ترك العمل</label>"
                         + " <div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"enddate\" autocomplete=\"off\" value='"+ex.getEnddate()+"' style='pointer-events:none;border:none;background:#fff'>"
+                        + "<input type=\"text\"  id=\"enddate\" autocomplete=\"off\" value='"+e.getEnddate()+"'  >"
                         + "</div>"
                         + "</div>"
                         + "</div>";
@@ -109,10 +123,10 @@ public class getCurrentExperience extends HttpServlet {
                         + "<div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
                         + "<div class=\"input-xlarge\">"
-                        + "<select name=\"nationality_id\" id=\"national_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
+                        + "<select name=\"nationality_id\" id=\"national_id\" class='chosen-select'  >";
 
                 for (National na : n) {
-                    if(na.getId()==ex.getNationalID()){
+                    if(na.getId()==e.getNationalID()){
                         rowcombo = rowcombo + "<option value=" + na.getId() + " selected>" + na.getName() + "</option>";
                     }else{
                         rowcombo = rowcombo + "<option value=" + na.getId() + ">" + na.getName() + "</option>";
@@ -128,7 +142,7 @@ public class getCurrentExperience extends HttpServlet {
                         + "<label for=\"textfield\" class=\"control-label\">العنوان</label>"
                         + " <div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"address\" autocomplete=\"off\" value='"+ex.getAddress()+"' style='pointer-events:none;border:none;background:#fff'>"
+                        + "<input type=\"text\"  id=\"address\" autocomplete=\"off\" value='"+e.getAddress()+"'  >"
                         + "</div>"
                         + "</div>"
                         + "</div>";
@@ -138,7 +152,7 @@ public class getCurrentExperience extends HttpServlet {
                         + "<label for=\"textfield\" class=\"control-label\">اسم الشركة</label>"
                         + " <div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"companyname\" autocomplete=\"off\" value='"+ex.getCompanyname()+"' style='pointer-events:none;border:none;background:#fff'>"
+                        + "<input type=\"text\"  id=\"companyname\" autocomplete=\"off\" value='"+e.getCompanyname()+"'  >"
                         + "</div>"
                         + "</div>"
                         + "</div>";
@@ -150,10 +164,10 @@ public class getCurrentExperience extends HttpServlet {
                         + "<div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
                         + "<div class=\"input-xlarge\">"
-                        + "<select name=\"company_industry_id\" id=\"company_industry_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
+                        + "<select name=\"company_industry_id\" id=\"company_industry_id\" class='chosen-select'  >";
 
                 for (Industry i : list) {
-                    if(i.getId()==ex.getCompanyIndustry()){
+                    if(i.getId()==e.getCompanyIndustry()){
                         
                     rowcombo2 = rowcombo2 + "<option value=" + i.getId() + " selected>" + i.getName() + "</option>";    
                     }else{
@@ -170,10 +184,10 @@ public class getCurrentExperience extends HttpServlet {
                         + "<div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
                         + "<div class=\"input-xlarge\">"
-                        + "<select name=\"career_role_id\" id=\"career_role_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
+                        + "<select name=\"career_role_id\" id=\"career_role_id\" class='chosen-select'  >";
 
                 for (CareerRole ci : role_list) {
-                    if(ci.getId()==ex.getCareerRoleID()){
+                    if(ci.getId()==e.getCareerRoleID()){
                     rowcomb3 = rowcomb3 + "<option value=" + ci.getId() + " selected>" + ci.getName() + "</option>";    
                     }else{
                     rowcomb3 = rowcomb3 + "<option value=" + ci.getId() + ">" + ci.getName() + "</option>";    
@@ -189,7 +203,7 @@ public class getCurrentExperience extends HttpServlet {
                         + "<label for=\"textfield\" class=\"control-label\">مسمى المنصب فى الشركة</label>"
                         + " <div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"role_name\" autocomplete=\"off\" value='"+ex.getRoleName()+"' style='pointer-events:none;border:none;background:#fff'>"
+                        + "<input type=\"text\"  id=\"role_name\" autocomplete=\"off\" value='"+e.getRoleName()+"'  >"
                         + "</div>"
                         + "</div>"
                         + "</div>";
@@ -200,60 +214,23 @@ public class getCurrentExperience extends HttpServlet {
                         + "<label for=\"textfield\" class=\"control-label\">الوصف</label>"
                         + " <div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
-                        + "<textarea name=\"jobdesc\" id=\"jobdesc\" class=\"input-block-level\" style='pointer-events:none;border:none;background:#fff'>"+ex.getDesc()+"</textarea>"
+                        + "<textarea name=\"jobdesc\" id=\"jobdesc\" class=\"input-block-level\"  >"+e.getDesc()+"</textarea>"
                         + "</div>"
                         + "</div>"
                         + "</div>";
 
                 buffer = buffer + row6;
-            }
-
-            String action = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addexperince\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
-            buffer = buffer + action;
-
-        } else {
-            buffer = "<div class=\"box box-bordered\">"
-                    + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i>الخبرات</h3>"
-                    + "</div>"
-                    + " <div class=\"box-content nopadding\">"
-                    + "<form class='form-horizontal form-bordered'>";
-            String row = "<div class=\"controls\">"
+                
+                 String action = "<div class=\"controls\">"
                     + "<label for=\"textfield\" class=\"control-label\"></label>"
                     + " <div class=\"controls\">"
                     + "<div class=\"input-prepend\">"
                     + "<label for=\"textfield\" class=\"control-label\">الخبرات</label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addexperince\">"
+                    + "<input type=\"button\" value=\"تعديل\" class='btn btn-green' id=\"editexpert\">"
                     + "</div>"
                     + "</div>"
                     + "</div>";
-
-            buffer = buffer + row;
-        }
-
-        response.getWriter().write(buffer);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
+            buffer = buffer + action;
     }
 
     /**

@@ -80,6 +80,22 @@
         <servlet-name>getCurrentExperience</servlet-name>
         <servlet-class>com.career.controller.getCurrentExperience</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getExperince</servlet-name>
+        <servlet-class>com.career.controller.getExperince</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>saveexperience</servlet-name>
+        <servlet-class>com.career.controller.saveexperience</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getEditExperience</servlet-name>
+        <servlet-class>com.career.controller.getEditExperience</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editExperince</servlet-name>
+        <servlet-class>com.career.controller.editExperince</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -159,6 +175,22 @@
     <servlet-mapping>
         <servlet-name>getCurrentExperience</servlet-name>
         <url-pattern>/getCurrentExperience</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getExperince</servlet-name>
+        <url-pattern>/getExperince</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>saveexperience</servlet-name>
+        <url-pattern>/saveexperience</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEditExperience</servlet-name>
+        <url-pattern>/getEditExperience</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editExperince</servlet-name>
+        <url-pattern>/editExperince</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

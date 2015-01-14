@@ -11,6 +11,7 @@ import com.career.model.Experince;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -54,11 +55,19 @@ public class Experincedao implements dao<Experince>{
         Experince e=new Experince();
         try {
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_CURRENT_EXPER);
-            db.pstm.setInt(2, Integer.valueOf(id));
+            db.pstm=db.con.prepareStatement(sql.GET_CURRENT_EXPER_BYID);
+            db.pstm.setInt(1, Integer.valueOf(id));
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                e.setID(db.rs.getInt(1));
+               e.setID(db.rs.getInt(1));
+                e.setStartdate(db.rs.getString(2));
+                e.setNationalID(db.rs.getInt(3));
+                e.setAddress(db.rs.getString(4));
+                e.setCompanyname(db.rs.getString(5));
+                e.setCompanyIndustry(db.rs.getInt(6));
+                e.setCareerRoleID(db.rs.getInt(7));
+                e.setRoleName(db.rs.getString(8));
+                e.setDesc(db.rs.getString(9));
             }
             db.closeConnection();
         } catch (SQLException ex) {
@@ -93,7 +102,33 @@ public class Experincedao implements dao<Experince>{
 
     @Override
     public List<Experince> FindByParentId(int parentID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Experince> list=new ArrayList<>();
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.GET_CURRENT_EXPER);
+            db.pstm.setInt(1, parentID);
+            db.rs=db.pstm.executeQuery();
+            while(db.rs.next()){
+                Experince e=new Experince();
+                e.setID(db.rs.getInt(1));
+                e.setStartdate(db.rs.getString(2));
+                e.setEnddate(db.rs.getString(3));
+                e.setNationalID(db.rs.getInt(4));
+                e.setAddress(db.rs.getString(5));
+                e.setCompanyname(db.rs.getString(6));
+                e.setCompanyIndustry(db.rs.getInt(7));
+                e.setCareerRoleID(db.rs.getInt(8));
+                e.setRoleName(db.rs.getString(9));
+                e.setDesc(db.rs.getString(10));
+                list.add(e);
+            }
+            
+            db.closeConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(Experincedao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return list;
     }
 
     @Override

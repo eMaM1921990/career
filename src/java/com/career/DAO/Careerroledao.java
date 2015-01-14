@@ -1,0 +1,81 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.career.DAO;
+
+import com.career.dao.i.dao;
+import com.career.model.CareerRole;
+import com.career.utils.DBConnection;
+import com.career.utils.SQLCommon;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author emam
+ */
+public class Careerroledao implements dao<CareerRole>{
+    DBConnection db=new DBConnection();
+    SQLCommon sql=new SQLCommon();
+    @Override
+    public String Presist(CareerRole o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public CareerRole Find(String phone) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String remove(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<CareerRole> FindAll() {
+        List<CareerRole> list=new ArrayList<>();
+        try {
+            
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.GET_CAREER_ROLE);
+            db.rs=db.pstm.executeQuery();
+            while(db.rs.next()){
+                CareerRole c=new CareerRole();
+                c.setId(db.rs.getInt(1));
+                c.setName(db.rs.getString(2));
+                list.add(c);
+            }
+            
+            db.rs.close();
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(Careerroledao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return list;
+    }
+
+    @Override
+    public List<CareerRole> FindByParentId(int parentID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<CareerRole> FindBy(CareerRole o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String update(CareerRole o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}
