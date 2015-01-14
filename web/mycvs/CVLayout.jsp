@@ -16,7 +16,7 @@
         <!-- Apple devices fullscreen -->
         <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        <title>FLAT - Extended forms</title>
+        <title>Career CV</title>
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="css/bootstrap.min.css">

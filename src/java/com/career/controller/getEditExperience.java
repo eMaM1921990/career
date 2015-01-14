@@ -231,6 +231,8 @@ public class getEditExperience extends HttpServlet {
                     + "</div>"
                     + "</div>";
             buffer = buffer + action;
+            
+            response.getWriter().write(buffer);
     }
 
     /**

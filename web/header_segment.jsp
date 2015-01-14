@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <div id="navigation">
     <div class="container-fluid">
-        <a href="#" id="brand">FLAT</a>
+        <a href="#" id="brand">Career CV</a>
         <a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
         <ul class='main-nav'>
             <li>
@@ -19,7 +19,7 @@
             </li>
             <li class='active'>
                 <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-                    <span>Forms</span>
+                    <span>Option</span>
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">

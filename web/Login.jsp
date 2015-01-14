@@ -15,7 +15,7 @@
 	<!-- Apple devices fullscreen -->
 	<meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	
-	<title>FLAT - Login</title>
+	<title>Career CV</title>
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="css/bootstrap.min.css">
@@ -63,7 +63,7 @@
 
 <body class='login'>
 	<div class="wrapper">
-		<h1><a href=#"><img src="img/logo-big.png" alt="" class='retina-ready' width="59" height="49">FLAT</a></h1>
+		<h1><a href=#"><img src="img/icon_employee.png" alt="" class='retina-ready' width="59" height="49">FLAT</a></h1>
 		
                 <div class="login-body">
                     
@@ -81,7 +81,7 @@
 				</div>
 				<div class="submit">
 					
-                                    <input type="button" value="تسجيل دخول" class='btn btn-primary' id="login">
+                                    <input type="submit" value="تسجيل دخول" class='btn btn-primary' id="login">
                                         <input type="button" value="مستخدم جديد" class='btn btn-green' id="newuser">
 				</div>
 			</form>

@@ -59,15 +59,16 @@ public class Experincedao implements dao<Experince>{
             db.pstm.setInt(1, Integer.valueOf(id));
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-               e.setID(db.rs.getInt(1));
+              e.setID(db.rs.getInt(1));
                 e.setStartdate(db.rs.getString(2));
-                e.setNationalID(db.rs.getInt(3));
-                e.setAddress(db.rs.getString(4));
-                e.setCompanyname(db.rs.getString(5));
-                e.setCompanyIndustry(db.rs.getInt(6));
-                e.setCareerRoleID(db.rs.getInt(7));
-                e.setRoleName(db.rs.getString(8));
-                e.setDesc(db.rs.getString(9));
+                e.setEnddate(db.rs.getString(3));
+                e.setNationalID(db.rs.getInt(4));
+                e.setAddress(db.rs.getString(5));
+                e.setCompanyname(db.rs.getString(6));
+                e.setCompanyIndustry(db.rs.getInt(7));
+                e.setCareerRoleID(db.rs.getInt(8));
+                e.setRoleName(db.rs.getString(9));
+                e.setDesc(db.rs.getString(10));
             }
             db.closeConnection();
         } catch (SQLException ex) {

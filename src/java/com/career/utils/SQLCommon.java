@@ -113,7 +113,7 @@ public class SQLCommon {
             + " WHERE id=?;";
 
     public String UPDATE_EXPERIENCE = "UPDATE employment.experience"
-            + "   SET  startdate=?, enddate=?, national_id=?, address=?, companyname=?, "
+            + "   SET  startdate=?::date, enddate=?::date, national_id=?, address=?, companyname=?, "
             + "       company_industry_id=?, career_role_id=?, role_name=?, jobdesc=?, "
             + "       cv_id=?"
             + " WHERE id=?;";

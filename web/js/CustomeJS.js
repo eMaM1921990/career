@@ -234,10 +234,10 @@ $(document).ready(function() {
         
         $('#editexp').click(function(event) {
             var id=$('#editexp').attr("class");
-            
+            alert(id);
             $.post('getEditExperience', {id:id}, function(responseText) {
                 $('#experience').html(responseText);
-                $('# editexpert').click(function(event) {
+                $('#editexpert').click(function(event) {
                     var startdate=$('#startdate').val();
                     var enddate=$('#enddate').val();
                     var national_id=$('#national_id').val();
