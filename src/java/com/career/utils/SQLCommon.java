@@ -145,4 +145,13 @@ public class SQLCommon {
             + "    VALUES ( ?, ?, ?, ?, ?, ?, \n"
             + "            ?::date, ?, ?, ?);";
 
+    public String GET_SKILLS_LEVEL = "SELECT id, name\n"
+            + "  FROM employment.skill_level";
+
+    public String GET_SKILLS_EXPERIENCE_LEVEL = "SELECT id, name\n"
+            + "  FROM employment.skillexperience_level";
+
+    public String GET_LASTWORKING_SKILLS = "SELECT id, name\n"
+            + "  FROM employment.skill_level_last_working";
+
 }
