@@ -136,7 +136,13 @@ public class SQLCommon {
             + "  FROM employment.rate_level";
 
     public String GET_CURRENT_EDU = "SELECT id, conutry_id, city_id, major, certificate, rate_id, rate_degree, \n"
-            + "       enddate, \"desc\", cv_id,instatute_names\n"
+            + "       enddate, \"desc\", cv_id,instatute_name\n"
             + "  FROM employment.educations  WHERE cv_id=?";
+
+    public String INSERT_EDU = "INSERT INTO employment.educations(\n"
+            + "            conutry_id, city_id, major, certificate, rate_id, rate_degree, \n"
+            + "            enddate, \"desc\", cv_id, instatute_name)\n"
+            + "    VALUES ( ?, ?, ?, ?, ?, ?, \n"
+            + "            ?::date, ?, ?, ?);";
 
 }

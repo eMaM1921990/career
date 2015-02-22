@@ -28,7 +28,30 @@ public class edudao implements dao<edu>{
 
     @Override
     public String Presist(edu o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String msg=null;
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.INSERT_EDU);
+            db.pstm.setInt(1, o.getCounrtyID());
+            db.pstm.setInt(2, o.getCityID());
+            db.pstm.setString(3, o.getMajor());
+            db.pstm.setString(4, o.getCert());
+            db.pstm.setInt(5, o.getRateID());
+            db.pstm.setString(6, o.getDegree());
+            db.pstm.setString(7, o.getEndate());
+            db.pstm.setString(8, o.getDesc());
+            db.pstm.setInt(9, o.getCVid());
+            db.pstm.setString(10, o.getName());
+            db.pstm.executeUpdate();
+            db.closeConnection();
+            msg="Data Saved";
+        } catch (SQLException ex) {
+            db.closeConnection();
+            msg="["+ex.getErrorCode()+"] message :"+ex.getMessage();
+            Logger.getLogger(edudao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return msg;
     }
 
     @Override

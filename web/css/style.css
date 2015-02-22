@@ -5669,7 +5669,7 @@ label,input,button,select,textarea{
 }
 
 .box .box-title h3{
-	float:right;
+	float: right;
 	margin:3px 0 3px 0;
 	line-height:24px;
 	font-weight:400;

@@ -90,7 +90,7 @@ public class getEdu extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<select name=\"national\" id=\"counrty_id\" class='chosen-select'>";
+                + "<select name=\"conutry_id\" id=\"conutry_id\" class='chosen-select'>";
                 
         for(National na:n){
             country_row=country_row+"<option value="+na.getId()+">"+na.getName()+"</option>";
@@ -105,7 +105,7 @@ public class getEdu extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<select name=\"city\" id=\"citiy_id\" class='chosen-select'>";
+                + "<select name=\"city_id\" id=\"city_id\" class='chosen-select'>";
                 
         for(Cities ci:lc){
             city_row=city_row+"<option value="+ci.getId()+">"+ci.getName()+"</option>";
@@ -148,14 +148,16 @@ public class getEdu extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<input type=\"text\" placeholder=\"\" id=\"rate_degree\" autocomplete=\"off\" >"
+                
                 + "<select name=\"rate_id\" id=\"rate_id\" class='chosen-select'>";
         
         for(rate_level e:rlist){
             rate_row=rate_row+"<option value="+e.getId()+">"+e.getName()+"</option>";
         }
         
-        rate_row=rate_row+"</select></div></div></div>";
+        rate_row=rate_row+"</select>"
+                + "<input type=\"text\" placeholder=\"\" id=\"rate_degree\" autocomplete=\"off\" >"
+                + "</div></div></div>";
         
         buffer=buffer+rate_row;
         

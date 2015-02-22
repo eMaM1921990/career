@@ -276,12 +276,28 @@ $(document).ready(function() {
         
         $('#edu').html(responseText);
         
-        $('#addedu').get('getEdu',null,function (responseText){
+        $('#addedu').click(function(event) {
+             $.get('getEdu',null,function (responseText){
             $('#edu').html(responseText);
             $('#saveedu').click(function(event) {
+                var conutry_id=$('#conutry_id').val();
+                var city_id=$('#city_id').val();
+                var major=$('#major').val();
+                var certificate=$('#certificate').val();
+                var rate_id=$('#rate_id').val();
+                var rate_degree=$('#rate_degree').val();
+                var enddate=$('#enddate').val();
+                var desc=$('#desc').val();
+                var instatute_name=$('#instatute_name').val();
+                $.post('saveedu',{conutry_id:conutry_id,city_id:city_id,major:major,certificate:certificate,rate_id:rate_id,rate_degree:rate_degree,enddate:enddate,desc:desc,instatute_name:instatute_name},function (responseText){
+                    
+                    
+                });
                 
             });
         });
+        });
+       
         
     });
     

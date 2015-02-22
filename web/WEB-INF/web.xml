@@ -104,6 +104,10 @@
         <servlet-name>getEdu</servlet-name>
         <servlet-class>com.career.controller.getEdu</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>saveedu</servlet-name>
+        <servlet-class>com.career.controller.saveedu</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -207,6 +211,10 @@
     <servlet-mapping>
         <servlet-name>getEdu</servlet-name>
         <url-pattern>/getEdu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>saveedu</servlet-name>
+        <url-pattern>/saveedu</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
