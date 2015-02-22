@@ -94,7 +94,7 @@ public class getJobDescription extends HttpServlet {
         buffer=buffer+row;
         
         String row2="<div class=\"control-group\">"
-                + "<label for=\"textfield\" class=\"control-label\">اللقب الوظيفة للوظيفة المرغوية</label>"
+                + "<label for=\"textfield\" class=\"control-label\">الوصف</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<textarea name=\"job_desc\" id=\"job_desc\" class=\"input-block-level\"> </textarea>"

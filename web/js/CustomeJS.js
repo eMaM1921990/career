@@ -206,7 +206,11 @@ $(document).ready(function() {
 
     $.get('getCurrentExperience', null, function(responseText) {
 
+
+        /// Prepare view for current experince 
         $('#experience').html(responseText);
+
+        ///Prepare add button action 
 
         $('#addexperince').click(function(event) {
             $.post('getExperince', null, function(responseText) {
@@ -232,9 +236,12 @@ $(document).ready(function() {
             });
         });
         
+        
+        ///prepare edit action 
+        
         $('#editexp').click(function(event) {
             var id=$('#editexp').attr("class");
-            alert(id);
+            
             $.post('getEditExperience', {id:id}, function(responseText) {
                 $('#experience').html(responseText);
                 $('#editexpert').click(function(event) {
@@ -260,6 +267,24 @@ $(document).ready(function() {
 
 
     });
+    
+    
+    
+    
+    //// Eduction Block 
+    $.get('getCurrentEdu', null, function(responseText) {
+        
+        $('#edu').html(responseText);
+        
+        $('#addedu').get('getEdu',null,function (responseText){
+            $('#edu').html(responseText);
+            $('#saveedu').click(function(event) {
+                
+            });
+        });
+        
+    });
+    
     /*
      $.post('getContactInfo', null, function(responseText) {
      $('#contactinfo').html(responseText);

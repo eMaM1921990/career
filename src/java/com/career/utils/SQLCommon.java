@@ -127,8 +127,16 @@ public class SQLCommon {
 
     public String GET_CAREER_ROLE = "SELECT id, name"
             + "  FROM employment.career_role;";
-    
+
     public String GET_CURRENT_EXPER_BYID = "SELECT id, startdate, enddate, national_id, address, companyname, company_industry_id, "
             + "       career_role_id, role_name, jobdesc, cv_id"
             + "  FROM employment.experience WHERE id=?;";
+
+    public String GET_RATE_LEVEL = "SELECT id, name\n"
+            + "  FROM employment.rate_level";
+
+    public String GET_CURRENT_EDU = "SELECT id, conutry_id, city_id, major, certificate, rate_id, rate_degree, \n"
+            + "       enddate, \"desc\", cv_id,instatute_names\n"
+            + "  FROM employment.educations  WHERE cv_id=?";
+
 }

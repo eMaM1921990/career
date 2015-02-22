@@ -96,6 +96,14 @@
         <servlet-name>editExperince</servlet-name>
         <servlet-class>com.career.controller.editExperince</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getCurrentEdu</servlet-name>
+        <servlet-class>com.career.controller.getCurrentEdu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getEdu</servlet-name>
+        <servlet-class>com.career.controller.getEdu</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -191,6 +199,14 @@
     <servlet-mapping>
         <servlet-name>editExperince</servlet-name>
         <url-pattern>/editExperince</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCurrentEdu</servlet-name>
+        <url-pattern>/getCurrentEdu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEdu</servlet-name>
+        <url-pattern>/getEdu</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
