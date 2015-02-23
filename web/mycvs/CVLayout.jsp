@@ -191,6 +191,13 @@
                             <div id="edu"></div>
                         </div>
                     </div>
+                    
+                    
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div id="skill"></div>
+                        </div>
+                    </div>
 
                 </div>
             </div>

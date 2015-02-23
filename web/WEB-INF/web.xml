@@ -108,6 +108,18 @@
         <servlet-name>saveedu</servlet-name>
         <servlet-class>com.career.controller.saveedu</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getCurrentSkills</servlet-name>
+        <servlet-class>com.career.controller.getCurrentSkills</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getSkills</servlet-name>
+        <servlet-class>com.career.controller.getSkills</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>saveskill</servlet-name>
+        <servlet-class>com.career.controller.saveskill</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -215,6 +227,18 @@
     <servlet-mapping>
         <servlet-name>saveedu</servlet-name>
         <url-pattern>/saveedu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCurrentSkills</servlet-name>
+        <url-pattern>/getCurrentSkills</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getSkills</servlet-name>
+        <url-pattern>/getSkills</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>saveskill</servlet-name>
+        <url-pattern>/saveskill</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

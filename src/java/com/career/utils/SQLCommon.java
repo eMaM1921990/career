@@ -154,4 +154,13 @@ public class SQLCommon {
     public String GET_LASTWORKING_SKILLS = "SELECT id, name\n"
             + "  FROM employment.skill_level_last_working";
 
+    public String GET_SKILL_LIST = "SELECT id, skill_name, skill_level_id, skill_leve_last_work_id, skillexperince_leve_id\n"
+            + "  FROM employment.skill_list WHERE cv_id=?";
+
+    public String INSERT_SKILL_LIST = "INSERT INTO employment.skill_list(\n"
+            + "             skill_name, skill_level_id, skill_leve_last_work_id, skillexperince_leve_id, \n"
+            + "            cv_id)\n"
+            + "    VALUES (?, ?, ?, ?, \n"
+            + "            ?)";
+
 }

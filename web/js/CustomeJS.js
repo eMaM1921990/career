@@ -301,6 +301,48 @@ $(document).ready(function() {
         
     });
     
+    
+    
+    
+    
+     //// Eduction skill 
+    $.get('getCurrentEdu', null, function(responseText) {
+        $('#skill').html(responseText);
+        
+        ///Prepare add button action 
+
+        $('#addskills').click(function(event) {
+            
+            $.get('getSkills', null, function(responseText) {
+                $('#skill').html(responseText);
+                
+                $('#saveskill').click(function(event) {
+                    var skill_name=$('#skill_name').val();
+                    var skill_level_id=$('#skill_level_id').val();
+                    var skill_leve_last_work_id=$('#skill_leve_last_work_id').val();
+                    var skillexperince_leve_id=$('#skillexperince_leve_id').val();
+                    $.post('saveskill', {skill_name:skill_name,skill_level_id:skill_level_id,skill_leve_last_work_id:skill_leve_last_work_id,skillexperince_leve_id:skillexperince_leve_id}, function(responseText) {
+                        
+                    });
+                });
+            });
+        });
+        
+        
+        ///Prepare add edit action 
+
+        $('#addexperince').click(function(event) {
+            
+        });
+        
+                ///Prepare delete action 
+
+        
+        $('#addexperince').click(function(event) {
+            
+        });
+        
+    });
     /*
      $.post('getContactInfo', null, function(responseText) {
      $('#contactinfo').html(responseText);
