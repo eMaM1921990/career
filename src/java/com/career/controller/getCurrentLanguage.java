@@ -5,11 +5,13 @@
  */
 package com.career.controller;
 
-import com.career.DAO.SkillListdao;
+import com.career.DAO.LangListdao;
+import com.career.DAO.Languagesdao;
 import com.career.DAO.skill_level_lastworkingdao;
 import com.career.DAO.skillsexperinceleveldao;
 import com.career.DAO.skillsleveldao;
-import com.career.model.SkillList;
+import com.career.model.LangList;
+import com.career.model.Languages;
 import com.career.model.User;
 import com.career.model.skill_level_lastworking;
 import com.career.model.skillsexperincelevel;
@@ -27,7 +29,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author emam
  */
-public class getCurrentSkills extends HttpServlet {
+public class getCurrentLanguage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -57,49 +59,49 @@ public class getCurrentSkills extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("login");
 
         skillsleveldao s_dao = new skillsleveldao();
         skillsexperinceleveldao ex_dao = new skillsexperinceleveldao();
         skill_level_lastworkingdao l_dao = new skill_level_lastworkingdao();
-        SkillListdao list_dao = new SkillListdao();
-
+        Languagesdao lang_dao = new Languagesdao();
+        LangListdao user_langdao = new LangListdao();
         List<skillslevel> aslist = s_dao.FindAll();
         List<skillsexperincelevel> aexlist = ex_dao.FindAll();
         List<skill_level_lastworking> alslist = l_dao.FindAll();
-        List<SkillList> askilllist = list_dao.FindByParentId(u.getCv());
+        List<Languages> langlist = lang_dao.FindAll();
+
+        List<LangList> user_langlist = user_langdao.FindByParentId(u.getCv());
 
         String buffer = "<div class=\"box box-bordered\">"
                 + "<div class=\"box-title\">"
-                + "<span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\" id=\"addskills\">إضافة<i class=\"icon-plus\"></i></span>"
-                + "<h3><i class=\"icon-edit\"></i>المهارات</h3>"
+                + "<span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\" id=\"addlang\">إضافة<i class=\"icon-plus\"></i></span>"
+                + "<h3><i class=\"icon-edit\"></i>اللغات</h3>"
                 + "</div>"
                 + " <div class=\"box-content nopadding\">"
                 + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
 
-        if (askilllist.size() > 0) {
-            
-            for(SkillList s:askilllist){
+        if (user_langlist.size() > 0) {
+            for(LangList l:user_langlist){
                 String row = "<div class=\"box-content\">"
                     + "<div class=\"tab-content\">\n"
                     + "<div class=\"tab-pane active\" id=\"t7\">"
                     + "<a id=\"editskills\"> <span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\">تعديل <i class=\"icon-edit\"></i></span> </a>"
-                    + "<a id=\"deleteskill\" class='"+s.getId()+"'><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
-                    + "<h4>"+s.getSkillname()+"</h4>\n"
-                    + "<p><b> المستوى</b> : "+s.getSkill_level_id()+"<b> الخبرة : </b>"+s.getskillexperince_level_id()+"<b> اخر ممارسة : </b>"+s.getSkill_last_work_id()+"</p>"
+                    + "<a id=\"deleteskill\" class='"+l.getID()+"'><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
+                    + "<h4>"+l.getName()+"</h4>\n"
+                    + "<p><b> المستوى</b> : "+l.getSKILL_LEVEL_ID()+"<b> الخبرة : </b>"+l.getSKILL_EXPERINCE_ID()+"<b> اخر ممارسة : </b>"+l.getSKILL_LAST_WORK_ID()+"</p>"
                     + "</div></div></div>";
                 buffer=buffer+row;
             }
-            
+
         } else {
             String row = "<div class=\"controls\">"
                     + "<label for=\"textfield\" class=\"control-label\"></label>"
                     + " <div class=\"controls\">"
                     + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">المهارات </label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addskills\">"
+                    + "<label for=\"textfield\" class=\"control-label\">اللغات </label>"
+                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addlang\">"
                     + "</div>"
                     + "</div>"
                     + "</div>";

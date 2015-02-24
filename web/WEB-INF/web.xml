@@ -120,6 +120,14 @@
         <servlet-name>saveskill</servlet-name>
         <servlet-class>com.career.controller.saveskill</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteskills</servlet-name>
+        <servlet-class>com.career.controller.deleteskills</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getCurrentLanguage</servlet-name>
+        <servlet-class>com.career.controller.getCurrentLanguage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -239,6 +247,14 @@
     <servlet-mapping>
         <servlet-name>saveskill</servlet-name>
         <url-pattern>/saveskill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteskills</servlet-name>
+        <url-pattern>/deleteskills</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCurrentLanguage</servlet-name>
+        <url-pattern>/getCurrentLanguage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

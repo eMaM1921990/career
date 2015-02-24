@@ -163,4 +163,23 @@ public class SQLCommon {
             + "    VALUES (?, ?, ?, ?, \n"
             + "            ?)";
 
+    public String DELETE_SKILL_BY_ID = "DELETE FROM employment.skill_list\n"
+            + " WHERE id=?";
+
+    public String GET_LANGAUGE = "SELECT id, NAME"
+            + "  FROM employment.Languages";
+    
+    public String GET_LANGAUGE_CURRENT = "SELECT id, NAME"
+            + "  FROM employment.Languages WHERE CV_ID=?";
+    
+    public String GET_USER_LANG_LIST="SELECT LL.id,L.NAME,LL.LANG_ID,LL.SKILL_EXPERINCE_ID,LL.SKILL_LAST_WORK_ID,LL.SKILL_LEVEL_ID FROM employment.LanguageList LL INNER JOIN employment.Languages L"
+            + "ON LL.LANG_ID=L.id"
+            + "INNER JOIN employment.skillexperience_level SL "
+            + "ON LL.SKILL_EXPERINCE_ID=SL.id"
+            + "INNER JOIN employment.skill_level_last_working LASTW"
+            + "ON LL.SKILL_LAST_WORK_ID=LASTW.id"
+            + "INNER JOIN employment.skill_level SLEVEL"
+            + "ON LL.SKILL_LEVEL_ID=SLEVEL.id"
+            + "ON LL.CV_ID=?";
+
 }

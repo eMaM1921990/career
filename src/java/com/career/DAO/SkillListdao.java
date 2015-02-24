@@ -53,7 +53,21 @@ public class SkillListdao implements dao<SkillList> {
 
     @Override
     public String remove(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String msg=null;
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.DELETE_SKILL_BY_ID);
+            db.pstm.setInt(1, id);
+            db.pstm.executeUpdate();
+            db.closeConnection();
+            msg="Deleted";
+        } catch (SQLException ex) {
+            msg="["+ex.getErrorCode()+"] :"+ex.getMessage();
+            db.closeConnection();
+            Logger.getLogger(SkillListdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+        return msg;
     }
 
     @Override

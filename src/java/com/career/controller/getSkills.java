@@ -100,7 +100,7 @@ public class getSkills extends HttpServlet {
                     
                 }
                 
-                skill_level_row = skill_level_row + "</select></div></div></div>";
+                skill_level_row = skill_level_row + "</select></div></div></div></div>";
                 
         buffer=buffer+skill_level_row;
         
@@ -118,7 +118,7 @@ public class getSkills extends HttpServlet {
                     
                 }
                 
-                skill_experice_level = skill_experice_level + "</select></div></div></div>";
+                skill_experice_level = skill_experice_level + "</select></div></div></div></div>";
                 
         buffer=buffer+skill_experice_level;
         
@@ -136,7 +136,7 @@ public class getSkills extends HttpServlet {
                     
                 }
                 
-                skill_last_work = skill_last_work + "</select></div></div></div>";
+                skill_last_work = skill_last_work + "</select></div></div></div></div>";
                 
         buffer=buffer+skill_last_work;
         

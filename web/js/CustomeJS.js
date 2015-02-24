@@ -217,136 +217,135 @@ $(document).ready(function() {
                 $('#experience').html(responseText);
 
                 $('#saveexp').click(function(event) {
-                    var startdate=$('#startdate').val();
-                    var enddate=$('#enddate').val();
-                    var national_id=$('#national_id').val();
-                    var address=$('#address').val();
-                    var companyname=$('#companyname').val();
-                    var company_industry_id=$('#company_industry_id').val();
-                    var career_role_id=$('#career_role_id').val();
-                    var role_name=$('#role_name').val();
-                    var jobdesc=$('#jobdesc').val();
-                    $.post('saveexperience', {startdate:startdate,enddate:enddate,national_id:national_id,address:address,companyname:companyname,company_industry_id:company_industry_id,career_role_id:career_role_id,role_name:role_name,jobdesc:jobdesc}, function(responseText) {
+                    var startdate = $('#startdate').val();
+                    var enddate = $('#enddate').val();
+                    var national_id = $('#national_id').val();
+                    var address = $('#address').val();
+                    var companyname = $('#companyname').val();
+                    var company_industry_id = $('#company_industry_id').val();
+                    var career_role_id = $('#career_role_id').val();
+                    var role_name = $('#role_name').val();
+                    var jobdesc = $('#jobdesc').val();
+                    $.post('saveexperience', {startdate: startdate, enddate: enddate, national_id: national_id, address: address, companyname: companyname, company_industry_id: company_industry_id, career_role_id: career_role_id, role_name: role_name, jobdesc: jobdesc}, function(responseText) {
                         $.get('getCurrentExperience', null, function(responseText) {
                             $('#experience').html(responseText);
                         });
                     });
-                    
+
                 });
             });
         });
-        
-        
+
+
         ///prepare edit action 
-        
+
         $('#editexp').click(function(event) {
-            var id=$('#editexp').attr("class");
-            
-            $.post('getEditExperience', {id:id}, function(responseText) {
+            var id = $('#editexp').attr("class");
+
+            $.post('getEditExperience', {id: id}, function(responseText) {
                 $('#experience').html(responseText);
                 $('#editexpert').click(function(event) {
-                    var startdate=$('#startdate').val();
-                    var enddate=$('#enddate').val();
-                    var national_id=$('#national_id').val();
-                    var address=$('#address').val();
-                    var companyname=$('#companyname').val();
-                    var company_industry_id=$('#company_industry_id').val();
-                    var career_role_id=$('#career_role_id').val();
-                    var role_name=$('#role_name').val();
-                    var jobdesc=$('#jobdesc').val();
-                    var id=$('#id').val();
-                    $.post('editExperince',{startdate:startdate,enddate:enddate,national_id:national_id,address:address,companyname:companyname,company_industry_id:company_industry_id,career_role_id:career_role_id,role_name:role_name,jobdesc:jobdesc,id:id}, function(responseText) {
-                        
+                    var startdate = $('#startdate').val();
+                    var enddate = $('#enddate').val();
+                    var national_id = $('#national_id').val();
+                    var address = $('#address').val();
+                    var companyname = $('#companyname').val();
+                    var company_industry_id = $('#company_industry_id').val();
+                    var career_role_id = $('#career_role_id').val();
+                    var role_name = $('#role_name').val();
+                    var jobdesc = $('#jobdesc').val();
+                    var id = $('#id').val();
+                    $.post('editExperince', {startdate: startdate, enddate: enddate, national_id: national_id, address: address, companyname: companyname, company_industry_id: company_industry_id, career_role_id: career_role_id, role_name: role_name, jobdesc: jobdesc, id: id}, function(responseText) {
+
                     });
-                    
-                    
+
+
                 });
             });
-            
+
         });
 
 
     });
-    
-    
-    
-    
+
+
+
+
     //// Eduction Block 
     $.get('getCurrentEdu', null, function(responseText) {
-        
+
         $('#edu').html(responseText);
-        
+
         $('#addedu').click(function(event) {
-             $.get('getEdu',null,function (responseText){
-            $('#edu').html(responseText);
-            $('#saveedu').click(function(event) {
-                var conutry_id=$('#conutry_id').val();
-                var city_id=$('#city_id').val();
-                var major=$('#major').val();
-                var certificate=$('#certificate').val();
-                var rate_id=$('#rate_id').val();
-                var rate_degree=$('#rate_degree').val();
-                var enddate=$('#enddate').val();
-                var desc=$('#desc').val();
-                var instatute_name=$('#instatute_name').val();
-                $.post('saveedu',{conutry_id:conutry_id,city_id:city_id,major:major,certificate:certificate,rate_id:rate_id,rate_degree:rate_degree,enddate:enddate,desc:desc,instatute_name:instatute_name},function (responseText){
-                    
-                    
+            $.get('getEdu', null, function(responseText) {
+                $('#edu').html(responseText);
+                $('#saveedu').click(function(event) {
+                    var conutry_id = $('#conutry_id').val();
+                    var city_id = $('#city_id').val();
+                    var major = $('#major').val();
+                    var certificate = $('#certificate').val();
+                    var rate_id = $('#rate_id').val();
+                    var rate_degree = $('#rate_degree').val();
+                    var enddate = $('#enddate').val();
+                    var desc = $('#desc').val();
+                    var instatute_name = $('#instatute_name').val();
+                    $.post('saveedu', {conutry_id: conutry_id, city_id: city_id, major: major, certificate: certificate, rate_id: rate_id, rate_degree: rate_degree, enddate: enddate, desc: desc, instatute_name: instatute_name}, function(responseText) {
+
+
+                    });
+
                 });
-                
             });
         });
-        });
-       
-        
+
+
     });
-    
-    
-    
-    
-    
-     //// Eduction skill 
-    $.get('getCurrentEdu', null, function(responseText) {
+
+
+
+
+
+    //// Eduction skill 
+    $.get('getCurrentSkills', null, function(responseText) {
         $('#skill').html(responseText);
-        
+
         ///Prepare add button action 
 
         $('#addskills').click(function(event) {
-            
+
             $.get('getSkills', null, function(responseText) {
                 $('#skill').html(responseText);
-                
+
                 $('#saveskill').click(function(event) {
-                    var skill_name=$('#skill_name').val();
-                    var skill_level_id=$('#skill_level_id').val();
-                    var skill_leve_last_work_id=$('#skill_leve_last_work_id').val();
-                    var skillexperince_leve_id=$('#skillexperince_leve_id').val();
-                    $.post('saveskill', {skill_name:skill_name,skill_level_id:skill_level_id,skill_leve_last_work_id:skill_leve_last_work_id,skillexperince_leve_id:skillexperince_leve_id}, function(responseText) {
-                        
+                    var skill_name = $('#skill_name').val();
+                    var skill_level_id = $('#skill_level_id').val();
+                    var skill_leve_last_work_id = $('#skill_leve_last_work_id').val();
+                    var skillexperince_leve_id = $('#skillexperince_leve_id').val();
+                    $.post('saveskill', {skill_name: skill_name, skill_level_id: skill_level_id, skill_leve_last_work_id: skill_leve_last_work_id, skillexperince_leve_id: skillexperince_leve_id}, function(responseText) {
+
                     });
                 });
             });
         });
-        
-        
+
+
         ///Prepare add edit action 
 
         $('#addexperince').click(function(event) {
-            
-        });
-        
-                ///Prepare delete action 
 
-        
-        $('#addexperince').click(function(event) {
-            
         });
-        
+
+        ///Prepare delete action 
+
+
+        $('#deleteskill').click(function(event) {
+            var id = $('#deleteskill').attr("class");
+
+            $.post('deleteskills', {id: id}, function(responseText) {
+                
+            });
+        });
+
     });
-    /*
-     $.post('getContactInfo', null, function(responseText) {
-     $('#contactinfo').html(responseText);
-     });
-     */
 
 });
