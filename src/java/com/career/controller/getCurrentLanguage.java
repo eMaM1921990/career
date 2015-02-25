@@ -72,23 +72,18 @@ public class getCurrentLanguage extends HttpServlet {
         List<skill_level_lastworking> alslist = l_dao.FindAll();
         List<Languages> langlist = lang_dao.FindAll();
 
-        List<LangList> user_langlist = user_langdao.FindByParentId(u.getCv());
+       List<LangList> user_langlist = user_langdao.FindByParentId(u.getCv());
 
-        String buffer = "<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\" id=\"addlang\">إضافة<i class=\"icon-plus\"></i></span>"
-                + "<h3><i class=\"icon-edit\"></i>اللغات</h3>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
+        String buffer = "";
 
         if (user_langlist.size() > 0) {
+            
             for(LangList l:user_langlist){
                 String row = "<div class=\"box-content\">"
                     + "<div class=\"tab-content\">\n"
                     + "<div class=\"tab-pane active\" id=\"t7\">"
-                    + "<a id=\"editskills\"> <span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\">تعديل <i class=\"icon-edit\"></i></span> </a>"
-                    + "<a id=\"deleteskill\" class='"+l.getID()+"'><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
+                    + "<a onclick=\"editLang('"+l.getID()+"')\"> <span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\">تعديل <i class=\"icon-edit\"></i></span> </a>"
+                    + "<a onclick=\"deleteLang('"+l.getID()+"')\"><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
                     + "<h4>"+l.getName()+"</h4>\n"
                     + "<p><b> المستوى</b> : "+l.getSKILL_LEVEL_ID()+"<b> الخبرة : </b>"+l.getSKILL_EXPERINCE_ID()+"<b> اخر ممارسة : </b>"+l.getSKILL_LAST_WORK_ID()+"</p>"
                     + "</div></div></div>";
@@ -96,15 +91,8 @@ public class getCurrentLanguage extends HttpServlet {
             }
 
         } else {
-            String row = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">اللغات </label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addlang\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
+            String row = "<p>لا يوجد لغات حالية</p>";
+                   
             buffer = buffer + row;
         }
 

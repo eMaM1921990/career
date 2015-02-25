@@ -128,6 +128,26 @@
         <servlet-name>getCurrentLanguage</servlet-name>
         <servlet-class>com.career.controller.getCurrentLanguage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getLanguage</servlet-name>
+        <servlet-class>com.career.controller.getLanguage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>savelang</servlet-name>
+        <servlet-class>com.career.controller.savelang</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deletelang</servlet-name>
+        <servlet-class>com.career.controller.deletelang</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getEditLang</servlet-name>
+        <servlet-class>com.career.controller.getEditLang</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditLang</servlet-name>
+        <servlet-class>com.career.controller.EditLang</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -255,6 +275,26 @@
     <servlet-mapping>
         <servlet-name>getCurrentLanguage</servlet-name>
         <url-pattern>/getCurrentLanguage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getLanguage</servlet-name>
+        <url-pattern>/getLanguage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>savelang</servlet-name>
+        <url-pattern>/savelang</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deletelang</servlet-name>
+        <url-pattern>/deletelang</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEditLang</servlet-name>
+        <url-pattern>/getEditLang</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditLang</servlet-name>
+        <url-pattern>/EditLang</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

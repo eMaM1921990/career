@@ -81,7 +81,7 @@
 				</div>
 				<div class="submit">
 					
-                                    <input type="submit" value="تسجيل دخول" class='btn btn-primary' id="login">
+                                    <input type="button" value="تسجيل دخول" class='btn btn-primary' id="login">
                                         <input type="button" value="مستخدم جديد" class='btn btn-green' id="newuser">
 				</div>
 			</form>

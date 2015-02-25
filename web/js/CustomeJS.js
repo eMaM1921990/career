@@ -4,6 +4,39 @@
  * and open the template in the editor.
  */
 
+var idAction;
+
+function DeleteSkill(id) {
+    $.post('deleteskills', {id: id}, function(responseText) {
+    });
+
+}
+
+
+function EditSkillView() {
+
+}
+
+function deleteLang(id) {
+    $.post('deletelang', {id: id}, function(responseText) {
+        location.reload();
+    });
+}
+
+function editLang(id) {
+    $.post('getEditLang', {id: id}, function(responseText) {
+        $('#lang').html(responseText);
+        $('#editlang').click(function() {
+            var SKILL_LEVEL_ID = $('#SKILL_LEVEL_ID').val();
+            var SKILL_LAST_WORK_ID = $('#SKILL_LAST_WORK_ID').val();
+            var SKILL_EXPERINCE_ID = $('#SKILL_EXPERINCE_ID').val();
+            var LANG_ID = $('#LANG_ID').val();
+            $.post('EditLang',{id:id,SKILL_LEVEL_ID:SKILL_LEVEL_ID,SKILL_LAST_WORK_ID:SKILL_LAST_WORK_ID,SKILL_EXPERINCE_ID:SKILL_EXPERINCE_ID,LANG_ID:LANG_ID},function(responseText){
+                
+            });
+        });
+    });
+}
 
 $(document).ready(function() {
 
@@ -329,23 +362,35 @@ $(document).ready(function() {
         });
 
 
-        ///Prepare add edit action 
 
-        $('#addexperince').click(function(event) {
-
-        });
-
-        ///Prepare delete action 
-
-
-        $('#deleteskill').click(function(event) {
-            var id = $('#deleteskill').attr("class");
-
-            $.post('deleteskills', {id: id}, function(responseText) {
-                
-            });
-        });
 
     });
 
+
+    // Language Data Display
+    $.get('getCurrentLanguage', null, function(responseText) {
+        $('#lang').html(responseText);
+
+        $('#addlang').click(function(event) {
+            $.get('getLanguage', null, function(responseText) {
+                $('#lang').html(responseText);
+                $('#savelang').click(function(event) {
+                    var SKILL_LEVEL_ID = $('#SKILL_LEVEL_ID').val();
+                    var SKILL_LAST_WORK_ID = $('#SKILL_LAST_WORK_ID').val();
+                    var SKILL_EXPERINCE_ID = $('#SKILL_EXPERINCE_ID').val();
+                    var LANG_ID = $('#LANG_ID').val();
+                    $.post('savelang', {SKILL_LEVEL_ID: SKILL_LEVEL_ID, SKILL_LAST_WORK_ID: SKILL_LAST_WORK_ID, SKILL_EXPERINCE_ID: SKILL_EXPERINCE_ID, LANG_ID: LANG_ID}, function(responseText) {
+
+                    });
+                });
+
+            });
+
+
+        });
+    });
+
+
 });
+
+

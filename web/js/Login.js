@@ -8,9 +8,10 @@
 
 $(document).ready(function() {
     $('#login').click(function() {
-        var username = $('#u_name').val();
-        var password = $('#password').val();
+        var username = $('#u_name').val().trim();
+        var password = $('#password').val().trim();
         $.post('LogAuth', {u: username, p: password}, function(responseText) {
+            alert(responseText);
             if(responseText==="y"){
                 window.open('Home','_self');
             }else{

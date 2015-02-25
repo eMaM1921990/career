@@ -166,20 +166,56 @@ public class SQLCommon {
     public String DELETE_SKILL_BY_ID = "DELETE FROM employment.skill_list\n"
             + " WHERE id=?";
 
-    public String GET_LANGAUGE = "SELECT id, NAME"
-            + "  FROM employment.Languages";
-    
+    public String GET_LANGAUGE = "SELECT id, \"NAME\""
+            + "  FROM employment.\"Languages\"";
+
     public String GET_LANGAUGE_CURRENT = "SELECT id, NAME"
             + "  FROM employment.Languages WHERE CV_ID=?";
-    
-    public String GET_USER_LANG_LIST="SELECT LL.id,L.NAME,LL.LANG_ID,LL.SKILL_EXPERINCE_ID,LL.SKILL_LAST_WORK_ID,LL.SKILL_LEVEL_ID FROM employment.LanguageList LL INNER JOIN employment.Languages L"
-            + "ON LL.LANG_ID=L.id"
-            + "INNER JOIN employment.skillexperience_level SL "
-            + "ON LL.SKILL_EXPERINCE_ID=SL.id"
-            + "INNER JOIN employment.skill_level_last_working LASTW"
-            + "ON LL.SKILL_LAST_WORK_ID=LASTW.id"
-            + "INNER JOIN employment.skill_level SLEVEL"
-            + "ON LL.SKILL_LEVEL_ID=SLEVEL.id"
-            + "ON LL.CV_ID=?";
+
+    public String GET_USER_LANG_LIST = "SELECT LL.id,L.\"NAME\",LL.\"LANG_ID\",LL.\"SKILL_EXPERINCE_ID\",LL.\"SKILL_LAST_WORK_ID\",LL.\"SKILL_LEVEL_ID\" FROM employment.\"LanguageList\" LL INNER JOIN employment.\"Languages\" L\n"
+            + "            ON LL.\"LANG_ID\"=L.id\n"
+            + "            INNER JOIN employment.skillexperience_level SL \n"
+            + "            ON LL.\"SKILL_EXPERINCE_ID\"=SL.id\n"
+            + "           INNER JOIN employment.skill_level_last_working LASTW\n"
+            + "            ON LL.\"SKILL_LAST_WORK_ID\"=LASTW.id\n"
+            + "            INNER JOIN employment.skill_level SLEVEL\n"
+            + "            ON LL.\"SKILL_LEVEL_ID\"=SLEVEL.id\n"
+            + "            AND LL.\"CV_ID\"=?";
+
+    public String INSERT_USER_LANG = "INSERT INTO employment.\"LanguageList\"(\n"
+            + "             \"SKILL_LEVEL_ID\", \"SKILL_LAST_WORK_ID\", \"SKILL_EXPERINCE_ID\", \n"
+            + "            \"LANG_ID\", \"CV_ID\")\n"
+            + "    VALUES (?, ?, ?, ?, \n"
+            + "            ?)";
+
+    public String REMOVE_LANG_LIST = "DELETE FROM employment.\"LanguageList\"\n"
+            + " WHERE id=?";
+
+    public String GET_EDIT_LANG_BY_ID = "SELECT id, \"SKILL_LEVEL_ID\", \"SKILL_LAST_WORK_ID\", \"SKILL_EXPERINCE_ID\", \n"
+            + "       \"LANG_ID\", \"CV_ID\"\n"
+            + "  FROM employment.\"LanguageList\" WHERE id=?";
+
+    public String EDIT_USER_LANG = "UPDATE employment.\"LanguageList\"\n"
+            + "   SET  \"SKILL_LEVEL_ID\"=?, \"SKILL_LAST_WORK_ID\"=?, \"SKILL_EXPERINCE_ID\"=?, \n"
+            + "       \"LANG_ID\"=?\n"
+            + " WHERE id=?";
+
+    public String INSERT_IDENTIFIER = "INSERT INTO employment.\"IdentifierList\"(\n"
+            + "             \"NAME\", \"COMPANY_NAME\", \"POSITION_NAME\", \"PHONE\", \"EMAIL\", \n"
+            + "            \"USER_CV\")\n"
+            + "    VALUES ( ?, ?, ?, ?, ?, \n"
+            + "            ?)";
+
+    public String GET_IDENTIFIER_BY_CV = "SELECT id, \"NAME\", \"COMPANY_NAME\", \"POSITION_NAME\", \"PHONE\", \"EMAIL\", \n"
+            + "       \"USER_CV\"\n"
+            + "  FROM employment.\"IdentifierList\" WHERE \"USER_CV\"=?";
+
+    public String DELETE_USER_IDENTIFIER = "DELETE FROM employment.\"IdentifierList\"\n"
+            + " WHERE id=?";
+
+    public String UPDATE_USER_IDENTIFIER = "UPDATE employment.\"IdentifierList\"\n"
+            + "   SET \"NAME\"=?, \"COMPANY_NAME\"=?, \"POSITION_NAME\"=?, \"PHONE\"=?, \n"
+            + "       \"EMAIL\"=?\n"
+            + " WHERE id=?";
 
 }

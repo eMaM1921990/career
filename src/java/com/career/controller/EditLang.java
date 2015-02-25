@@ -3,26 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.career.viewer;
 
-import com.career.DAO.cvdao;
-import com.career.model.Cv;
-import com.career.model.User;
+package com.career.controller;
+
+import com.career.DAO.LangListdao;
+import com.career.model.LangList;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URLEncoder;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author emam
  */
-public class myCvs extends HttpServlet {
+public class EditLang extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,34 +33,7 @@ public class myCvs extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        User u = (User) request.getSession().getAttribute("login");
-
-        Cv c = new Cv();
-        cvdao dao = new cvdao();
-        c.setName(u.getU_name());
-        if (request.getParameterMap().containsKey("id")) {
-            String id = request.getParameter("id");
-            if (!"0".equals(id)) {
-                u.setCv(Integer.valueOf(id));
-            } else {
-                String data = dao.Presist(c);
-                u.setCv(Integer.valueOf(data));
-                u.setU_name(u.getU_name());
-                request.getSession().setAttribute("login", u);
-                
-                RequestDispatcher send = request.getRequestDispatcher("myCvs");
-        send.forward(request, response);
-            }
-        } else {
-            u.setCv(u.getCv());
-            u.setU_name(u.getU_name());
-            request.getSession().setAttribute("login", u);
-
-        }
-
-        RequestDispatcher send = request.getRequestDispatcher("/mycvs/CVLayout.jsp?id="+u.getCv());
-        send.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -93,6 +63,15 @@ public class myCvs extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        LangList l=new LangList();
+        l.setLANG_ID(Integer.valueOf(request.getParameter("LANG_ID")));
+        l.setSKILL_EXPERINCE_ID(Integer.valueOf(request.getParameter("SKILL_EXPERINCE_ID")));
+        l.setSKILL_LAST_WORK_ID(Integer.valueOf(request.getParameter("SKILL_LAST_WORK_ID")));
+        l.setSKILL_LEVEL_ID(Integer.valueOf(request.getParameter("SKILL_LEVEL_ID")));
+        l.setId(Integer.valueOf(request.getParameter("id")));
+        LangListdao dao=new LangListdao();
+        String msg=dao.update(l);
+        response.getWriter().write(msg);
     }
 
     /**

@@ -80,6 +80,7 @@ public class LogAuth extends HttpServlet {
         u.setPassword(password);
 
         u = dao.FindBydata(u);
+        u.setU_name(u.getU_name());
 
         String stats=null;
         if (u.getU_name() != null) {

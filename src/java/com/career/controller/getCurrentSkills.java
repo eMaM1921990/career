@@ -86,7 +86,7 @@ public class getCurrentSkills extends HttpServlet {
                     + "<div class=\"tab-content\">\n"
                     + "<div class=\"tab-pane active\" id=\"t7\">"
                     + "<a id=\"editskills\"> <span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\">تعديل <i class=\"icon-edit\"></i></span> </a>"
-                    + "<a id=\"deleteskill\" class='"+s.getId()+"'><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
+                    + "<a  class='"+s.getId()+"' onclick=\"getId('"+s.getId()+"')\"><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
                     + "<h4>"+s.getSkillname()+"</h4>\n"
                     + "<p><b> المستوى</b> : "+s.getSkill_level_id()+"<b> الخبرة : </b>"+s.getskillexperince_level_id()+"<b> اخر ممارسة : </b>"+s.getSkill_last_work_id()+"</p>"
                     + "</div></div></div>";

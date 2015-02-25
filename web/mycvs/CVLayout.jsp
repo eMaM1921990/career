@@ -117,7 +117,7 @@
         <script src="js/application.min.js"></script>
         <!-- Just for demonstration -->
         <script src="js/demonstration.min.js"></script>
-        
+
         <script src="js/CustomeJS.js"></script>
 
         <!--[if lte IE 9]>
@@ -146,7 +146,7 @@
                         <div class="pull-left">
                             <h1>السيرة الذاتية</h1>
                         </div>
-                       
+
                     </div>
                     <div class="breadcrumbs">
                         <ul>
@@ -154,7 +154,7 @@
                                 <a href="more-login.html">السيرة الذاتية</a>
                                 <i class="icon-angle-right"></i>
                             </li>
-                           
+
                         </ul>
                         <div class="close-bread">
                             <a href="#"><i class="icon-remove"></i></a>
@@ -165,46 +165,67 @@
                             <div id="job"></div>
                         </div>
                     </div>
-                    
+
                     <div class="row-fluid">
                         <div class="span12">
                             <div id="info"></div>
                         </div>
                     </div>
-                    
+
                     <div class="row-fluid">
                         <div class="span12">
                             <div id="contactinfo"></div>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="row-fluid">
                         <div class="span12">
                             <div id="experience"></div>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="row-fluid">
                         <div class="span12">
                             <div id="edu"></div>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="row-fluid">
                         <div class="span12">
                             <div id="skill"></div>
                         </div>
                     </div>
 
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="box box-bordered">
+                                <div class="box-title">
+                                    <span style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addlang">إضافة<i class="icon-plus"></i></span>
+                                    <h3><i class="icon-edit"></i>اللغات</h3>
+                                </div>
+                                <div class="box-content nopadding">
+                                    <form  method="POST" class='form-horizontal form-bordered'>
+
+                                        
+                                              
+                                                    <div id="lang"></div>
+                                          
+                                        <form>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-    </body>
+                </body>
 
-</html>
+                </html>
 
 
