@@ -245,6 +245,30 @@
 
                                             </div>
                                             </div>
+                    
+                    
+                 <div class="row-fluid">
+                    <div class="span12">
+                        <div class="box box-bordered">
+                            <div class="box-title">
+                                <span style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addMember">إضافة<i class="icon-plus"></i></span>
+                                <h3><i class="icon-edit"></i>العضويات</h3>
+                            </div>
+                            <div class="box-content nopadding">
+                                <form  method="POST" class='form-horizontal form-bordered'>
+
+
+
+                                    <div id="member"></div>
+
+                                    <form>
+
+                                        </div>
+                                        </div>
+
+
+                                        </div>
+                                        </div>
 
                                                                     </div>
 

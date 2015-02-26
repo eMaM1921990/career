@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.career.controller;
 
 import com.career.DAO.Identifierdao;
@@ -10,7 +11,6 @@ import com.career.model.Identifier;
 import com.career.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author emam
  */
-public class getCurrentIdentifier extends HttpServlet {
+public class editIdentifier extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +35,7 @@ public class getCurrentIdentifier extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,38 +51,6 @@ public class getCurrentIdentifier extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
-        HttpSession session = request.getSession();
-        User u = (User) session.getAttribute("login");
-
-        Identifierdao dao = new Identifierdao();
-        List<Identifier> data = dao.FindByParentId(u.getCv());
-
-        String buffer = "";
-
-        if (data.size() > 0) {
-            for (Identifier i : data) {
-                String row = "<div class=\"box-content\">"
-                        + "<div class=\"tab-content\">\n"
-                        + "<div class=\"tab-pane active\" id=\"t7\">"
-                        + "<a onclick=\"editIdentifier('" + i.getId() + "')\"> <span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\">تعديل <i class=\"icon-edit\"></i></span> </a>"
-                        + "<a onclick=\"deleteIdentifier('" + i.getId() + "')\"><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
-                        + "<h4>" + i.getName() + "</h4>\n"
-                        + "<p><b> الشركة</b> : " + i.getCompanyname() + "<b></p>"
-                        + "<p><b> المسمى الوظيفى</b> : " + i.getPosition()+ "<b></p>"
-                        + "<p><b> رقم الهاتف</b> : " + i.getPhone()+ "<b></p>"
-                        + "<p><b> البريد الالكترونى</b> : <a herf='mailto:"+i.getEmail()+"'/>" + i.getEmail()+ "</a><b></p>"
-                        + "</div></div></div>";
-                buffer = buffer + row;
-            }
-        } else {
-            String row = "<p>ﻻ يوجد بيانات حالية</p>";
-
-            buffer = buffer+ row;
-        }
-
-        response.getWriter().write(buffer);
-
     }
 
     /**
@@ -97,6 +65,23 @@ public class getCurrentIdentifier extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        HttpSession session=request.getSession();
+        User u=(User)session.getAttribute("login");
+      
+        System.out.println("User "+u.getU_name());
+        Identifier i=new Identifier();
+        i.setName(request.getParameter("NAME"));
+        i.setCompanyname(request.getParameter("COMPANY_NAME"));
+        i.setPosition(request.getParameter("POSITION_NAME"));
+        i.setPhone(request.getParameter("PHONE"));
+        i.setEmail(request.getParameter("EMAIL"));
+        i.setId(Integer.valueOf(request.getParameter("id")));
+        
+        Identifierdao dao=new Identifierdao();
+        String msg=dao.update(i);
+        
+        response.getWriter().write(msg);
     }
 
     /**

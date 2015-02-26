@@ -222,4 +222,20 @@ public class SQLCommon {
             + "       \"USER_CV\"\n"
             + "  FROM employment.\"IdentifierList\" WHERE id=?";
 
+    public String INSERT_MEMBERSHIP = "INSERT INTO employment.\"Memebar_ship\"(\n"
+            + "             member_since, rolement, cv_id)\n"
+            + "    VALUES ( ?::date, ?, ?)";
+
+    public String GET_MEMBERSHIP_BYID = "SELECT id, member_since, rolement, cv_id\n"
+            + "  FROM employment.\"Memebar_ship\" WHERE id=?";
+
+    public String DELETE_MEMBERSHIP_BYID = "DELETE FROM employment.\"Memebar_ship\"\n"
+            + " WHERE id=?";
+
+    public String GET_ALL_MEMBERSHIP_BY_USER = "SELECT id, member_since, rolement, cv_id\n"
+            + "  FROM employment.\"Memebar_ship\" WHERE cv_id=?";
+
+    public String UPDATE_MEMBERSHIP_BY_ID = "UPDATE employment.\"Memebar_ship\"\n"
+            + "   SET  member_since=?, rolement=?\n"
+            + " WHERE id=?";
 }

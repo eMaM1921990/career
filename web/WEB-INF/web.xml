@@ -168,6 +168,10 @@
         <servlet-name>getEditIdentifier</servlet-name>
         <servlet-class>com.career.controller.getEditIdentifier</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>editIdentifier</servlet-name>
+        <servlet-class>com.career.controller.editIdentifier</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -335,6 +339,10 @@
     <servlet-mapping>
         <servlet-name>getEditIdentifier</servlet-name>
         <url-pattern>/getEditIdentifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editIdentifier</servlet-name>
+        <url-pattern>/editIdentifier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
