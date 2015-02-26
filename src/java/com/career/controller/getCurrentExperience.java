@@ -76,12 +76,7 @@ public class getCurrentExperience extends HttpServlet {
         String buffer = null;
         if (e.size() > 0) {
             for (Experince ex : e) {
-                buffer = "<div class=\"box box-bordered\">"
-                        + "<div class=\"box-title\">"
-                        + "<h3><i class=\"icon-edit\"></i>الخبرات</h3><i class=\"icon-edit\"></i><a id='editexp' class='"+ex.getID()+"'>تعديل</a>"
-                        + "</div>"
-                        + " <div class=\"box-content nopadding\">"
-                        + "<form class='form-horizontal form-bordered'>";
+                buffer = "";
 
                 String row = "<div class=\"control-group\">"
                         + "<label for=\"textfield\" class=\"control-label\">تاريخ بدء العمل </label>"
@@ -220,21 +215,8 @@ public class getCurrentExperience extends HttpServlet {
             buffer = buffer + action;
 
         } else {
-            buffer = "<div class=\"box box-bordered\">"
-                    + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i>الخبرات</h3>"
-                    + "</div>"
-                    + " <div class=\"box-content nopadding\">"
-                    + "<form class='form-horizontal form-bordered'>";
-            String row = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">الخبرات</label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addexperince\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
+            buffer = "";
+            String row = "<p>ﻻ يوجد بيانات حالية</p>";
 
             buffer = buffer + row;
         }

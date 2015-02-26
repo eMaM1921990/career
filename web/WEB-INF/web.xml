@@ -172,6 +172,30 @@
         <servlet-name>editIdentifier</servlet-name>
         <servlet-class>com.career.controller.editIdentifier</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getCurrentMember</servlet-name>
+        <servlet-class>com.career.controller.getCurrentMember</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getMember</servlet-name>
+        <servlet-class>com.career.controller.getMember</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>savemember</servlet-name>
+        <servlet-class>com.career.controller.savemember</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deletemember</servlet-name>
+        <servlet-class>com.career.controller.deletemember</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getEditMember</servlet-name>
+        <servlet-class>com.career.controller.getEditMember</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editMember</servlet-name>
+        <servlet-class>com.career.controller.editMember</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -343,6 +367,30 @@
     <servlet-mapping>
         <servlet-name>editIdentifier</servlet-name>
         <url-pattern>/editIdentifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCurrentMember</servlet-name>
+        <url-pattern>/getCurrentMember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getMember</servlet-name>
+        <url-pattern>/getMember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>savemember</servlet-name>
+        <url-pattern>/savemember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deletemember</servlet-name>
+        <url-pattern>/deletemember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEditMember</servlet-name>
+        <url-pattern>/getEditMember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editMember</servlet-name>
+        <url-pattern>/editMember</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

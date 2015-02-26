@@ -73,13 +73,7 @@ public class getCurrentEdu extends HttpServlet {
         ratedao rdao = new ratedao();
         List<rate_level> rlist = rdao.FindAll();
 
-        String buffer = "<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i>التعليم</h3><h3><i class=\"icon-edit\"></i><a id='addedu' >إضـــافة</a></h3>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
-
+        String buffer = "";
         if (elist.size() > 0) {
 
             for (edu e:elist) {
@@ -205,45 +199,14 @@ public class getCurrentEdu extends HttpServlet {
                 buffer = buffer + desc_row;
             }
         } else {
-            buffer = "<div class=\"box box-bordered\">"
-                    + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i> التعليم</h3>"
-                    + "</div>"
-                    + " <div class=\"box-content nopadding\">"
-                    + "<form class='form-horizontal form-bordered'>";
-            String row = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">التعليم</label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addedu\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
+            
+            String row = "<p>ﻻ يوجد بيانات حالية </p>";
 
             buffer = buffer + row;
         }
 
         response.getWriter().write(buffer);
 
-//        
-//        String buffer = "<div class=\"box box-bordered\">"
-//                + "<div class=\"box-title\">"
-//                + "<h3><i class=\"icon-edit\"></i>التعليم</h3>"
-//                + "</div>"
-//                + " <div class=\"box-content nopadding\">"
-//                + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
-//        
-//        String row = "<div class=\"control-group\">"
-//                + "<label for=\"textfield\" class=\"control-label\">المؤسسة التعليمية </label>"
-//                + " <div class=\"controls\">"
-//                + "<div class=\"input-prepend\">"
-//                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" >"
-//                + "</div>"
-//                + "</div>"
-//                + "</div>";
-//        
-//        buffer=buffer+row;
     }
 
     /**

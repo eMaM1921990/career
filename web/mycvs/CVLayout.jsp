@@ -161,119 +161,158 @@
                         </div>
                     </div>
                     <div class="row-fluid">
-                        <div class="span12">
+                        <div class="span8">
                             <div id="job"></div>
                         </div>
+                        
+                        
                     </div>
+                    
 
                     <div class="row-fluid">
-                        <div class="span12">
+                        <div class="span8">
                             <div id="info"></div>
                         </div>
                     </div>
 
                     <div class="row-fluid">
-                        <div class="span12">
+                        <div class="span8">
                             <div id="contactinfo"></div>
                         </div>
                     </div>
 
 
                     <div class="row-fluid">
-                        <div class="span12">
-                            <div id="experience"></div>
-                        </div>
-                    </div>
-
-
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div id="edu"></div>
-                        </div>
-                    </div>
-
-
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div id="skill"></div>
-                        </div>
-                    </div>
-
-
-                    <div class="row-fluid">
-                        <div class="span12">
+                        <div class="span8">
                             <div class="box box-bordered">
                                 <div class="box-title">
-                                    <span style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addlang">إضافة<i class="icon-plus"></i></span>
-                                    <h3><i class="icon-edit"></i>اللغات</h3>
+                                    <h3><i class="icon-edit"></i>الخبرات</h3>
+                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='addexperince' >إضافة<i class="icon-plus"></i></h3>
                                 </div>
                                 <div class="box-content nopadding">
-                                    <form  method="POST" class='form-horizontal form-bordered'>
+                                    <form class='form-horizontal form-bordered'>
+                                        <div id="experience"></div>
+                                    </form>
 
-
-
-                                        <div id="lang"></div>
-
-                                        <form>
-
-                                            </div>
-                                            </div>
-
-
-                                            </div>
-                                            </div>
-
-                    <div class="row-fluid">
-                        <div class="span12">
-                            <div class="box box-bordered">
-                                <div class="box-title">
-                                    <span style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addIden">إضافة<i class="icon-plus"></i></span>
-                                    <h3><i class="icon-edit"></i>المعرفون</h3>
                                 </div>
-                                <div class="box-content nopadding">
-                                    <form  method="POST" class='form-horizontal form-bordered'>
-
-
-
-                                        <div id="identifier"></div>
-
-                                        <form>
-
-                                            </div>
-                                            </div>
-
-
-                                            </div>
-                                            </div>
-                    
-                    
-                 <div class="row-fluid">
-                    <div class="span12">
-                        <div class="box box-bordered">
-                            <div class="box-title">
-                                <span style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addMember">إضافة<i class="icon-plus"></i></span>
-                                <h3><i class="icon-edit"></i>العضويات</h3>
                             </div>
-                            <div class="box-content nopadding">
-                                <form  method="POST" class='form-horizontal form-bordered'>
+                        </div>
+                    </div>
 
 
+                            <div class="row-fluid">
+                                <div class="span8">
+                                    <div class="box box-bordered">
+                                        <div class="box-title">
+                                            <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addedu">إضافة<i class="icon-plus"></i></h3>
 
-                                    <div id="member"></div>
+                                            <h3><i class="icon-edit"></i>التعليم</h3>
+                                        </div>
+                                        <div class="box-content nopadding">
+                                            <form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>
 
-                                    <form>
+                                                <div id="edu"></div>
+                                            </form>
 
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row-fluid">
+                                <div class="span8">
+                                    <div class="box box-bordered">
+                                        <div class="box-title">
+                                            <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addskills">إضافة<i class="icon-plus"></i></h3>
+                                            <h3><i class="icon-edit"></i>المهارات</h3>
                                         </div>
+                                        <div class="box-content nopadding">
+                                            <form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>
 
+                                                <div id="skill"></div>
 
+                                            </form>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row-fluid">
+                                <div class="span8">
+                                    <div class="box box-bordered">
+                                        <div class="box-title">
+                                            <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addlang">إضافة<i class="icon-plus"></i></h3>
+                                            <h3><i class="icon-list"></i>اللغات</h3>
                                         </div>
+                                        <div class="box-content nopadding">
+                                            <form  method="POST" class='form-horizontal form-bordered'>
 
-                                                                    </div>
 
-                                                                    </body>
 
-                                                                    </html>
+                                                <div id="lang"></div>
+
+                                                <form>
+
+                                                    </div>
+                                                    </div>
+
+
+                                                    </div>
+                                                    </div>
+
+                                                    <div class="row-fluid">
+                                                        <div class="span8">
+                                                            <div class="box box-bordered">
+                                                                <div class="box-title">
+                                                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addIden">إضافة<i class="icon-plus"></i></h3>
+                                                                    <h3><i class="icon-user"></i>المعرفون</h3>
+                                                                </div>
+                                                                <div class="box-content nopadding">
+                                                                    <form  method="POST" class='form-horizontal form-bordered'>
+
+
+
+                                                                        <div id="identifier"></div>
+
+                                                                        <form>
+
+                                                                            </div>
+                                                                            </div>
+
+
+                                                                            </div>
+                                                                            </div>
+
+
+                                                                            <div class="row-fluid">
+                                                                                <div class="span8">
+                                                                                    <div class="box box-bordered">
+                                                                                        <div class="box-title">
+                                                                                            <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addMember">إضافة<i class="icon-plus"></i></h3>
+                                                                                            <h3><i class="icon-user"></i>العضويات</h3>
+                                                                                        </div>
+                                                                                        <div class="box-content nopadding">
+                                                                                            <form  method="POST" class='form-horizontal form-bordered'>
+
+
+
+                                                                                                <div id="member"></div>
+
+                                                                                                <form>
+
+                                                                                                    </div>
+                                                                                                    </div>
+
+
+                                                                                                    </div>
+                                                                                                    </div>
+
+                                                                                                    </div>
+
+                                                                                                    </body>
+
+                                                                                                    </html>
 
 

@@ -33,6 +33,7 @@ public class MemberShipdao implements dao<MemberShip> {
             db.pstm.setString(1, o.getMemberSince());
             db.pstm.setString(2, o.getRolement());
             db.pstm.setInt(3, o.getCv_ID());
+            db.pstm.setString(4, o.getCompname());
             db.pstm.executeUpdate();
             db.closeConnection();
             msg="saved";
@@ -58,6 +59,7 @@ public class MemberShipdao implements dao<MemberShip> {
                 m.setMemberSince(db.rs.getString(2));
                 m.setRolement(db.rs.getString(3));
                 m.setCv_ID(db.rs.getInt(4));
+                m.setCompname(db.rs.getString(5));
                 
             }
             
@@ -110,6 +112,7 @@ public class MemberShipdao implements dao<MemberShip> {
                 m.setMemberSince(db.rs.getString(2));
                 m.setRolement(db.rs.getString(3));
                 m.setCv_ID(db.rs.getInt(4));
+                m.setCompname(db.rs.getString(5));
                 data.add(m);
             }
             db.closeConnection();
@@ -134,7 +137,8 @@ public class MemberShipdao implements dao<MemberShip> {
             db.pstm=db.con.prepareStatement(sql.UPDATE_MEMBERSHIP_BY_ID);
             db.pstm.setString(1, o.getMemberSince());
             db.pstm.setString(2, o.getRolement());
-            db.pstm.setInt(1, o.getID());
+            db.pstm.setString(3, o.getCompname());
+            db.pstm.setInt(4, o.getID());
             db.pstm.executeUpdate();
             db.closeConnection();
             msg="Updated";

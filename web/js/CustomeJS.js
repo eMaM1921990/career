@@ -8,13 +8,15 @@ var idAction;
 
 function DeleteSkill(id) {
     $.post('deleteskills', {id: id}, function(responseText) {
+        location.reload();
     });
 
 }
 
 
-function EditSkillView() {
-
+function EditSkillView(id) {
+    $.post('editskill', {id: id}, function(responseText) {
+    });
 }
 
 function deleteLang(id) {
@@ -32,7 +34,7 @@ function editLang(id) {
             var SKILL_EXPERINCE_ID = $('#SKILL_EXPERINCE_ID').val();
             var LANG_ID = $('#LANG_ID').val();
             $.post('EditLang', {id: id, SKILL_LEVEL_ID: SKILL_LEVEL_ID, SKILL_LAST_WORK_ID: SKILL_LAST_WORK_ID, SKILL_EXPERINCE_ID: SKILL_EXPERINCE_ID, LANG_ID: LANG_ID}, function(responseText) {
-
+                   location.reload();
             });
         });
     });
@@ -55,8 +57,29 @@ function editIdentifier(id) {
             var POSITION_NAME = $('#POSITION_NAME').val().trim();
             var PHONE = $('#PHONE').val().trim();
             var EMAIL = $('#EMAIL').val().trim();
-            $.post('editIdentifier',{id:id,NAME: NAME, COMPANY_NAME: COMPANY_NAME, POSITION_NAME: POSITION_NAME, PHONE: PHONE, EMAIL: EMAIL},function(responseText){
+            $.post('editIdentifier', {id: id, NAME: NAME, COMPANY_NAME: COMPANY_NAME, POSITION_NAME: POSITION_NAME, PHONE: PHONE, EMAIL: EMAIL}, function(responseText) {
                 location.reload();
+            });
+        });
+    });
+}
+
+
+function deletemember(id) {
+    $.post('deletemember', {id: id}, function(responseText) {
+        location.reload();
+    });
+}
+
+function editmember(id) {
+    $.get('getEditMember', {id: id}, function(responseText) {
+        $('#member').html(responseText);
+        $('#editmember').click(function(event) {
+            var member_since = $('#member_since').val();
+            var rolement = $('#rolement').val();
+            var COMP_NAME = $('#COMP_NAME').val();
+            $.post('editMember',{id:id,member_since: member_since, rolement: rolement, COMP_NAME: COMP_NAME},function(responseText){
+               location.reload() ;
             });
         });
     });
@@ -108,7 +131,7 @@ $(document).ready(function() {
                     var last_salary_id = $('#last_salary_id').val();
 
                     $.post('saveJob', {job_name: job_name, job_desc: job_desc, employment_type_id: employment_type_id, employement_status_id: employement_status_id, salary_amount: salary_amount, salary_id: salary_id, career_level_id: career_level_id, notice_period_id: notice_period_id, last_salary_amount: last_salary_amount, last_salary_id: last_salary_id}, function(responseText) {
-
+                            location.reload();
                     });
 
                 });
@@ -134,7 +157,7 @@ $(document).ready(function() {
                     var last_salary_id = $('#last_salary_id').val();
 
                     $.post('editJob', {job_name: job_name, job_desc: job_desc, employment_type_id: employment_type_id, employement_status_id: employement_status_id, salary_amount: salary_amount, salary_id: salary_id, career_level_id: career_level_id, notice_period_id: notice_period_id, last_salary_amount: last_salary_amount, last_salary_id: last_salary_id, id: id}, function(responseText) {
-
+                        location.reload();
                     });
                 });
             });
@@ -164,7 +187,7 @@ $(document).ready(function() {
                     var no_of_own = $('#no_of_own').val();
                     var driving_license = $('#driving_license').val();
                     $.post('saveinfo', {f_name: f_name, surename: surename, dob: dob, gender: gender, nationality_id: nationality_id, visa_status_id: visa_status_id, material_status: material_status, no_of_own: no_of_own, driving_license: driving_license}, function() {
-
+                        location.reload();
                     });
                 });
 
@@ -188,7 +211,7 @@ $(document).ready(function() {
                     var no_of_own = $('#no_of_own').val();
                     var driving_license = $('#driving_license').val();
                     $.post('editInfo', {f_name: f_name, surename: surename, dob: dob, gender: gender, nationality_id: nationality_id, visa_status_id: visa_status_id, material_status: material_status, no_of_own: no_of_own, driving_license: driving_license, id: id}, function() {
-
+                        location.reload();
                     });
                 });
             });
@@ -222,7 +245,7 @@ $(document).ready(function() {
                     var weburl = $('#weburl').val();
                     var mobile = $('#mobile').val();
                     $.post('savecontactinfo', {mail: mail, phone1: phone1, phone2: phone2, counrty_id: counrty_id, citiy_id: citiy_id, address1: address1, address2: address2, postalcode: postalcode, box: box, fax: fax, weburl: weburl, mobile: mobile}, function(responseText) {
-
+                        location.reload();
                     });
                 });
             });
@@ -247,7 +270,7 @@ $(document).ready(function() {
                     var weburl = $('#weburl').val();
                     var mobile = $('#mobile').val();
                     $.post('editContactInfo', {mail: mail, phone1: phone1, phone2: phone2, counrty_id: counrty_id, citiy_id: citiy_id, address1: address1, address2: address2, postalcode: postalcode, box: box, fax: fax, weburl: weburl, mobile: mobile, id: id}, function(responseText) {
-
+                        location.reload();
                     });
                 });
             });
@@ -313,7 +336,7 @@ $(document).ready(function() {
                     var jobdesc = $('#jobdesc').val();
                     var id = $('#id').val();
                     $.post('editExperince', {startdate: startdate, enddate: enddate, national_id: national_id, address: address, companyname: companyname, company_industry_id: company_industry_id, career_role_id: career_role_id, role_name: role_name, jobdesc: jobdesc, id: id}, function(responseText) {
-
+                        location.reload();
                     });
 
 
@@ -347,8 +370,7 @@ $(document).ready(function() {
                     var desc = $('#desc').val();
                     var instatute_name = $('#instatute_name').val();
                     $.post('saveedu', {conutry_id: conutry_id, city_id: city_id, major: major, certificate: certificate, rate_id: rate_id, rate_degree: rate_degree, enddate: enddate, desc: desc, instatute_name: instatute_name}, function(responseText) {
-
-
+                            location.reload();
                     });
 
                 });
@@ -379,7 +401,7 @@ $(document).ready(function() {
                     var skill_leve_last_work_id = $('#skill_leve_last_work_id').val();
                     var skillexperince_leve_id = $('#skillexperince_leve_id').val();
                     $.post('saveskill', {skill_name: skill_name, skill_level_id: skill_level_id, skill_leve_last_work_id: skill_leve_last_work_id, skillexperince_leve_id: skillexperince_leve_id}, function(responseText) {
-
+                        location.reload();
                     });
                 });
             });
@@ -404,7 +426,7 @@ $(document).ready(function() {
                     var SKILL_EXPERINCE_ID = $('#SKILL_EXPERINCE_ID').val();
                     var LANG_ID = $('#LANG_ID').val();
                     $.post('savelang', {SKILL_LEVEL_ID: SKILL_LEVEL_ID, SKILL_LAST_WORK_ID: SKILL_LAST_WORK_ID, SKILL_EXPERINCE_ID: SKILL_EXPERINCE_ID, LANG_ID: LANG_ID}, function(responseText) {
-
+                        location.reload();
                     });
                 });
 
@@ -429,6 +451,25 @@ $(document).ready(function() {
                     var PHONE = $('#PHONE').val().trim();
                     var EMAIL = $('#EMAIL').val().trim();
                     $.post('saveIdentifier', {NAME: NAME, COMPANY_NAME: COMPANY_NAME, POSITION_NAME: POSITION_NAME, PHONE: PHONE, EMAIL: EMAIL}, function(responseText) {
+                        location.reload();
+                    });
+                });
+            });
+        });
+    });
+
+
+    /// Member Block
+    $.get('getCurrentMember', null, function(responseText) {
+        $('#member').html(responseText);
+        $('#addMember').click(function(event) {
+            $.get('getMember', null, function(responseText) {
+                $('#member').html(responseText);
+                $('#savemember').click(function(responseText) {
+                    var member_since = $('#member_since').val();
+                    var rolement = $('#rolement').val();
+                    var COMP_NAME = $('#COMP_NAME').val();
+                    $.post('savemember', {member_since: member_since, rolement: rolement, COMP_NAME: COMP_NAME}, function(responseText) {
                         location.reload();
                     });
                 });

@@ -68,12 +68,7 @@ public class getSkills extends HttpServlet {
         List<skillsexperincelevel> aexlist=ex_dao.FindAll();
         List<skill_level_lastworking> alslist=l_dao.FindAll();
         
-        String buffer = "<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i>المهارات</h3>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
+        String buffer = "";
         
         String skill_name_row="<div class=\"control-group\">"
                         + "<label for=\"textfield\" class=\"control-label\">المهارة</label>"

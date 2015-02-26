@@ -15,6 +15,15 @@ public class MemberShip {
     private String member_since;
     private String rolement;
     private int cv_id;
+    private String name;
+    
+    public void setCompname(String s){
+        this.name=s;
+    }
+    
+    public String getCompname(){
+        return name;
+    }
     
     public void setID(int i){
         this.id=i;

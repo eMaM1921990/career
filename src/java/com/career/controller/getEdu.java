@@ -67,12 +67,7 @@ public class getEdu extends HttpServlet {
         
         /// FORM CREATION 
         //        
-        String buffer = "<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i>التعليم</h3>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
+        String buffer = "";
         
         String row = "<div class=\"control-group\">"
                 + "<label for=\"textfield\" class=\"control-label\">المؤسسة التعليمية </label>"

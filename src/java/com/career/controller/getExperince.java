@@ -79,12 +79,7 @@ public class getExperince extends HttpServlet {
         
          String buffer = null;
          
-         buffer = "<div class=\"box box-bordered\">"
-                        + "<div class=\"box-title\">"
-                        + "<h3><i class=\"icon-edit\"></i>الخبرات</h3>"
-                        + "</div>"
-                        + " <div class=\"box-content nopadding\">"
-                        + "<form class='form-horizontal form-bordered'>";
+         buffer = "";
 
                 String row = "<div class=\"control-group\">"
                         + "<label for=\"textfield\" class=\"control-label\">تاريخ بدء العمل </label>"
@@ -203,16 +198,13 @@ public class getExperince extends HttpServlet {
 
                 buffer = buffer + row6;
                 
-                String action = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">الخبرات</label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"saveexp\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
-            buffer = buffer + action;
+                String actionrow="<div class=\"form-actions\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"saveexp\">"
+                + "<button type=\"button\" class=\"btn\">إلغاء</button>"
+                + "</div>";
+        buffer=buffer+actionrow;
+                
+                
             
             response.getWriter().write(buffer);
 

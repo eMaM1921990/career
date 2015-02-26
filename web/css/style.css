@@ -4835,7 +4835,7 @@ label,input,button,select,textarea{
 }
 
 #navigation{
-	background: green;
+	background: #E64F07;
 	position:relative;
 	z-index:100
 }
@@ -5647,11 +5647,13 @@ label,input,button,select,textarea{
 }
 
 .box.box-bordered .box-title{
-	border:2px solid #ddd
+	border: 2px solid #FF5200;
+	/* background: #FD5100; */
+	border-radius: 10px;
 }
 
 .box.box-bordered .box-content{
-	border:2px solid #ddd;
+	border: 0px solid #ddd;
 	border-top:0
 }
 
@@ -5673,7 +5675,7 @@ label,input,button,select,textarea{
 	margin:3px 0 3px 0;
 	line-height:24px;
 	font-weight:400;
-	color:#444;
+	color: #FF5200;
 	font-size:20px;
 	direction: rtl;
 }
