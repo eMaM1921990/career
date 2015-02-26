@@ -49,8 +49,27 @@ public class Identifierdao implements dao<Identifier>{
     }
 
     @Override
-    public Identifier Find(String phone) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Identifier Find(String id) {
+        Identifier i=new Identifier();
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.GET_USER_IDENTIFIER_TOUPDATE);
+            db.pstm.setInt(1, Integer.valueOf(id));
+            db.rs=db.pstm.executeQuery();
+            while(db.rs.next()){
+                i.setName(db.rs.getString(1));
+                i.setCompanyname(db.rs.getString(2));
+                i.setPosition(db.rs.getString(3));
+                i.setPhone(db.rs.getString(4));
+                i.setEmail(db.rs.getString(5));
+            }
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(Identifierdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return i;
     }
 
     @Override

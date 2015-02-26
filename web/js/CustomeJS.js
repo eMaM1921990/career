@@ -31,9 +31,31 @@ function editLang(id) {
             var SKILL_LAST_WORK_ID = $('#SKILL_LAST_WORK_ID').val();
             var SKILL_EXPERINCE_ID = $('#SKILL_EXPERINCE_ID').val();
             var LANG_ID = $('#LANG_ID').val();
-            $.post('EditLang',{id:id,SKILL_LEVEL_ID:SKILL_LEVEL_ID,SKILL_LAST_WORK_ID:SKILL_LAST_WORK_ID,SKILL_EXPERINCE_ID:SKILL_EXPERINCE_ID,LANG_ID:LANG_ID},function(responseText){
-                
+            $.post('EditLang', {id: id, SKILL_LEVEL_ID: SKILL_LEVEL_ID, SKILL_LAST_WORK_ID: SKILL_LAST_WORK_ID, SKILL_EXPERINCE_ID: SKILL_EXPERINCE_ID, LANG_ID: LANG_ID}, function(responseText) {
+
             });
+        });
+    });
+}
+
+
+function deleteIdentifier(id) {
+    $.post('deleteIdentifier', {id: id}, function(responseText) {
+        location.reload();
+    });
+}
+
+
+function editIdentifier(id) {
+    $.get('getEditIdentifier', {id: id}, function(responseText) {
+        $('#identifier').html(responseText);
+        $('#editiden').click(function(event) {
+            var NAME = $('#NAME').val().trim();
+            var COMPANY_NAME = $('#COMPANY_NAME').val().trim();
+            var POSITION_NAME = $('#POSITION_NAME').val().trim();
+            var PHONE = $('#PHONE').val().trim();
+            var EMAIL = $('#EMAIL').val().trim();
+            
         });
     });
 }
@@ -387,6 +409,28 @@ $(document).ready(function() {
             });
 
 
+        });
+    });
+
+    ///Identifier Block 
+
+    $.get('getCurrentIdentifier', null, function(responseText) {
+        $('#identifier').html(responseText);
+        $('#addIden').click(function(event) {
+
+            $.get('getIdentitfier', null, function(responseText) {
+                $('#identifier').html(responseText);
+                $('#saveiden').click(function(event) {
+                    var NAME = $('#NAME').val().trim();
+                    var COMPANY_NAME = $('#COMPANY_NAME').val().trim();
+                    var POSITION_NAME = $('#POSITION_NAME').val().trim();
+                    var PHONE = $('#PHONE').val().trim();
+                    var EMAIL = $('#EMAIL').val().trim();
+                    $.post('saveIdentifier', {NAME: NAME, COMPANY_NAME: COMPANY_NAME, POSITION_NAME: POSITION_NAME, PHONE: PHONE, EMAIL: EMAIL}, function(responseText) {
+                        location.reload();
+                    });
+                });
+            });
         });
     });
 

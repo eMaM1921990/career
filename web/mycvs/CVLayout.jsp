@@ -210,22 +210,46 @@
                                 <div class="box-content nopadding">
                                     <form  method="POST" class='form-horizontal form-bordered'>
 
-                                        
-                                              
-                                                    <div id="lang"></div>
-                                          
+
+
+                                        <div id="lang"></div>
+
                                         <form>
 
+                                            </div>
+                                            </div>
+
+
+                                            </div>
+                                            </div>
+
+                    <div class="row-fluid">
+                        <div class="span12">
+                            <div class="box box-bordered">
+                                <div class="box-title">
+                                    <span style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addIden">إضافة<i class="icon-plus"></i></span>
+                                    <h3><i class="icon-edit"></i>المعرفون</h3>
                                 </div>
-                            </div>
+                                <div class="box-content nopadding">
+                                    <form  method="POST" class='form-horizontal form-bordered'>
 
 
-                        </div>
-                    </div>
-                </div>
 
-                </body>
+                                        <div id="identifier"></div>
 
-                </html>
+                                        <form>
+
+                                            </div>
+                                            </div>
+
+
+                                            </div>
+                                            </div>
+
+                                                                    </div>
+
+                                                                    </body>
+
+                                                                    </html>
 
 

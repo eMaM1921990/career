@@ -218,4 +218,8 @@ public class SQLCommon {
             + "       \"EMAIL\"=?\n"
             + " WHERE id=?";
 
+    public String GET_USER_IDENTIFIER_TOUPDATE = "SELECT \"NAME\", \"COMPANY_NAME\", \"POSITION_NAME\", \"PHONE\", \"EMAIL\", \n"
+            + "       \"USER_CV\"\n"
+            + "  FROM employment.\"IdentifierList\" WHERE id=?";
+
 }

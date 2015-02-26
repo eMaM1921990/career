@@ -148,6 +148,26 @@
         <servlet-name>EditLang</servlet-name>
         <servlet-class>com.career.controller.EditLang</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getCurrentIdentifier</servlet-name>
+        <servlet-class>com.career.controller.getCurrentIdentifier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getIdentitfier</servlet-name>
+        <servlet-class>com.career.controller.getIdentitfier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>saveIdentifier</servlet-name>
+        <servlet-class>com.career.controller.saveIdentifier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteIdentifier</servlet-name>
+        <servlet-class>com.career.controller.deleteIdentifier</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getEditIdentifier</servlet-name>
+        <servlet-class>com.career.controller.getEditIdentifier</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -295,6 +315,26 @@
     <servlet-mapping>
         <servlet-name>EditLang</servlet-name>
         <url-pattern>/EditLang</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getCurrentIdentifier</servlet-name>
+        <url-pattern>/getCurrentIdentifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getIdentitfier</servlet-name>
+        <url-pattern>/getIdentitfier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>saveIdentifier</servlet-name>
+        <url-pattern>/saveIdentifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteIdentifier</servlet-name>
+        <url-pattern>/deleteIdentifier</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEditIdentifier</servlet-name>
+        <url-pattern>/getEditIdentifier</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
