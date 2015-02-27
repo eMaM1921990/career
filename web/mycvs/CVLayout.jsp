@@ -160,44 +160,80 @@
                             <a href="#"><i class="icon-remove"></i></a>
                         </div>
                     </div>
-                    <div class="row-fluid">
-                        <div class="span8">
-                            <div id="job"></div>
-                        </div>
-                        
-                        
-                    </div>
-                    
-
-                    <div class="row-fluid">
-                        <div class="span8">
-                            <div id="info"></div>
-                        </div>
-                    </div>
-
-                    <div class="row-fluid">
-                        <div class="span8">
-                            <div id="contactinfo"></div>
-                        </div>
-                    </div>
-
 
                     <div class="row-fluid">
                         <div class="span8">
                             <div class="box box-bordered">
                                 <div class="box-title">
-                                    <h3><i class="icon-edit"></i>الخبرات</h3>
-                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='addexperince' >إضافة<i class="icon-plus"></i></h3>
+                                    <h3><i class="icon-edit"></i> الوظيفة المرغوبة </h3> 
+                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='getjob' >إضافة<i class="icon-plus"></i></h3>
+                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='editjob' >تعديل<i class="icon-edit"></i></h3>
                                 </div>
                                 <div class="box-content nopadding">
-                                    <form class='form-horizontal form-bordered'>
-                                        <div id="experience"></div>
+                                    <form  class='form-horizontal form-bordered'>
+                                        <div id="job"></div>
                                     </form>
-
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+                    <div class="row-fluid">
+                        <div class="span8">
+
+                            <div class="box box-bordered">
+                                <div class="box-title">
+                                    <h3><i class="icon-edit"></i> المعلومات الشخصية</h3>
+                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='addinfo' >إضافة<i class="icon-plus"></i></h3>
+                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='editinfo' >تعديل<i class="icon-edit"></i></h3>
+                                </div>
+                                <div class="box-content nopadding">
+                                    <form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>
+                                        <div id="info"></div>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row-fluid">
+                            <div class="span8">
+                                <div class="box box-bordered">
+                                    <div class="box-title">
+                                        <h3><i class="icon-edit"></i> معلومات اﻻتصال</h3>
+                                        <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='addcontactinfo' >إضافة<i class="icon-plus"></i></h3>
+                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='editcontactinfo' >تعديل<i class="icon-edit"></i></h3>
+                                    </div>
+                                    <div class="box-content nopadding">
+                                        <form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>
+                                            <div id="contactinfo"></div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="row-fluid">
+                                <div class="span8">
+                                    <div class="box box-bordered">
+                                        <div class="box-title">
+                                            <h3><i class="icon-edit"></i>الخبرات</h3>
+                                            <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='addexperince' >إضافة<i class="icon-plus"></i></h3>
+                                        </div>
+                                        <div class="box-content nopadding">
+                                            <form class='form-horizontal form-bordered'>
+                                                <div id="experience"></div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
 
                             <div class="row-fluid">

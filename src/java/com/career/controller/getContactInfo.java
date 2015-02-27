@@ -74,12 +74,7 @@ public class getContactInfo extends HttpServlet {
         List<Cities> lc=c_dao.FindAll();
         
         
-        String buffer = "<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i> معلومات اﻻتصال</h3>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
+        String buffer = "";
         
         String row = "<div class=\"control-group\">"
                 + "<label for=\"textfield\" class=\"control-label\">البريد الالكترونى </label>"
@@ -220,7 +215,7 @@ public class getContactInfo extends HttpServlet {
         
         buffer=buffer+row10;
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"savecontactinfo\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"button\" id=\"savecontactinfo\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

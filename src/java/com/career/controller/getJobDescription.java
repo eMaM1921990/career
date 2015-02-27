@@ -74,12 +74,7 @@ public class getJobDescription extends HttpServlet {
         NoticePerioddao n_dao=new NoticePerioddao();
         List<NoticePeriod> notice=n_dao.FindAll();
         
-        String buffer="<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i> الوظيفة المرغوبة</h3>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form  class='form-horizontal form-bordered'>";
+        String buffer="";
         
         String row="<div class=\"control-group\">"
                 + "<label for=\"textfield\" class=\"control-label\">اللقب الوظيفة للوظيفة المرغوية</label>"

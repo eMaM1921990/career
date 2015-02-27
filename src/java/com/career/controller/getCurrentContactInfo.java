@@ -85,12 +85,7 @@ public class getCurrentContactInfo extends HttpServlet {
         
         String buffer=null;
         if(i.getID()>0){
-            buffer = "<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i> معلومات اﻻتصال</h3><i class=\"icon-edit\"></i><a id='editcontactinfo'>تعديل</a>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
+            buffer = "";
         
         String row = "<div class=\"control-group\">"
                 + "<label for=\"textfield\" class=\"control-label\">البريد الالكترونى </label>"
@@ -242,21 +237,8 @@ public class getCurrentContactInfo extends HttpServlet {
         
         buffer=buffer+row10;
         }else{
-             buffer = "<div class=\"box box-bordered\">"
-                    + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i> معلومات اﻻتصال</h3>"
-                    + "</div>"
-                    + " <div class=\"box-content nopadding\">"
-                    + "<form class='form-horizontal form-bordered'>";
-            String row = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">معلومات الأتصال</label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addcontactinfo\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
+             buffer = "";
+            String row = "<p>ﻻ يوجد بيانات حالية</p>";
 
             buffer = buffer + row;
         }

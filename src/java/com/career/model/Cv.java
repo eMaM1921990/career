@@ -13,6 +13,16 @@ package com.career.model;
 public class Cv {
     private int id;
     private String name;
+    private String cv_name;
+    
+    
+    public void setCV_name(String s){
+        this.cv_name=s;
+    }
+    
+    public String getCV_name(){
+        return cv_name;
+    }
     
     public void setId(int i){
         this.id=i;

@@ -73,146 +73,31 @@ public class getCurrentExperience extends HttpServlet {
         Experincedao i_dao = new Experincedao();
         List<Experince> e = i_dao.FindByParentId(u.getCv());
 
-        String buffer = null;
+        String buffer = "";
         if (e.size() > 0) {
             for (Experince ex : e) {
-                buffer = "";
-
-                String row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">تاريخ بدء العمل </label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"startdate\" autocomplete=\"off\" value='"+ex.getStartdate()+"' style='pointer-events:none;border:none;background:#fff'>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-
-                buffer = buffer + row;
-
-                String row2 = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">تاريخ ترك العمل</label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"enddate\" autocomplete=\"off\" value='"+ex.getEnddate()+"' style='pointer-events:none;border:none;background:#fff'>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-                buffer = buffer + row2;
-
-                String rowcombo = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">الموقع</label>"
-                        + "<div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<div class=\"input-xlarge\">"
-                        + "<select name=\"nationality_id\" id=\"national_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
-
-                for (National na : n) {
-                    if(na.getId()==ex.getNationalID()){
-                        rowcombo = rowcombo + "<option value=" + na.getId() + " selected>" + na.getName() + "</option>";
-                    }else{
-                        rowcombo = rowcombo + "<option value=" + na.getId() + ">" + na.getName() + "</option>";
-                    }
-                    
-                }
-
-                rowcombo = rowcombo + "</select></div></div></div>";
-
-                buffer = buffer + rowcombo;
-
-                String row3 = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">العنوان</label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"address\" autocomplete=\"off\" value='"+ex.getAddress()+"' style='pointer-events:none;border:none;background:#fff'>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-
-                buffer = buffer + row3;
-                String row4 = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">اسم الشركة</label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"companyname\" autocomplete=\"off\" value='"+ex.getCompanyname()+"' style='pointer-events:none;border:none;background:#fff'>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-
-                buffer = buffer + row4;
-
-                String rowcombo2 = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">قطاع الشركة</label>"
-                        + "<div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<div class=\"input-xlarge\">"
-                        + "<select name=\"company_industry_id\" id=\"company_industry_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
-
-                for (Industry i : list) {
-                    if(i.getId()==ex.getCompanyIndustry()){
+                
+                String row = "<div class=\"box-content\">"
+                    + "<div class=\"tab-content\">\n"
+                    + "<div class=\"tab-pane active\" id=\"t7\">"
+                    + "<a onclick=\"EditSkillView('"+ex.getID()+"')\"> <span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\">تعديل <i class=\"icon-edit\"></i></span> </a>"
+                    + "<a   onclick=\"DeleteSkill('"+ex.getID()+"')\"><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
+                    + "<h4>"+ex.getRoleName()+"</h4>\n"
+                   + "<h4>"+ex.getCompanyname()+"</h4>\n"
+                    + "<p><b> الموقع </b> : "+ex.getNationalname()+","+ex.getAddress()+"</p>"
+                        + "<p><b> قطاع الشركة </b> : "+ex.getCompanyIndustryname()+"</p>"
+                        + "<p><b>الدور الوظيفى </b> : "+ex.getCareer_role_name()+"</p>"
+                        + "<p><b>الفترةمن </b> : "+ex.getStartdate()+"</p>"
+                        + "<p><b>الى </b> : "+ex.getEnddate()+"</p>"
+                        + "<p><b>الوصف </b> </p>"
+                        + "<p>"+ex.getDesc()+" </p>"
                         
-                    rowcombo2 = rowcombo2 + "<option value=" + i.getId() + " selected>" + i.getName() + "</option>";    
-                    }else{
-                    rowcombo2 = rowcombo2 + "<option value=" + i.getId() + ">" + i.getName() + "</option>";    
-                    }
-                    
-                }
-
-                rowcombo2 = rowcombo2 + "</select></div></div></div>";
-                buffer = buffer + rowcombo2;
-
-                String rowcomb3 = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">الدور الوظيفى</label>"
-                        + "<div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<div class=\"input-xlarge\">"
-                        + "<select name=\"career_role_id\" id=\"career_role_id\" class='chosen-select' style='pointer-events:none;border:none;background:#fff'>";
-
-                for (CareerRole ci : role_list) {
-                    if(ci.getId()==ex.getCareerRoleID()){
-                    rowcomb3 = rowcomb3 + "<option value=" + ci.getId() + " selected>" + ci.getName() + "</option>";    
-                    }else{
-                    rowcomb3 = rowcomb3 + "<option value=" + ci.getId() + ">" + ci.getName() + "</option>";    
-                    }
-                    
-                }
-
-                rowcomb3 = rowcomb3 + "</select></div></div></div>";
-
-                buffer = buffer + rowcomb3;
-
-                String row5 = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">مسمى المنصب فى الشركة</label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\"  id=\"role_name\" autocomplete=\"off\" value='"+ex.getRoleName()+"' style='pointer-events:none;border:none;background:#fff'>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-
-                buffer = buffer + row5;
-
-                String row6 = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">الوصف</label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<textarea name=\"jobdesc\" id=\"jobdesc\" class=\"input-block-level\" style='pointer-events:none;border:none;background:#fff'>"+ex.getDesc()+"</textarea>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-
-                buffer = buffer + row6;
+                    + "</div></div></div>";
+                buffer=buffer+row;
             }
-
-            String action = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addexperince\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
-            buffer = buffer + action;
+                
+                
+                
 
         } else {
             buffer = "";

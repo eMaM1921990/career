@@ -69,8 +69,8 @@ public class SQLCommon {
             + " WHERE id=?::integer;";
 
     public String INSERT_CV = "INSERT INTO employment.users_cvs("
-            + "             username)"
-            + "    VALUES ( ?);";
+            + "             username,cv_name)"
+            + "    VALUES ( ?,?);";
 
     public String GET_INFO = "SELECT id, f_name, surename, dob, gender, nationality_id, visa_status_id, "
             + "       material_status, no_of_own, driving_license, cv_user_id"
@@ -118,9 +118,15 @@ public class SQLCommon {
             + "       cv_id=?"
             + " WHERE id=?;";
 
-    public String GET_CURRENT_EXPER = "SELECT id, startdate, enddate, national_id, address, companyname, company_industry_id, "
-            + "       career_role_id, role_name, jobdesc, cv_id"
-            + "  FROM employment.experience WHERE cv_id=?;";
+    public String GET_CURRENT_EXPER = "SELECT ex.id, startdate, enddate, nt.name, address, companyname, cit.name,\n"
+            + "cr.name, role_name, jobdesc, cv_id\n"
+            + "FROM employment.experience ex INNER JOIN employment.career_role cr\n"
+            + "ON ex.career_role_id=cr.id\n"
+            + "INNER JOIN employment.company_industry_type cit\n"
+            + "ON ex.company_industry_id=cit.id\n"
+            + "INNER JOIN employment.nationality_type nt\n"
+            + "ON ex.national_id=nt.id\n"
+            + "AND cv_id=?";
 
     public String GET_INDUSRTY = "SELECT id, name"
             + "  FROM employment.company_industry_type;";

@@ -96,12 +96,7 @@ public class getEditJob extends HttpServlet {
         Job j = dao.FindByID(request.getParameter("id"));
         System.out.println("ID :" + request.getParameter("id"));
 
-        buffer = "<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i> الوظيفة المرغوبة </h3>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form  class='form-horizontal form-bordered'>";
+        buffer = "";
 
         String row = "<div class=\"control-group\">"
                 + "<label for=\"textfield\" class=\"control-label\">اللقب الوظيفة للوظيفة المرغوية</label>"

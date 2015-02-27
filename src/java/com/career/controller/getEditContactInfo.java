@@ -83,12 +83,7 @@ public class getEditContactInfo extends HttpServlet {
         Contactinfodao cdao=new Contactinfodao();
         i=cdao.Find(Integer.toString(u.getCv()));
                 String buffer=null;
-                 buffer = "<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i> معلومات اﻻتصال</h3>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
+                 buffer = "";
         
         String row = "<div class=\"control-group\">"
                 + "<label for=\"textfield\" class=\"control-label\">البريد الالكترونى </label>"
@@ -240,7 +235,7 @@ public class getEditContactInfo extends HttpServlet {
         
         buffer=buffer+row10;
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"submit\" id=\"editcontactinfo\">"
+                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"button\" id=\"editcontactinfo\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

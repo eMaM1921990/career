@@ -4,86 +4,7 @@
  * and open the template in the editor.
  */
 
-var idAction;
 
-function DeleteSkill(id) {
-    $.post('deleteskills', {id: id}, function(responseText) {
-        location.reload();
-    });
-
-}
-
-
-function EditSkillView(id) {
-    $.post('editskill', {id: id}, function(responseText) {
-    });
-}
-
-function deleteLang(id) {
-    $.post('deletelang', {id: id}, function(responseText) {
-        location.reload();
-    });
-}
-
-function editLang(id) {
-    $.post('getEditLang', {id: id}, function(responseText) {
-        $('#lang').html(responseText);
-        $('#editlang').click(function() {
-            var SKILL_LEVEL_ID = $('#SKILL_LEVEL_ID').val();
-            var SKILL_LAST_WORK_ID = $('#SKILL_LAST_WORK_ID').val();
-            var SKILL_EXPERINCE_ID = $('#SKILL_EXPERINCE_ID').val();
-            var LANG_ID = $('#LANG_ID').val();
-            $.post('EditLang', {id: id, SKILL_LEVEL_ID: SKILL_LEVEL_ID, SKILL_LAST_WORK_ID: SKILL_LAST_WORK_ID, SKILL_EXPERINCE_ID: SKILL_EXPERINCE_ID, LANG_ID: LANG_ID}, function(responseText) {
-                   location.reload();
-            });
-        });
-    });
-}
-
-
-function deleteIdentifier(id) {
-    $.post('deleteIdentifier', {id: id}, function(responseText) {
-        location.reload();
-    });
-}
-
-
-function editIdentifier(id) {
-    $.get('getEditIdentifier', {id: id}, function(responseText) {
-        $('#identifier').html(responseText);
-        $('#editiden').click(function(event) {
-            var NAME = $('#NAME').val().trim();
-            var COMPANY_NAME = $('#COMPANY_NAME').val().trim();
-            var POSITION_NAME = $('#POSITION_NAME').val().trim();
-            var PHONE = $('#PHONE').val().trim();
-            var EMAIL = $('#EMAIL').val().trim();
-            $.post('editIdentifier', {id: id, NAME: NAME, COMPANY_NAME: COMPANY_NAME, POSITION_NAME: POSITION_NAME, PHONE: PHONE, EMAIL: EMAIL}, function(responseText) {
-                location.reload();
-            });
-        });
-    });
-}
-
-
-function deletemember(id) {
-    $.post('deletemember', {id: id}, function(responseText) {
-        location.reload();
-    });
-}
-
-function editmember(id) {
-    $.get('getEditMember', {id: id}, function(responseText) {
-        $('#member').html(responseText);
-        $('#editmember').click(function(event) {
-            var member_since = $('#member_since').val();
-            var rolement = $('#rolement').val();
-            var COMP_NAME = $('#COMP_NAME').val();
-            $.post('editMember',{id:id,member_since: member_since, rolement: rolement, COMP_NAME: COMP_NAME},function(responseText){
-               location.reload() ;
-            });
-        });
-    });
-}
 
 $(document).ready(function() {
 
@@ -114,6 +35,14 @@ $(document).ready(function() {
 
     $.post('getcurrentJob', null, function(responseText) {
         $('#job').html(responseText);
+        
+        if(responseText.indexOf('<p>')>-1){
+            $('#getjob').show();
+            $('#editjob').hide();
+        }else{
+            $('#getjob').hide();
+            $('#editjob').show();
+        }
 
         $('#getjob').click(function(event) {
             $.get('getJobDescription', null, function(responseText) {
@@ -172,6 +101,13 @@ $(document).ready(function() {
 
     $.post('getCurrentInfo', null, function(responseText) {
         $('#info').html(responseText);
+        if(responseText.indexOf('<p>')>-1){
+            $('#addinfo').show();
+            $('#editinfo').hide();
+        }else{
+            $('#addinfo').hide();
+            $('#editinfo').show();
+        }
 
         $('#addinfo').click(function(event) {
             $.post('getInfo', null, function(responseText) {
@@ -186,7 +122,7 @@ $(document).ready(function() {
                     var material_status = $('#material_status').val();
                     var no_of_own = $('#no_of_own').val();
                     var driving_license = $('#driving_license').val();
-                    $.post('saveinfo', {f_name: f_name, surename: surename, dob: dob, gender: gender, nationality_id: nationality_id, visa_status_id: visa_status_id, material_status: material_status, no_of_own: no_of_own, driving_license: driving_license}, function() {
+                    $.post('saveinfo', {f_name: f_name, surename: surename, dob: dob, gender: gender, nationality_id: nationality_id, visa_status_id: visa_status_id, material_status: material_status, no_of_own: no_of_own, driving_license: driving_license}, function(responseText) {
                         location.reload();
                     });
                 });
@@ -227,10 +163,17 @@ $(document).ready(function() {
 
     $.post('getCurrentContactInfo', null, function(responseText) {
         $('#contactinfo').html(responseText);
+        if(responseText.indexOf('<p>')>-1){
+            $('#addcontactinfo').show();
+            $('#editcontactinfo').hide();
+        }else{
+            $('#addcontactinfo').hide();
+            $('#editcontactinfo').show();
+        }
         $('#addcontactinfo').click(function(event) {
             $.post('getContactInfo', null, function(responseText) {
                 $('#contactinfo').html(responseText);
-                $('#savecontactinfo').click(function() {
+                $('#savecontactinfo').click(function(event) {
                     var mail = $('#mail').val();
                     var phone1 = $('#phone1').val();
                     var phone2 = $('#phone2').val();
@@ -481,3 +424,81 @@ $(document).ready(function() {
 });
 
 
+function DeleteSkill(id) {
+    $.post('deleteskills', {id: id}, function(responseText) {
+        location.reload();
+    });
+
+}
+
+
+function EditSkillView(id) {
+    $.post('editskill', {id: id}, function(responseText) {
+    });
+}
+
+function deleteLang(id) {
+    $.post('deletelang', {id: id}, function(responseText) {
+        location.reload();
+    });
+}
+
+function editLang(id) {
+    $.post('getEditLang', {id: id}, function(responseText) {
+        $('#lang').html(responseText);
+        $('#editlang').click(function() {
+            var SKILL_LEVEL_ID = $('#SKILL_LEVEL_ID').val();
+            var SKILL_LAST_WORK_ID = $('#SKILL_LAST_WORK_ID').val();
+            var SKILL_EXPERINCE_ID = $('#SKILL_EXPERINCE_ID').val();
+            var LANG_ID = $('#LANG_ID').val();
+            $.post('EditLang', {id: id, SKILL_LEVEL_ID: SKILL_LEVEL_ID, SKILL_LAST_WORK_ID: SKILL_LAST_WORK_ID, SKILL_EXPERINCE_ID: SKILL_EXPERINCE_ID, LANG_ID: LANG_ID}, function(responseText) {
+                   location.reload();
+            });
+        });
+    });
+}
+
+
+function deleteIdentifier(id) {
+    $.post('deleteIdentifier', {id: id}, function(responseText) {
+        location.reload();
+    });
+}
+
+
+function editIdentifier(id) {
+    $.get('getEditIdentifier', {id: id}, function(responseText) {
+        $('#identifier').html(responseText);
+        $('#editiden').click(function(event) {
+            var NAME = $('#NAME').val().trim();
+            var COMPANY_NAME = $('#COMPANY_NAME').val().trim();
+            var POSITION_NAME = $('#POSITION_NAME').val().trim();
+            var PHONE = $('#PHONE').val().trim();
+            var EMAIL = $('#EMAIL').val().trim();
+            $.post('editIdentifier', {id: id, NAME: NAME, COMPANY_NAME: COMPANY_NAME, POSITION_NAME: POSITION_NAME, PHONE: PHONE, EMAIL: EMAIL}, function(responseText) {
+                location.reload();
+            });
+        });
+    });
+}
+
+
+function deletemember(id) {
+    $.post('deletemember', {id: id}, function(responseText) {
+        location.reload();
+    });
+}
+
+function editmember(id) {
+    $.get('getEditMember', {id: id}, function(responseText) {
+        $('#member').html(responseText);
+        $('#editmember').click(function(event) {
+            var member_since = $('#member_since').val();
+            var rolement = $('#rolement').val();
+            var COMP_NAME = $('#COMP_NAME').val();
+            $.post('editMember',{id:id,member_since: member_since, rolement: rolement, COMP_NAME: COMP_NAME},function(responseText){
+               location.reload() ;
+            });
+        });
+    });
+}

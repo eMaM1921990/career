@@ -98,17 +98,12 @@ public class getcurrentJob extends HttpServlet {
         
         Jobdao dao = new Jobdao();
         
-        String buffer = null;
+        String buffer = "";
         Job j = dao.Find(Integer.toString(u.getCv()));
         if (j.getID()> 0) {
 
             
-             buffer="<div class=\"box box-bordered\">"
-                + "<div class=\"box-title\">"
-                + "<h3><i class=\"icon-edit\"></i> الوظيفة المرغوبة </h3> <i class=\"icon-edit\"></i><a id='editjob'>تعديل</a>"
-                + "</div>"
-                + " <div class=\"box-content nopadding\">"
-                + "<form  class='form-horizontal form-bordered'>";
+             
         
         String row="<div class=\"control-group\">"
                 + "<label for=\"textfield\" class=\"control-label\">اللقب الوظيفة للوظيفة المرغوية</label>"
@@ -264,21 +259,8 @@ public class getcurrentJob extends HttpServlet {
         */
             
         } else {
-            buffer = "<div class=\"box box-bordered\">"
-                    + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i> الوظيفة المرغوبة</h3>"
-                    + "</div>"
-                    + " <div class=\"box-content nopadding\">"
-                    + "<form class='form-horizontal form-bordered'>";
-            String row = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">ادخل الوظيفة المطلوبة</label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"getjob\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
+            buffer = "";
+            String row = "<p>ﻻ توجد وظيفة حالية </p>";
 
             buffer = buffer + row;
 

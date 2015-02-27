@@ -24,6 +24,32 @@ public class Experince implements Serializable{
     private String desc;
     private int cv;
     private int id;
+    private String nationalname;
+    private String career_role_name;
+    private String company_industry_name;
+    
+    public void setCompanyIndustryname(String s){
+        this.company_industry_name=s;
+    }
+    
+    public String getCompanyIndustryname(){
+        return company_industry_name;
+    }
+    
+    public void setCareer_role_name(String s){
+        this.career_role_name=s;
+    }
+    public String getCareer_role_name(){
+        return career_role_name;
+    }
+    
+    public void setNationalname(String s){
+        this.nationalname=s;
+    }
+    
+    public String getNationalname(){
+        return nationalname;
+    }
     
     
     public void setID(int i){

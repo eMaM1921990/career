@@ -30,6 +30,7 @@ public class cvdao implements dao<Cv>{
             db.connect();
             db.pstm=db.con.prepareStatement(sql.INSERT_CV, db.pstm.RETURN_GENERATED_KEYS);
             db.pstm.setString(1, o.getName());
+            db.pstm.setString(2, o.getCV_name());
             db.pstm.execute();
             db.rs=db.pstm.getGeneratedKeys();
             while(db.rs.next()){

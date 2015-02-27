@@ -3766,6 +3766,7 @@ input,textarea{
 textarea,input[type="text"],input[type="password"],input[type="datetime"],input[type="datetime-local"],input[type="date"],input[type="month"],input[type="time"],input[type="week"],input[type="number"],input[type="email"],input[type="url"],input[type="search"],input[type="tel"],input[type="color"],.uneditable-input{
 	background:#f9f9f9;
 	direction: rtl;
+	/* width: 400px; */
 }
 
 .form-horizontal .control-label{
@@ -3997,6 +3998,8 @@ textarea,input[type="text"],input[type="password"],input[type="datetime"],input[
 
 label,input,button,select,textarea{
 	font-size:13px
+;
+	/* width: 400px; */
 }
 
 .form-actions{

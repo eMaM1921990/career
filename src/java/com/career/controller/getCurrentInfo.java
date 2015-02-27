@@ -84,12 +84,7 @@ public class getCurrentInfo extends HttpServlet {
         i = i_dao.Find(Integer.toString(u.getCv()));
         String buffer = null;
         if (i.getId() > 0) {
-            buffer = "<div class=\"box box-bordered\">"
-                    + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i> المعلومات الشخصية</h3><i class=\"icon-edit\"></i><a id='editinfo'>تعديل</a>"
-                    + "</div>"
-                    + " <div class=\"box-content nopadding\">"
-                    + "<form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>";
+            buffer = "";
 
             String row = "<div class=\"control-group\">"
                     + "<label for=\"textfield\" class=\"control-label\">اﻻسم اﻻول</label>"
@@ -270,21 +265,8 @@ public class getCurrentInfo extends HttpServlet {
             buffer = buffer + licensecombo;
 
         } else {
-            buffer = "<div class=\"box box-bordered\">"
-                    + "<div class=\"box-title\">"
-                    + "<h3><i class=\"icon-edit\"></i>المعلومات الشخصية</h3>"
-                    + "</div>"
-                    + " <div class=\"box-content nopadding\">"
-                    + "<form class='form-horizontal form-bordered'>";
-            String row = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">ادخل المعلومات الشخصية</label>"
-                    + "<input type=\"button\" value=\"إضافة\" class='btn btn-green' id=\"addinfo\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
+            buffer = "";
+            String row = "<p>ﻻ يوجد بيانات حالية</p>";
 
             buffer = buffer + row;
         }

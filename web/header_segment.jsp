@@ -24,7 +24,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="myCvs">أنشاء السيرة الذاتية </a>
+                        <a href="NewCV">أنشاء السيرة الذاتية </a>
                     </li>
                     <li class='active'>
                         <a href="myCvs?id=<jsp:getProperty name="login" property="cv"/>">مشاهدة السيرة الذاتية</a>

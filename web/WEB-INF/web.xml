@@ -196,6 +196,14 @@
         <servlet-name>editMember</servlet-name>
         <servlet-class>com.career.controller.editMember</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewCV</servlet-name>
+        <servlet-class>com.career.viewer.NewCV</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateCV</servlet-name>
+        <servlet-class>com.career.controller.CreateCV</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -391,6 +399,14 @@
     <servlet-mapping>
         <servlet-name>editMember</servlet-name>
         <url-pattern>/editMember</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewCV</servlet-name>
+        <url-pattern>/NewCV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateCV</servlet-name>
+        <url-pattern>/CreateCV</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
