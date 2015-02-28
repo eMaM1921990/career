@@ -244,4 +244,8 @@ public class SQLCommon {
     public String UPDATE_MEMBERSHIP_BY_ID = "UPDATE employment.\"Memebar_ship\"\n"
             + "   SET  member_since=?::date, rolement=?,\"COMP_NAME\"=?\n"
             + " WHERE id=?";
+    
+    public String GET_USER_CVS="SELECT u_name, password, f_name, l_name, bod, nationality_id, mail, \n" +
+"       hear_about_us, gender, notification_register\n" +
+"  FROM employment.users WHERE u_name=?";
 }

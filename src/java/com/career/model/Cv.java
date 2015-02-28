@@ -14,7 +14,15 @@ public class Cv {
     private int id;
     private String name;
     private String cv_name;
+    private int isdefault;
     
+    public void setIsDefault(int i){
+        this.isdefault=i;
+    }
+    
+    public int getIsDefault(){
+        return isdefault;
+    }
     
     public void setCV_name(String s){
         this.cv_name=s;

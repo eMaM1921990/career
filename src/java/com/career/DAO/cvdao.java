@@ -11,6 +11,7 @@ import com.career.model.Cv;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,7 +69,28 @@ public class cvdao implements dao<Cv>{
 
     @Override
     public List<Cv> FindBy(Cv o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Cv> data=new ArrayList<>();
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.GET_USER_CVS);
+            db.pstm.setString(1, o.getName());
+            db.rs=db.pstm.executeQuery();
+            while(db.rs.next()){
+                Cv c=new Cv();
+                c.setId(db.rs.getInt(1));
+                c.setName(db.rs.getString(2));
+                c.setCV_name(db.rs.getString(3));
+                c.setIsDefault(db.rs.getInt(4));
+                data.add(c);
+            }
+            
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(cvdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return data;
     }
 
     @Override

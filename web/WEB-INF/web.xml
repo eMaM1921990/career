@@ -204,6 +204,10 @@
         <servlet-name>CreateCV</servlet-name>
         <servlet-class>com.career.controller.CreateCV</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Lists</servlet-name>
+        <servlet-class>com.career.viewer.Lists</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -407,6 +411,10 @@
     <servlet-mapping>
         <servlet-name>CreateCV</servlet-name>
         <url-pattern>/CreateCV</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Lists</servlet-name>
+        <url-pattern>/Lists</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
