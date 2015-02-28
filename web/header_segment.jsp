@@ -14,12 +14,12 @@
         <ul class='main-nav'>
             <li>
                 <a href="index.html">
-                    <span>Dashboard</span>
+                    <span>اللوحة الرئيسية</span>
                 </a>
             </li>
             <li class='active'>
                 <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
-                    <span>Option</span>
+                    <span>التحكم</span>
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
@@ -37,11 +37,11 @@
         <div class="user">
            
             <div class="dropdown">
-                <a href="#" class='dropdown-toggle' data-toggle="dropdown">John Doe <img src="img/demo/user-avatar.jpg" alt=""></a>
+                <a href="#" class='dropdown-toggle' data-toggle="dropdown"><jsp:getProperty name="login" property="u_name"/> <img src="img/demo/user-avatar.jpg" alt=""></a>
                 <ul class="dropdown-menu pull-right">
                     
                     <li>
-                        <a href="more-login.html">Sign out</a>
+                        <a href="#">تسجيل خروج</a>
                     </li>
                 </ul>
             </div>

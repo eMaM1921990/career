@@ -161,7 +161,12 @@
                         </div>
                     </div>
 
+
+
+
+
                     <div class="row-fluid">
+
                         <div class="span8">
                             <div class="box box-bordered">
                                 <div class="box-title">
@@ -176,6 +181,9 @@
                                 </div>
                             </div>
                         </div>
+                       
+
+
                     </div>
 
 
@@ -206,7 +214,7 @@
                                     <div class="box-title">
                                         <h3><i class="icon-edit"></i> معلومات اﻻتصال</h3>
                                         <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='addcontactinfo' >إضافة<i class="icon-plus"></i></h3>
-                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='editcontactinfo' >تعديل<i class="icon-edit"></i></h3>
+                                        <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id='editcontactinfo' >تعديل<i class="icon-edit"></i></h3>
                                     </div>
                                     <div class="box-content nopadding">
                                         <form action=\"#\" method=\"POST\" class='form-horizontal form-bordered'>

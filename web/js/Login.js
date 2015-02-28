@@ -11,7 +11,7 @@ $(document).ready(function() {
         var username = $('#u_name').val().trim();
         var password = $('#password').val().trim();
         $.post('LogAuth', {u: username, p: password}, function(responseText) {
-            alert(responseText);
+            
             if(responseText==="y"){
                 window.open('Home','_self');
             }else{
