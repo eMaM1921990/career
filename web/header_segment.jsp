@@ -32,6 +32,26 @@
                     
                 </ul>
             </li>
+            <li class='active'>
+                <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+                    <span>الوظائف</span>
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="SearchJob">بحث الوظائف المتاحة</a>
+                    </li>
+                    <li class='active'>
+                        <a href="myCvs?id=<jsp:getProperty name="login" property="cv"/>">
+                            عرض الوظائف المحفوظة</a>
+                    </li>
+                    <li class='active'>
+                        <a href="myCvs?id=<jsp:getProperty name="login" property="cv"/>">
+                            عرض الوظائف المقدم اليها</a>
+                    </li>
+                    
+                </ul>
+            </li>
             
         </ul>
         <div class="user">

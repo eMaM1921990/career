@@ -6,8 +6,8 @@
 
 package com.career.controller;
 
-import com.career.DAO.Jobdao;
-import com.career.model.Job;
+import com.career.DAO.RequiredJobdao;
+import com.career.model.RequiredJob;
 import com.career.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -65,8 +65,8 @@ public class editJob extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        Job j=new Job();
-        Jobdao dao=new Jobdao();
+        RequiredJob j=new RequiredJob();
+        RequiredJobdao dao=new RequiredJobdao();
         HttpSession session=request.getSession();
         User u=(User)session.getAttribute("login");
         j.setName(request.getParameter("job_name"));

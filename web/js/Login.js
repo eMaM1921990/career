@@ -24,5 +24,14 @@ $(document).ready(function() {
        window.open('Register','_self'); 
     });
     
+    $('#search').click(function() {
+        var searchjob = $('#searchjob').val().trim();
+       
+        $.post('LogAuth', {u: username, p: password}, function(responseText) {
+            
+           
+        });
+    });
+    
     
 });

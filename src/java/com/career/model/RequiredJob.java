@@ -10,7 +10,7 @@ package com.career.model;
  *
  * @author emam
  */
-public class Job {
+public class RequiredJob {
     private int id;
     private String name;
     private String desc;

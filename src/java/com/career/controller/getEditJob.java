@@ -8,13 +8,13 @@ package com.career.controller;
 import com.career.DAO.CareerLeverdao;
 import com.career.DAO.EmpStatusdao;
 import com.career.DAO.EmpTypedao;
-import com.career.DAO.Jobdao;
+import com.career.DAO.RequiredJobdao;
 import com.career.DAO.NoticePerioddao;
 import com.career.DAO.Salarydao;
 import com.career.model.CareerLevel;
 import com.career.model.EmpStatus;
 import com.career.model.EmpType;
-import com.career.model.Job;
+import com.career.model.RequiredJob;
 import com.career.model.NoticePeriod;
 import com.career.model.Salary;
 import java.io.IOException;
@@ -89,11 +89,11 @@ public class getEditJob extends HttpServlet {
         NoticePerioddao n_dao = new NoticePerioddao();
         List<NoticePeriod> notice = n_dao.FindAll();
 
-        Jobdao dao = new Jobdao();
+        RequiredJobdao dao = new RequiredJobdao();
 
         String buffer = null;
 
-        Job j = dao.FindByID(request.getParameter("id"));
+        RequiredJob j = dao.FindByID(request.getParameter("id"));
         System.out.println("ID :" + request.getParameter("id"));
 
         buffer = "";

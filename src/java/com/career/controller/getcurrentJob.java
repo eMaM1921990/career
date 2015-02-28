@@ -8,13 +8,13 @@ package com.career.controller;
 import com.career.DAO.CareerLeverdao;
 import com.career.DAO.EmpStatusdao;
 import com.career.DAO.EmpTypedao;
-import com.career.DAO.Jobdao;
+import com.career.DAO.RequiredJobdao;
 import com.career.DAO.NoticePerioddao;
 import com.career.DAO.Salarydao;
 import com.career.model.CareerLevel;
 import com.career.model.EmpStatus;
 import com.career.model.EmpType;
-import com.career.model.Job;
+import com.career.model.RequiredJob;
 import com.career.model.NoticePeriod;
 import com.career.model.Salary;
 import com.career.model.User;
@@ -96,10 +96,10 @@ public class getcurrentJob extends HttpServlet {
         
        
         
-        Jobdao dao = new Jobdao();
+        RequiredJobdao dao = new RequiredJobdao();
         
         String buffer = "";
-        Job j = dao.Find(Integer.toString(u.getCv()));
+        RequiredJob j = dao.Find(Integer.toString(u.getCv()));
         if (j.getID()> 0) {
 
             

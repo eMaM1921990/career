@@ -7,7 +7,7 @@
 package com.career.DAO;
 
 import com.career.dao.i.dao;
-import com.career.model.Job;
+import com.career.model.RequiredJob;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -19,12 +19,12 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class Jobdao implements dao<Job>{
+public class RequiredJobdao implements dao<RequiredJob>{
 
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(Job o) {
+    public String Presist(RequiredJob o) {
         String result = null;
         try {
             db.connect();
@@ -46,14 +46,14 @@ public class Jobdao implements dao<Job>{
         } catch (SQLException ex) {
             db.closeConnection();
             result="["+ex.getErrorCode()+"] message :"+ex.getMessage();
-            Logger.getLogger(Jobdao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequiredJobdao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
 
     @Override
-    public Job Find(String id) {
-        Job j=new Job();
+    public RequiredJob Find(String id) {
+        RequiredJob j=new RequiredJob();
         try {
             db.connect();
             db.pstm=db.con.prepareStatement(sql.GET_JOB);
@@ -75,7 +75,7 @@ public class Jobdao implements dao<Job>{
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(Jobdao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequiredJobdao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return j;
@@ -83,8 +83,8 @@ public class Jobdao implements dao<Job>{
     }
 
     
-      public Job FindByID(String id) {
-        Job j=new Job();
+      public RequiredJob FindByID(String id) {
+        RequiredJob j=new RequiredJob();
         try {
             db.connect();
             db.pstm=db.con.prepareStatement(sql.GET_JOB_BYID);
@@ -106,7 +106,7 @@ public class Jobdao implements dao<Job>{
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(Jobdao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequiredJobdao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return j;
@@ -119,22 +119,22 @@ public class Jobdao implements dao<Job>{
     }
 
     @Override
-    public List<Job> FindAll() {
+    public List<RequiredJob> FindAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Job> FindByParentId(int parentID) {
+    public List<RequiredJob> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Job> FindBy(Job o) {
+    public List<RequiredJob> FindBy(RequiredJob o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(Job o) {
+    public String update(RequiredJob o) {
         try {
             db.connect();
             db.pstm=db.con.prepareStatement(sql.UPDATE_JOB);
@@ -154,7 +154,7 @@ public class Jobdao implements dao<Job>{
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(Jobdao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RequiredJobdao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return "ok";
