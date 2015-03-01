@@ -10,7 +10,11 @@ import com.career.dao.i.dao;
 import com.career.model.Jobs;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -37,7 +41,28 @@ public class Jobsdao implements dao<Jobs>{
 
     @Override
     public List<Jobs> FindAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Jobs> data=new ArrayList<>();
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.GET_JOB_SEARCH);
+            db.rs=db.pstm.executeQuery();
+            while(db.rs.next()){
+                Jobs j=new Jobs();
+                j.setName(db.rs.getString(1));
+                j.setDesc(db.rs.getString(2));
+                j.setPostDate(db.rs.getString(3));
+                j.setIsOpen(db.rs.getInt(4));
+                j.setUser(db.rs.getString(5));
+                j.setId(db.rs.getInt(6));
+                data.add(j);
+            }
+            
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(Jobsdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return data;
     }
 
     @Override
@@ -47,7 +72,29 @@ public class Jobsdao implements dao<Jobs>{
 
     @Override
     public List<Jobs> FindBy(Jobs o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Jobs> data=new ArrayList<>();
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.GET_JOB_SEARCH);
+            db.pstm.setString(1, "%" + o.getName() + "%");
+            db.rs=db.pstm.executeQuery();
+            while(db.rs.next()){
+                Jobs j=new Jobs();
+                j.setName(db.rs.getString(1));
+                j.setDesc(db.rs.getString(2));
+                j.setPostDate(db.rs.getString(3));
+                j.setIsOpen(db.rs.getInt(4));
+                j.setUser(db.rs.getString(5));
+                j.setId(db.rs.getInt(6));
+                data.add(j);
+            }
+            
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(Jobsdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return data;
     }
 
     @Override

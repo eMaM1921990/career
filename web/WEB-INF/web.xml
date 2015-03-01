@@ -212,6 +212,14 @@
         <servlet-name>SearchJob</servlet-name>
         <servlet-class>com.career.viewer.SearchJob</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>searchforjob</servlet-name>
+        <servlet-class>com.career.controller.searchforjob</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ApplyforJob</servlet-name>
+        <servlet-class>com.career.controller.ApplyforJob</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -423,6 +431,14 @@
     <servlet-mapping>
         <servlet-name>SearchJob</servlet-name>
         <url-pattern>/SearchJob</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>searchforjob</servlet-name>
+        <url-pattern>/searchforjob</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApplyforJob</servlet-name>
+        <url-pattern>/ApplyforJob</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

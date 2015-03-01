@@ -24,11 +24,25 @@ $(document).ready(function() {
        window.open('Register','_self'); 
     });
     
-    $('#search').click(function() {
+    $('#search').click(function(event) {
         var searchjob = $('#searchjob').val().trim();
        
-        $.post('LogAuth', {u: username, p: password}, function(responseText) {
+        $.post('searchforjob', {searchjob: searchjob}, function(responseText) {
             
+            $('#result').html(responseText);
+           
+        });
+    });
+    
+    
+    
+       
+    $('#applyjob').click(function(event) {
+        var id = $('#id').val().trim();
+       
+        $.post('ApplyforJob', {searchjob: searchjob}, function(responseText) {
+            $('.alert-info').removeClass("display");
+            $('#result').html(responseText);
            
         });
     });

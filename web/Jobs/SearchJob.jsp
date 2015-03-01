@@ -117,6 +117,7 @@
         <script src="js/application.min.js"></script>
         <!-- Just for demonstration -->
         <script src="js/demonstration.min.js"></script>
+        <script src="js/Login.js"></script>
 
         <!--[if lte IE 9]>
                 <script src="js/plugins/placeholder/jquery.placeholder.min.js"></script>
@@ -154,85 +155,84 @@
                     <div class="close-bread">
                         <a href="#"><i class="icon-remove"></i></a>
                     </div>
+
                 </div>
                 <div class="row-fluid">
                     <span class="span12">
-                        <div class="box">
-                        <div class="box-title">
-                            <h3>
-                                <i class="icon-magic"></i>
-                                بحث الوظائف
-                            </h3>
-                        </div>    
+                        
+                        <div class="alert alert-info">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>Warning!</strong> Best check yo self, you're not looking too good.
                         </div>
                         
+                        <div class="box">
+                            <div class="box-title">
+                                <h3>
+                                    <i class="icon-magic"></i>
+                                    بحث الوظائف
+                                </h3>
+                            </div>  
+
+                        </div>
+
 
                     </span>
 
-                   
+
                     <div class="span12">
                         <div class="box">
 
                             <div class="box-content">
-                                <form action="post.php" method="POST" class="form-horizontal form-wizard ui-formwizard" id="bb" novalidate="novalidate">
-                                    <div class="step ui-formwizard-content" id="firstStep" style="display: block;">
-                                        <div class="control-group">
-                                            <label for="firstname" class="control-label">أدخل اسم الوظيفة</label>
-                                            <div class="controls">
-                                                <input type="text"  id="searchjob" class="input-xlarge ui-wizard-content">
-                                                <button class="btn" id="search"><i class="icon-search"></i> </button>
-                                            </div>
+                                <div  class="form-horizontal " >
+
+                                    <div class="control-group">
+                                        <label for="firstname" class="control-label">أدخل اسم الوظيفة</label>
+                                        <div class="controls">
+                                            <input type="text"  id="searchjob" class="input-xlarge ui-wizard-content">
+                                            <button class="btn" id="search"><i class="icon-search"></i> </button>
                                         </div>
-
-
                                     </div>
 
 
-                                </form>
+
+
+
+                                </div>
                             </div>
                         </div>
                     </div>
-                   
+
 
                 </div>
-                
+
                 <div class="row-fluid">
-					<div class="span12">
-						<div class="box box-color box-bordered">
-							<div class="box-title">
-								<h3>
-									<i class="icon-search"></i>
-									نتائج البحث
-								</h3>
-							</div>
-							<div class="box-content nopadding">
-								<div class="highlight-toolbar">
-									
-									<div class="pull-right">
-										<div class="btn-group">
-											<span>Showing results <strong>1-25</strong> of <strong>348</strong></span>
-										</div>
-									</div>
-								</div>
-								<div class="search-results">
-									<ul>
-										<li>
-											<div class="thumbnail">
-												<img src="http://www.placehold.it/80" alt="">
-											</div>
-											<div class="search-info">
-												<a href="#">Lorem ipsum dolor</a>
-												<p class="url">www.loremasdasdd.com/</p>
-												<p>Lorem ipsum minim quis mollit occaecat consectetur irure. Lorem ipsum officia Excepteur ut aliqua cillum est laboris. Lorem ipsum in exercitation enim veniam exercitation consectetur. Lorem ipsum cupidatat ea culpa cupidatat sed proident officia consequat irure dolore Excepteur consectetur. Lorem ipsum sunt ut aliquip commodo mollit ad culpa. Lorem ipsum aliquip sit laborum reprehenderit amet et anim pariatur. Lorem ipsum Ut quis irure enim quis commodo ullamco ad qui qui ut id. </p>
-											</div>
-										</li>
-									</ul>
-								</div>
-								
-							</div>
-						</div>
-					</div>
-				</div>
+                    <div class="span12">
+                        <div class="box box-color box-bordered">
+                            <div class="box-title">
+                                <h3>
+                                    <i class="icon-search"></i>
+                                    نتائج البحث
+                                </h3>
+                            </div>
+                            <div class="box-content nopadding">
+                                <div class="highlight-toolbar">
+
+                                    <div class="pull-right">
+                                        <div class="btn-group">
+                                            <span>Showing results <strong>1-25</strong> of <strong>348</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-results">
+                                    <ul>
+                                        <div id="result"></div>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
