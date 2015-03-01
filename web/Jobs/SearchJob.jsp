@@ -136,6 +136,25 @@
     </head>
     <body>
         <%@include file="../header_segment.jsp" %>
+        
+        <div id="modal-1" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">اختر السيرة الذاتية</h3>
+			</div>
+			<div class="modal-body">
+				<div class="control-group">
+                                        <label for="firstname" class="control-label">أدخل اسم الوظيفة</label>
+                                        <div class="controls">
+                                            <input type="text"  id="cvid" class="input-xlarge ui-wizard-content">
+                                        </div>
+                                    </div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn" data-dismiss="modal" aria-hidden="true" id="close">خروج</button>
+				<button class="btn btn-primary" data-dismiss="modal" id="applyjob">تقديم</button>
+			</div>
+		</div>
         <div id="main">
             <div class="container-fluid">
                 <div class="page-header">
@@ -160,10 +179,7 @@
                 <div class="row-fluid">
                     <span class="span12">
                         
-                        <div class="alert alert-info">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>Warning!</strong> Best check yo self, you're not looking too good.
-                        </div>
+                        <div id="response"></div>
                         
                         <div class="box">
                             <div class="box-title">

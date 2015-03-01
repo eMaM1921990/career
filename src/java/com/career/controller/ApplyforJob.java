@@ -6,12 +6,16 @@
 
 package com.career.controller;
 
+import com.career.DAO.Jobsdao;
+import com.career.model.Jobs;
+import com.career.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,18 +35,7 @@ public class ApplyforJob extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ApplyforJob</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ApplyforJob at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -72,6 +65,18 @@ public class ApplyforJob extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        HttpSession session=request.getSession();
+        User u=(User)session.getAttribute("login");
+        Jobs j=new Jobs();
+        j.setJobid(Integer.valueOf(request.getParameter("id")));
+        j.setUser(u.getU_name());
+        j.setUsercv(Integer.valueOf(request.getParameter("cvid")));
+        
+        Jobsdao dao=new Jobsdao();
+        String msg=dao.Presist(j);
+        
+        response.getWriter().write(msg);
+        
     }
 
     /**

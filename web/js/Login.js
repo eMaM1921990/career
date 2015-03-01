@@ -37,15 +37,32 @@ $(document).ready(function() {
     
     
        
-    $('#applyjob').click(function(event) {
-        var id = $('#id').val().trim();
+   
+    
+    
+});
+
+
+
+function getJobId(id){
+    $("#modal-1").show(500);
+    
+     $('#applyjob').click(function(event) {
+        var cv_id = $('#cvid').val();
+        
        
-        $.post('ApplyforJob', {searchjob: searchjob}, function(responseText) {
-            $('.alert-info').removeClass("display");
-            $('#result').html(responseText);
+        $.post('ApplyforJob',{cvid:cv_id,id:id}, function(responseText) {
+            $("#modal-1").hide(500);
+            var msg='<div class=\"alert alert-info\"><button type=\"button\" class\"close\" data-dismiss=\"alert\">×</button>'+responseText+'</div>';
+            $('#response').html(msg);
            
         });
     });
     
     
-});
+    
+    $('#close').click(function(event) {
+         $("#modal-1").hide(500);
+    });
+    
+}

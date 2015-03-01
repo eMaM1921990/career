@@ -26,7 +26,23 @@ public class Jobsdao implements dao<Jobs>{
     SQLCommon sql=new SQLCommon();
     @Override
     public String Presist(Jobs o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String msg=null;
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.APPLY_TO_JOB);
+            db.pstm.setInt(1, o.getJobid());
+            db.pstm.setInt(2, o.getUsercv());
+            db.pstm.setString(3, o.getUser());
+            db.pstm.executeUpdate();
+            db.closeConnection();
+            msg="Applied";
+            
+        } catch (SQLException ex) {
+            db.closeConnection();
+            msg="["+ex.getErrorCode()+"]"+ex.getMessage();
+            Logger.getLogger(Jobsdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return msg;
     }
 
     @Override

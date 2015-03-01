@@ -251,4 +251,8 @@ public class SQLCommon {
 
     public String GET_JOB_SEARCH = "SELECT \"NAME\", \"DESCRIPTION\", \"POST_DATE\", \"IS_OPEN\", u_name, \"ID\"\n"
             + "  FROM employment.userjobs where \"NAME\" like ?";
+    
+    public String APPLY_TO_JOB="INSERT INTO employment.\"Applied_job\"(\n" +
+"            job_id, user_cv_id, \"user\")\n" +
+"    VALUES (?, ?, ?)";
 }
