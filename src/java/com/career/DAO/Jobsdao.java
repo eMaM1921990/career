@@ -89,6 +89,7 @@ public class Jobsdao implements dao<Jobs>{
     @Override
     public List<Jobs> FindBy(Jobs o) {
         List<Jobs> data=new ArrayList<>();
+        data.clear();
         try {
             db.connect();
             db.pstm=db.con.prepareStatement(sql.GET_JOB_SEARCH);

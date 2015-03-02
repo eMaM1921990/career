@@ -66,3 +66,13 @@ function getJobId(id){
     });
     
 }
+
+
+function saveJob(id){
+    $.post('Savesearchjob',{id:id}, function(responseText) {
+            
+            var msg='<div class=\"alert alert-info\"><button type=\"button\" class\"close\" data-dismiss=\"alert\">×</button>'+responseText+'</div>';
+            $('#response').html(msg);
+           
+        });
+}

@@ -54,7 +54,7 @@ public class searchforjob extends HttpServlet {
                
                     buffer=buffer+ "<p >\n"
                         + "<button class=\"btn btn-info\" id=\"applyjob\" onclick='getJobId("+s.getId()+")'><i class=\"icon-leaf\"></i></button>\n"
-                        + "<button class=\"btn btn-warning\" id=\"savejob\"><i class=\"icon-heart\"></i></button>\n"
+                        + "<button class=\"btn btn-warning\" id=\"savejob\" onclick='saveJob("+s.getId()+")'><i class=\"icon-heart\"></i></button>\n"
                         + "</p>";
                 
                 

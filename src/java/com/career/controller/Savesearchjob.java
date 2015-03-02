@@ -4,15 +4,13 @@
  * and open the template in the editor.
  */
 
-package com.career.viewer;
+package com.career.controller;
 
-import com.career.DAO.cvdao;
-import com.career.model.Cv;
+import com.career.DAO.savedjobdao;
+import com.career.model.SavedJob;
 import com.career.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author emam
  */
-public class SearchJob extends HttpServlet {
+public class Savesearchjob extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,15 +35,7 @@ public class SearchJob extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        HttpSession session=request.getSession();
-        User u=(User)session.getAttribute("login");
-        cvdao dao=new cvdao();
-        Cv c=new Cv();
-        c.setName(u.getU_name());
-        List<Cv> data=dao.FindBy(c);
-        RequestDispatcher send=request.getRequestDispatcher("/Jobs/SearchJob.jsp");
-        request.setAttribute("list", data);
-        send.forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -75,6 +65,15 @@ public class SearchJob extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        HttpSession session=request.getSession();
+        User u=(User)session.getAttribute("login");
+        savedjobdao dao=new savedjobdao();
+        SavedJob jobsaved=new SavedJob();
+        jobsaved.setJobId(Integer.valueOf(request.getParameter("id")));
+        jobsaved.setUser(u.getU_name());
+        String msg=dao.Presist(jobsaved);
+        response.getWriter().write(msg);
+        
     }
 
     /**

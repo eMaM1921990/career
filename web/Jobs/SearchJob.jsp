@@ -4,6 +4,7 @@
     Author     : emam
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!doctype html>
@@ -136,25 +137,36 @@
     </head>
     <body>
         <%@include file="../header_segment.jsp" %>
-        
+
         <div id="modal-1" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">اختر السيرة الذاتية</h3>
-			</div>
-			<div class="modal-body">
-				<div class="control-group">
-                                        <label for="firstname" class="control-label">أدخل اسم الوظيفة</label>
-                                        <div class="controls">
-                                            <input type="text"  id="cvid" class="input-xlarge ui-wizard-content">
-                                        </div>
-                                    </div>
-			</div>
-			<div class="modal-footer">
-				<button class="btn" data-dismiss="modal" aria-hidden="true" id="close">خروج</button>
-				<button class="btn btn-primary" data-dismiss="modal" id="applyjob">تقديم</button>
-			</div>
-		</div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">اختر السيرة الذاتية</h3>
+            </div>
+            <div class="modal-body">
+                <div class="control-group">
+                    <div  class="form-horizontal " >
+                   
+                        <label for="textfield" class="control-label">اختر سيرتك الذاتية</label>
+                        <div class="controls">
+                            <select name="s2" id="cvid" class='select2-me input-xlarge'>
+                                 <c:forEach items="${list}" var="r"> 
+                                    <option value="<c:out value="${r.getId()}"/>"><c:out value="${r.getCV_name()}"/></option>
+                                </c:forEach>
+                                
+                            </select>
+                        </div>
+                        
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true" id="close">خروج</button>
+                <button class="btn btn-primary" data-dismiss="modal" id="applyjob">تقديم</button>
+            </div>
+        </div>
         <div id="main">
             <div class="container-fluid">
                 <div class="page-header">
@@ -178,9 +190,9 @@
                 </div>
                 <div class="row-fluid">
                     <span class="span12">
-                        
+
                         <div id="response"></div>
-                        
+
                         <div class="box">
                             <div class="box-title">
                                 <h3>

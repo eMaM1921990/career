@@ -3721,6 +3721,8 @@ input,textarea{
 	border-radius:0
 ;
 	direction: rtl;
+	height: 400p;
+	height: 4;
 }
 
 .modal .modal-footer{
