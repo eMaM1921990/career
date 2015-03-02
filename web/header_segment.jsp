@@ -42,7 +42,7 @@
                         <a href="SearchJob">بحث الوظائف المتاحة</a>
                     </li>
                     <li class='active'>
-                        <a href="myCvs?id=<jsp:getProperty name="login" property="cv"/>">
+                        <a href="DisplaySavedJob">
                             عرض الوظائف المحفوظة</a>
                     </li>
                     <li class='active'>
