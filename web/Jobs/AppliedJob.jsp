@@ -137,7 +137,6 @@
     </head>
     <body>
         <%@include file="../header_segment.jsp" %>
-
         <div id="modal-1" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -150,7 +149,7 @@
                         <label for="textfield" class="control-label">اختر سيرتك الذاتية</label>
                         <div class="controls">
                             <select name="s2" id="cvid" class='select2-me input-xlarge'>
-                                 <c:forEach items="${list}" var="r"> 
+                                 <c:forEach items="${listc}" var="r"> 
                                     <option value="<c:out value="${r.getId()}"/>"><c:out value="${r.getCV_name()}"/></option>
                                 </c:forEach>
                                 
@@ -163,13 +162,14 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn" data-dismiss="modal" aria-hidden="true" id="close" >خروج</button>
+                <button class="btn" data-dismiss="modal" aria-hidden="true" id="close">خروج</button>
                 <button class="btn btn-primary" data-dismiss="modal" id="applyjob">تقديم</button>
             </div>
         </div>
+
         <div id="main">
             <div class="container-fluid">
-                
+
                 <div class="row-fluid">
                     <span class="span12">
 
@@ -179,39 +179,17 @@
                             <div class="box-title">
                                 <h3>
                                     <i class="icon-magic"></i>
-                                    بحث الوظائف
+                                    الوظائف المقدم لها
                                 </h3>
-                            </div>  
+                            </div> 
+                            <div id="response"></div>
 
                         </div>
-                        <div id="response"></div>
 
 
                     </span>
 
 
-                    <div class="span12">
-                        <div class="box">
-
-                            <div class="box-content">
-                                <div  class="form-horizontal " >
-
-                                    <div class="control-group">
-                                        <label for="firstname" class="control-label">أدخل اسم الوظيفة</label>
-                                        <div class="controls">
-                                            <input type="text"  id="searchjob" class="input-xlarge ui-wizard-content">
-                                            <button class="btn" id="search"><i class="icon-search"></i> </button>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
                 </div>
@@ -219,12 +197,7 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="box box-color box-bordered">
-                            <div class="box-title">
-                                <h3>
-                                    <i class="icon-search"></i>
-                                    نتائج البحث
-                                </h3>
-                            </div>
+
                             <div class="box-content nopadding">
                                 <div class="highlight-toolbar">
 
@@ -236,7 +209,36 @@
                                 </div>
                                 <div class="search-results">
                                     <ul>
-                                        <div id="result"></div>
+                                        <c:forEach items="${list}" var="s">
+                                        <li>
+                                            <div class="search-info">
+                                                <c:choose>
+                                                        <c:when test="${s.getIsOpen()==1}">
+                                                            <span style="color: white;float: left;font-style: inherit;font-size: x-large;" class="btn btn-success">
+                                                            Open </span>   
+                                                        </c:when>
+                                                    <c:otherwise><span style="color: white;float: left;font-style: inherit;font-size: x-large;" class="btn btn-danger">
+                                                            Closed </span> </c:otherwise>
+                                                    </c:choose>
+                                                
+                                                <span style="color: white;float: left;font-style: inherit;font-size: x-large;" class="btn btn-info">
+                                                            <c:out value="${s.getAppliedStatus()}"/>  </span> 
+                                                    
+                                                <a href=\"#\">
+                                                    
+                                                    
+                                                        <c:out value="${s.getName()}"/> 
+                                                    
+                                                </a>
+                                                <p class="url"><c:out value="${s.getPostDate()}"/></p>
+                                                <p><c:out value="${s.getDesc()}"/> </p>
+
+                                                
+
+                                            </div>
+                                        </li>
+                                        
+                                        </c:forEach>
                                     </ul>
                                 </div>
 

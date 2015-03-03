@@ -4,6 +4,7 @@
     Author     : emam
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!doctype html>
@@ -111,12 +112,12 @@
         <script src="js/plugins/mockjax/jquery.mockjax.js"></script>
 
         <!-- dataTables -->
-	<script src="js/plugins/datatable/jquery.dataTables.min.js"></script>
-	<script src="js/plugins/datatable/TableTools.min.js"></script>
-	<script src="js/plugins/datatable/ColReorderWithResize.js"></script>
-	<script src="js/plugins/datatable/ColVis.min.js"></script>
-	<script src="js/plugins/datatable/jquery.dataTables.columnFilter.js"></script>
-	<script src="js/plugins/datatable/jquery.dataTables.grouping.js"></script>
+        <script src="js/plugins/datatable/jquery.dataTables.min.js"></script>
+        <script src="js/plugins/datatable/TableTools.min.js"></script>
+        <script src="js/plugins/datatable/ColReorderWithResize.js"></script>
+        <script src="js/plugins/datatable/ColVis.min.js"></script>
+        <script src="js/plugins/datatable/jquery.dataTables.columnFilter.js"></script>
+        <script src="js/plugins/datatable/jquery.dataTables.grouping.js"></script>
 
         <!-- Theme framework -->
         <script src="js/eakroko.min.js"></script>
@@ -144,90 +145,61 @@
         <%@include file="../header_segment.jsp" %>
         <div id="main">
             <div class="container-fluid">
-                <div class="page-header">
-                        <div class="pull-left">
-                            <h1>السيرة الذاتية</h1>
-                        </div>
+
+                <span class="span12">
+
+
+
+                    <div class="box">
+                        <div class="box-title">
+                            <h3>
+                                <i class="icon-magic"></i>
+                                مشاهدة السيرة الذاتية
+                            </h3>
+                        </div>  
 
                     </div>
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li>
-                                <a href="more-login.html">السيرة الذاتية</a>
-                                <i class="icon-angle-right"></i>
-                            </li>
+                    <div id="response"></div>
 
-                        </ul>
-                        <div class="close-bread">
-                            <a href="#"><i class="icon-remove"></i></a>
-                        </div>
-                    </div>
+
+                </span>
+
                 <div class="row-fluid">
-                 <div class="span12">
-						<div class="box">
-							
-							<div class="box-content nopadding">
-								<table class="table table-hover table-nomargin table-colored-header">
-									<thead>
-										<tr>
-											<th>Rendering engine</th>
-											<th>Browser</th>
-											<th class="hidden-350">Platform(s)</th>
-											<th class="hidden-1024">Engine version</th>
-											<th class="hidden-480">CSS grade</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Trident</td>
-											<td>
-												Internet
-												Explorer 4.0
-											</td>
-											<td class="hidden-350">Win 95+</td>
-											<td class="hidden-1024">4</td>
-											<td class="hidden-480">X</td>
-										</tr>
-										<tr>
-											<td>Presto</td>
-											<td>Nokia N800</td>
-											<td class="hidden-350">N800</td>
-											<td class="hidden-1024">-</td>
-											<td class="hidden-480">A</td>
-										</tr>
-										<tr>
-											<td>Misc</td>
-											<td>NetFront 3.4</td>
-											<td class="hidden-350">Embedded devices</td>
-											<td class="hidden-1024">-</td>
-											<td class="hidden-480">A</td>
-										</tr>
-										<tr>
-											<td>Misc</td>
-											<td>Dillo 0.8</td>
-											<td class="hidden-350">Embedded devices</td>
-											<td class="hidden-1024">-</td>
-											<td class="hidden-480">X</td>
-										</tr>
-										<tr>
-											<td>Misc</td>
-											<td>Links</td>
-											<td class="hidden-350">Text only</td>
-											<td class="hidden-1024">-</td>
-											<td class="hidden-480">X</td>
-										</tr>
-										<tr>
-											<td>Misc</td>
-											<td>Lynx</td>
-											<td class="hidden-350">Text only</td>
-											<td class="hidden-1024">-</td>
-											<td class="hidden-480">X</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
+
+
+                    <div class="span12">
+                        <div class="box">
+
+                            <div class="box-content ">
+                                <table class="table table-hover table-nomargin table-colored-header">
+                                    <thead>
+                                        <tr>
+                                            <th>اسم السيرة الذاتية</th>
+                                            <th>تاريخ الأنشاء</th>
+                                            <th class="hidden-350">إفتراضى</th>
+                                            <th class="hidden-1024">تحكم</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${list}" var="l">
+                                        <tr>
+                                            <td><c:out value="${l.getCV_name()}"/></td>
+                                            <td>
+                                               <c:out value="${l.getCreateIn()}"/>
+                                            </td>
+                                            <td class="hidden-350"><c:out value="${l.getIsDefault()}"/></td>
+                                            <td class="hidden-1024"><a href="myCvs?id=<c:out value="${l.getId()}"/>"><i class="icon-eye-open"></i>عرض السيرة</a></td>
+                                            
+                                        </tr>
+                                        
+                                     </c:forEach>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

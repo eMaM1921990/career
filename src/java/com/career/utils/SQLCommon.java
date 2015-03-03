@@ -245,12 +245,16 @@ public class SQLCommon {
             + "   SET  member_since=?::date, rolement=?,\"COMP_NAME\"=?\n"
             + " WHERE id=?";
 
-    public String GET_USER_CVS = "SELECT id, username, cv_name, \"IS_DEFAULT\"\n"
-            + "  FROM employment.users_cvs WHERE username=?";
+    public String GET_USER_CVS = "SELECT id, username, cv_name, \"IS_DEFAULT\",date_of_creation\n"
+            + "  FROM employment.users_cvs WHERE username=? order by date_of_creation DESC";
 
-    public String GET_JOB_SEARCH = "SELECT \"NAME\", \"DESCRIPTION\", \"POST_DATE\", \"IS_OPEN\", u_name, \"ID\"\n"
+    public String GET_JOB_SEARCH = "SELECT \"NAME\", \"DESCRIPTION\", \"POST_DATE\", \"IS_OPEN\", u_name, \"ID\",applied_status\n"
             + "  FROM employment.userjobs where \"NAME\" like ?";
 
+    public String GET_JOB_APPLIEDBYNAME = "SELECT \"NAME\", \"DESCRIPTION\", \"POST_DATE\", \"IS_OPEN\", u_name, \"ID\",applied_status\n"
+            + "  FROM employment.userjobs where u_name=?";
+
+    
     public String APPLY_TO_JOB = "INSERT INTO employment.\"Applied_job\"(\n"
             + "            job_id, user_cv_id, \"user\")\n"
             + "    VALUES (?, ?, ?)";

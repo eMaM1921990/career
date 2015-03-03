@@ -3552,6 +3552,8 @@ li [class^="glyphicon-"],li [class*=" glyphicon-"],.nav li [class^="glyphicon-"]
 	-webkit-box-shadow:none;
 	-moz-box-shadow:none;
 	box-shadow:none
+;
+	direction:;
 }
 
 .dropdown-menu:before{
@@ -4854,7 +4856,9 @@ label,input,button,select,textarea{
 
 #navigation .dropdown-menu{
 	border-top:0;
-	border-color:rgba(0, 0, 0, 1)
+	border-color: #E64F07;
+	direction: rtl;
+	text-align: -webkit-auto;
 }
 
 #navigation .dropdown-menu>li.dropdown-submenu .dropdown-menu{

@@ -15,6 +15,16 @@ public class Cv {
     private String name;
     private String cv_name;
     private int isdefault;
+    public String createdin;
+    
+    
+    public void setCreatedIn(String s){
+        this.createdin=s;
+    }
+    
+    public String getCreateIn(){
+        return createdin;
+    }
     
     public void setIsDefault(int i){
         this.isdefault=i;

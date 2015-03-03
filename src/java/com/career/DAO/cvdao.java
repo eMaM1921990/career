@@ -81,6 +81,7 @@ public class cvdao implements dao<Cv>{
                 c.setName(db.rs.getString(2));
                 c.setCV_name(db.rs.getString(3));
                 c.setIsDefault(db.rs.getInt(4));
+                c.setCreatedIn(db.rs.getString(5));
                 data.add(c);
             }
             

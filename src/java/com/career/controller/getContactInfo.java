@@ -80,7 +80,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">البريد الالكترونى </label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" onkeypress=\"EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -155,7 +155,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">العنوان   (السطر اﻻول)</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Address one\" id=\"address1\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Address one\" id=\"address1\" autocomplete=\"off\" onkeypress=\"EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -165,7 +165,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">العنوان ( السطر الثانى )</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Address two\" id=\"address2\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Address two\" id=\"address2\" autocomplete=\"off\" onkeypress=\"EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";

@@ -228,6 +228,10 @@
         <servlet-name>DisplaySavedJob</servlet-name>
         <servlet-class>com.career.viewer.DisplaySavedJob</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DisplayAppliedJob</servlet-name>
+        <servlet-class>com.career.viewer.DisplayAppliedJob</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -455,6 +459,10 @@
     <servlet-mapping>
         <servlet-name>DisplaySavedJob</servlet-name>
         <url-pattern>/DisplaySavedJob</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplayAppliedJob</servlet-name>
+        <url-pattern>/DisplayAppliedJob</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

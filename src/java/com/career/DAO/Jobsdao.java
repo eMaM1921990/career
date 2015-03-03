@@ -92,8 +92,15 @@ public class Jobsdao implements dao<Jobs>{
         data.clear();
         try {
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_JOB_SEARCH);
-            db.pstm.setString(1, "%" + o.getName() + "%");
+            
+            if(o.getUser().trim()!=null){
+                db.pstm=db.con.prepareStatement(sql.GET_JOB_APPLIEDBYNAME);
+                db.pstm.setString(1, o.getUser());
+            }else{
+                db.pstm=db.con.prepareStatement(sql.GET_JOB_SEARCH);
+                db.pstm.setString(1, "%" + o.getName() + "%");
+            }
+            
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
                 Jobs j=new Jobs();
@@ -103,6 +110,7 @@ public class Jobsdao implements dao<Jobs>{
                 j.setIsOpen(db.rs.getInt(4));
                 j.setUser(db.rs.getString(5));
                 j.setId(db.rs.getInt(6));
+                j.setAppliedStatus(db.rs.getString(7));
                 data.add(j);
             }
             

@@ -12,12 +12,12 @@
         <a href="#" id="brand">Career CV</a>
         <a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
         <ul class='main-nav'>
-            <li>
-                <a href="index.html">
+            <li >
+                <a href="Home">
                     <span>اللوحة الرئيسية</span>
                 </a>
             </li>
-            <li class='active'>
+            <li >
                 <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
                     <span>التحكم</span>
                     <span class="caret"></span>
@@ -26,13 +26,13 @@
                     <li>
                         <a href="NewCV">أنشاء السيرة الذاتية </a>
                     </li>
-                    <li class='active'>
-                        <a href="myCvs?id=<jsp:getProperty name="login" property="cv"/>">مشاهدة السيرة الذاتية</a>
+                    <li >
+                        <a href="Lists">مشاهدة السيرة الذاتية</a>
                     </li>
                     
                 </ul>
             </li>
-            <li class='active'>
+            <li >
                 <a href="#" data-toggle="dropdown" class='dropdown-toggle'>
                     <span>الوظائف</span>
                     <span class="caret"></span>
@@ -41,12 +41,12 @@
                     <li>
                         <a href="SearchJob">بحث الوظائف المتاحة</a>
                     </li>
-                    <li class='active'>
+                    <li >
                         <a href="DisplaySavedJob">
                             عرض الوظائف المحفوظة</a>
                     </li>
-                    <li class='active'>
-                        <a href="myCvs?id=<jsp:getProperty name="login" property="cv"/>">
+                    <li >
+                        <a href="DisplayAppliedJob">
                             عرض الوظائف المقدم اليها</a>
                     </li>
                     
