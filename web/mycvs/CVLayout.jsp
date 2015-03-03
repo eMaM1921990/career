@@ -142,29 +142,20 @@
 
             <div id="main">
                 <div class="container-fluid">
-                    <div class="page-header">
-                        <div class="pull-left">
-                            <h1>السيرة الذاتية</h1>
-                        </div>
+
+
+
+
+
+
+                    <div class="box">
+                        <div class="box-title">
+                            <h3>
+                                <i class="icon-magic"></i>
+                                السيرة الذاتية                            </h3>
+                        </div>  
 
                     </div>
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li>
-                                <a href="more-login.html">السيرة الذاتية</a>
-                                <i class="icon-angle-right"></i>
-                            </li>
-
-                        </ul>
-                        <div class="close-bread">
-                            <a href="#"><i class="icon-remove"></i></a>
-                        </div>
-                    </div>
-
-
-
-
-
                     <div class="row-fluid">
 
                         <div class="span8">
@@ -181,7 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
 
 
                     </div>

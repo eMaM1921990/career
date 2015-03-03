@@ -88,14 +88,9 @@ public class getEditExperience extends HttpServlet {
         Experincedao i_dao = new Experincedao();
         Experince e=i_dao.Find(request.getParameter("id"));
         
-        String buffer = null;
+        String buffer = "";
         
-        buffer = "<div class=\"box box-bordered\">"
-                        + "<div class=\"box-title\">"
-                        + "<h3><i class=\"icon-edit\"></i>الخبرات</h3><i class=\"icon-edit\"></i><a id='editep' class='"+e.getID()+"'>تعديل</a>"
-                        + "</div>"
-                        + " <div class=\"box-content nopadding\">"
-                        + "<form class='form-horizontal form-bordered'>";
+     
 
                 String row = "<div class=\"control-group\">"
                         + "<label for=\"textfield\" class=\"control-label\">تاريخ بدء العمل </label>"
@@ -221,15 +216,12 @@ public class getEditExperience extends HttpServlet {
 
                 buffer = buffer + row6;
                 
-                 String action = "<div class=\"controls\">"
-                    + "<label for=\"textfield\" class=\"control-label\"></label>"
-                    + " <div class=\"controls\">"
-                    + "<div class=\"input-prepend\">"
-                    + "<label for=\"textfield\" class=\"control-label\">الخبرات</label>"
-                    + "<input type=\"button\" value=\"تعديل\" class='btn btn-green' id=\"editexpert\">"
-                    + "</div>"
-                    + "</div>"
-                    + "</div>";
+                 String action="<div class=\"form-actions\">"
+                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"button\" id=\"editexpert\">"
+                + "<button type=\"button\" class=\"btn\">إلغاء</button>"
+                + "</div>";
+                
+                 
             buffer = buffer + action;
             
             response.getWriter().write(buffer);

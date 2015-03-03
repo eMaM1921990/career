@@ -437,6 +437,36 @@ function EditSkillView(id) {
     });
 }
 
+
+function deleteexp(id){
+    $.post('deleteExperience', {id: id}, function(responseText) {
+        location.reload();
+    });
+}
+
+function EditExperView(id){
+    $.post('getEditExperience', {id: id}, function(responseText) {
+                $('#experience').html(responseText);
+                $('#editexpert').click(function(event) {
+                    var startdate = $('#startdate').val();
+                    var enddate = $('#enddate').val();
+                    var national_id = $('#national_id').val();
+                    var address = $('#address').val();
+                    var companyname = $('#companyname').val();
+                    var company_industry_id = $('#company_industry_id').val();
+                    var career_role_id = $('#career_role_id').val();
+                    var role_name = $('#role_name').val();
+                    var jobdesc = $('#jobdesc').val();
+                    var id = $('#id').val();
+                    $.post('editExperince', {startdate: startdate, enddate: enddate, national_id: national_id, address: address, companyname: companyname, company_industry_id: company_industry_id, career_role_id: career_role_id, role_name: role_name, jobdesc: jobdesc, id: id}, function(responseText) {
+                        location.reload();
+                    });
+
+
+                });
+            });
+}
+
 function deleteLang(id) {
     $.post('deletelang', {id: id}, function(responseText) {
         location.reload();

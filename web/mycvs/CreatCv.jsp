@@ -140,24 +140,7 @@
 
             <div id="main">
                 <div class="container-fluid">
-                    <div class="page-header">
-                        <div class="pull-left">
-                            <h1>السيرة الذاتية</h1>
-                        </div>
 
-                    </div>
-                    <div class="breadcrumbs">
-                        <ul>
-                            <li>
-                                <a href="more-login.html">السيرة الذاتية</a>
-                                <i class="icon-angle-right"></i>
-                            </li>
-
-                        </ul>
-                        <div class="close-bread">
-                            <a href="#"><i class="icon-remove"></i></a>
-                        </div>
-                    </div>
                     <div class="row-fluid">
 
                         <div class="row-fluid">
@@ -172,8 +155,16 @@
                                             <div class="control-group">
                                                 <label for="textfield" class="control-label">اسم السيرة</label>
                                                 <div class="controls">
-                                                    <input name="textfield" id="textfield" class="input-xlarge" type="text" id="cv_name">
+                                                    <input name="textfield" id="cv_name" class="input-xlarge" type="text" id="cv_name">
 
+                                                </div>
+                                            </div>
+
+                                            <div class="control-group">
+                                                <div class="controls">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" id="IS_DEFAULT" name="IS_DEFAULT"> افتراضى
+                                                </label>
                                                 </div>
                                             </div>
 

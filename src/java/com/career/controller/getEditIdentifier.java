@@ -118,7 +118,7 @@ public class getEditIdentifier extends HttpServlet {
         buffer=buffer+mailrow;
         
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"submit\" id=\"editiden\">"
+                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"button\" id=\"editiden\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

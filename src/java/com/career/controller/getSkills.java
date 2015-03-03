@@ -136,7 +136,7 @@ public class getSkills extends HttpServlet {
         buffer=buffer+skill_last_work;
         
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"saveskill\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"button\" id=\"saveskill\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

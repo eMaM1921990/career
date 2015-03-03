@@ -191,7 +191,7 @@ public class getJobDescription extends HttpServlet {
         buffer=buffer+lastsalaryrow;
         
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"savejob\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"button\" id=\"savejob\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

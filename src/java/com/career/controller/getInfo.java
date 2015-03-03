@@ -203,7 +203,7 @@ public class getInfo extends HttpServlet {
         buffer=buffer+licensecombo;
         
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"saveinfo\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"button\" id=\"saveinfo\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

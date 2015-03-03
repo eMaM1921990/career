@@ -92,7 +92,7 @@ public class getEditMember extends HttpServlet {
         buffer=buffer+role_row;
         
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"submit\" id=\"editmember\">"
+                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"button\" id=\"editmember\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

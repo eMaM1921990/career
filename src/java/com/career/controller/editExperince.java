@@ -80,8 +80,8 @@ public class editExperince extends HttpServlet {
         e.setDesc(request.getParameter("jobdesc"));
         e.setCV(u.getCv());
         e.setID(Integer.valueOf(request.getParameter("id")));
-        dao.update(e);
-        response.getWriter().write("ok");
+        String msg=dao.update(e);
+        response.getWriter().write(msg);
     }
 
     /**

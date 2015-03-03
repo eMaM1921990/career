@@ -8,7 +8,8 @@
 $(document).ready(function() {
     $('#submit').click(function() {
         var cv_name=$('#cv_name').val();
-        $.post('CreateCV',{cv_name:cv_name},function(responseText){
+        var IS_DEFAULT=$('#IS_DEFAULT').is(':checked') ? 1 : 0;
+        $.post('CreateCV',{cv_name:cv_name,IS_DEFAULT:IS_DEFAULT},function(responseText){
             window.open('myCvs?id='+responseText,'_self');
         });
     });

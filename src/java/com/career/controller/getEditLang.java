@@ -173,7 +173,7 @@ public class getEditLang extends HttpServlet {
         buffer = buffer + skill_last_work;
 
         String actionrow = "<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"submit\" id=\"editlang\">"
+                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"button\" id=\"editlang\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer = buffer + actionrow;

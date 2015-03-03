@@ -264,7 +264,7 @@ public class getEditInfo extends HttpServlet {
         buffer = buffer + licensecombo;
         
         String actionrow = "<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"submit\" id=\"editinfo\">"
+                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"button\" id=\"editinfo\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer = buffer + actionrow;

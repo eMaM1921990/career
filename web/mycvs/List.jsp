@@ -188,7 +188,16 @@
                                             <td>
                                                <c:out value="${l.getCreateIn()}"/>
                                             </td>
-                                            <td class="hidden-350"><c:out value="${l.getIsDefault()}"/></td>
+                                            <td class="hidden-350">
+                                                <c:choose >
+                                                    <c:when test="${l.getIsDefault()==1}">
+                                                        <i class="icon-ok"></i>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <i class="icon-remove"></i>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                </td>
                                             <td class="hidden-1024"><a href="myCvs?id=<c:out value="${l.getId()}"/>"><i class="icon-eye-open"></i>عرض السيرة</a></td>
                                             
                                         </tr>

@@ -111,7 +111,7 @@ public class getIdentitfier extends HttpServlet {
         buffer=buffer+mailrow;
         
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"saveiden\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"button\" id=\"saveiden\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

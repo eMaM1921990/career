@@ -6,9 +6,7 @@
 
 package com.career.controller;
 
-import com.career.DAO.cvdao;
-import com.career.model.Cv;
-import com.career.model.User;
+import com.career.DAO.Experincedao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author emam
  */
-public class CreateCV extends HttpServlet {
+public class deleteExperience extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,17 +62,9 @@ public class CreateCV extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        User u = (User) request.getSession().getAttribute("login");
-
-        Cv c = new Cv();
-        cvdao dao = new cvdao();
-        c.setCV_name(request.getParameter("cv_name"));
-        c.setName(u.getU_name());
-        c.setIsDefault(Integer.valueOf(request.getParameter("IS_DEFAULT")));
-        
-        String data = dao.Presist(c);
-        
-        response.getWriter().write(data);
+        Experincedao dao=new Experincedao();
+        String msg=dao.remove(Integer.valueOf(request.getParameter("id")));
+        response.getWriter().write(msg);
     }
 
     /**

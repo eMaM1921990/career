@@ -179,7 +179,7 @@ public class getEdu extends HttpServlet {
         buffer=buffer+desc_row;
         
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"saveedu\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"button\" id=\"saveedu\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

@@ -139,6 +139,7 @@ public class Experincedao implements dao<Experince>{
 
     @Override
     public String update(Experince o) {
+        String msg=null;
         try {
             db.connect();
             db.pstm=db.con.prepareStatement(sql.UPDATE_EXPERIENCE);
@@ -155,12 +156,14 @@ public class Experincedao implements dao<Experince>{
             db.pstm.setInt(11, o.getID());
             db.pstm.executeUpdate();
             db.closeConnection();
+            msg="Updated";
         } catch (SQLException ex) {
                         db.closeConnection();
+                        msg="["+ex.getErrorCode()+"]"+ex.getMessage();
             Logger.getLogger(Experincedao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return "ok";
+        return msg;
     }
     
 }

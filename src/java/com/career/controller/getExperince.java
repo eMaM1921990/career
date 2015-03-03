@@ -199,7 +199,7 @@ public class getExperince extends HttpServlet {
                 buffer = buffer + row6;
                 
                 String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"submit\" id=\"saveexp\">"
+                + "<input class=\"btn btn-primary\" value=\"حفظ\" type=\"button\" id=\"saveexp\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;
