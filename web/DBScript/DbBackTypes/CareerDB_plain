@@ -1,0 +1,2789 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.3.5
+-- Dumped by pg_dump version 9.3.5
+-- Started on 2015-03-04 17:55:24 EET
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 7 (class 2615 OID 108888)
+-- Name: employment; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA employment;
+
+
+ALTER SCHEMA employment OWNER TO postgres;
+
+--
+-- TOC entry 232 (class 3079 OID 11821)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2411 (class 0 OID 0)
+-- Dependencies: 232
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = employment, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 227 (class 1259 OID 142918)
+-- Name: Applied_job; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Applied_job" (
+    job_id integer,
+    user_cv_id integer,
+    applied_status character varying DEFAULT 'Not Viewed'::character varying,
+    applied_date date DEFAULT now(),
+    id integer NOT NULL,
+    "user" character varying
+);
+
+
+ALTER TABLE employment."Applied_job" OWNER TO postgres;
+
+--
+-- TOC entry 226 (class 1259 OID 142916)
+-- Name: Applied_job_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE "Applied_job_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment."Applied_job_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2412 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: Applied_job_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE "Applied_job_id_seq" OWNED BY "Applied_job".id;
+
+
+--
+-- TOC entry 223 (class 1259 OID 142847)
+-- Name: Department; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Department" (
+    id integer NOT NULL,
+    "NAME" character varying
+);
+
+
+ALTER TABLE employment."Department" OWNER TO postgres;
+
+--
+-- TOC entry 222 (class 1259 OID 142845)
+-- Name: Department_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE "Department_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment."Department_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2413 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: Department_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE "Department_id_seq" OWNED BY "Department".id;
+
+
+--
+-- TOC entry 219 (class 1259 OID 142809)
+-- Name: IdentifierList; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "IdentifierList" (
+    id integer NOT NULL,
+    "NAME" character varying,
+    "COMPANY_NAME" character varying,
+    "POSITION_NAME" character varying,
+    "PHONE" character varying,
+    "EMAIL" character varying,
+    "USER_CV" integer
+);
+
+
+ALTER TABLE employment."IdentifierList" OWNER TO postgres;
+
+--
+-- TOC entry 218 (class 1259 OID 142807)
+-- Name: IdentifierList_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE "IdentifierList_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment."IdentifierList_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2414 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: IdentifierList_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE "IdentifierList_id_seq" OWNED BY "IdentifierList".id;
+
+
+--
+-- TOC entry 225 (class 1259 OID 142858)
+-- Name: JOBS; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "JOBS" (
+    "ID" integer NOT NULL,
+    "NAME" character varying,
+    "DEPT_ID" integer,
+    "DESCRIPTION" character varying,
+    "POST_DATE" date DEFAULT now() NOT NULL,
+    "IS_OPEN" integer
+);
+
+
+ALTER TABLE employment."JOBS" OWNER TO postgres;
+
+--
+-- TOC entry 224 (class 1259 OID 142856)
+-- Name: JOBS_ID_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE "JOBS_ID_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment."JOBS_ID_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2415 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: JOBS_ID_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE "JOBS_ID_seq" OWNED BY "JOBS"."ID";
+
+
+--
+-- TOC entry 217 (class 1259 OID 142776)
+-- Name: LanguageList; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "LanguageList" (
+    id integer NOT NULL,
+    "SKILL_LEVEL_ID" integer,
+    "SKILL_LAST_WORK_ID" integer,
+    "SKILL_EXPERINCE_ID" integer,
+    "LANG_ID" integer,
+    "CV_ID" integer
+);
+
+
+ALTER TABLE employment."LanguageList" OWNER TO postgres;
+
+--
+-- TOC entry 216 (class 1259 OID 142774)
+-- Name: LanguageList_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE "LanguageList_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment."LanguageList_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2416 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: LanguageList_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE "LanguageList_id_seq" OWNED BY "LanguageList".id;
+
+
+--
+-- TOC entry 215 (class 1259 OID 142760)
+-- Name: Languages; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Languages" (
+    id integer NOT NULL,
+    "NAME" character varying
+);
+
+
+ALTER TABLE employment."Languages" OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 142758)
+-- Name: Languages_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE "Languages_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment."Languages_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2417 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: Languages_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE "Languages_id_seq" OWNED BY "Languages".id;
+
+
+--
+-- TOC entry 221 (class 1259 OID 142831)
+-- Name: Memebar_ship; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "Memebar_ship" (
+    id integer NOT NULL,
+    member_since date,
+    rolement character varying,
+    cv_id integer,
+    "COMP_NAME" character varying
+);
+
+
+ALTER TABLE employment."Memebar_ship" OWNER TO postgres;
+
+--
+-- TOC entry 220 (class 1259 OID 142829)
+-- Name: Memebar_ship_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE "Memebar_ship_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment."Memebar_ship_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2418 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: Memebar_ship_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE "Memebar_ship_id_seq" OWNED BY "Memebar_ship".id;
+
+
+--
+-- TOC entry 230 (class 1259 OID 142957)
+-- Name: SavedJob; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE "SavedJob" (
+    id integer NOT NULL,
+    job_id integer,
+    "user" character varying,
+    date_of_save date DEFAULT now()
+);
+
+
+ALTER TABLE employment."SavedJob" OWNER TO postgres;
+
+--
+-- TOC entry 229 (class 1259 OID 142955)
+-- Name: SavedJob_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE "SavedJob_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment."SavedJob_id_seq" OWNER TO postgres;
+
+--
+-- TOC entry 2419 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: SavedJob_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE "SavedJob_id_seq" OWNED BY "SavedJob".id;
+
+
+--
+-- TOC entry 178 (class 1259 OID 108915)
+-- Name: career_level; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE career_level (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.career_level OWNER TO postgres;
+
+--
+-- TOC entry 177 (class 1259 OID 108913)
+-- Name: career_level_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE career_level_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.career_level_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2420 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: career_level_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE career_level_id_seq OWNED BY career_level.id;
+
+
+--
+-- TOC entry 190 (class 1259 OID 108968)
+-- Name: career_role; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE career_role (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.career_role OWNER TO postgres;
+
+--
+-- TOC entry 189 (class 1259 OID 108966)
+-- Name: career_role_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE career_role_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.career_role_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2421 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: career_role_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE career_role_id_seq OWNED BY career_role.id;
+
+
+--
+-- TOC entry 186 (class 1259 OID 108947)
+-- Name: cities; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cities (
+    id integer NOT NULL,
+    name character varying,
+    nationality_fk integer
+);
+
+
+ALTER TABLE employment.cities OWNER TO postgres;
+
+--
+-- TOC entry 185 (class 1259 OID 108945)
+-- Name: cities_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE cities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.cities_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2422 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE cities_id_seq OWNED BY cities.id;
+
+
+--
+-- TOC entry 188 (class 1259 OID 108960)
+-- Name: company_industry_type; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE company_industry_type (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.company_industry_type OWNER TO postgres;
+
+--
+-- TOC entry 187 (class 1259 OID 108958)
+-- Name: company_industry_type_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE company_industry_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.company_industry_type_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2423 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: company_industry_type_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE company_industry_type_id_seq OWNED BY company_industry_type.id;
+
+
+--
+-- TOC entry 207 (class 1259 OID 109172)
+-- Name: contact_info; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE contact_info (
+    id integer NOT NULL,
+    mail character varying,
+    phone1 character varying,
+    phone2 character varying,
+    counrty_id integer,
+    citiy_id integer,
+    if_other character varying,
+    address1 character varying,
+    address2 character varying,
+    postalcode integer,
+    box character varying,
+    fax character varying,
+    weburl character varying,
+    cv_id integer,
+    mobile character varying
+);
+
+
+ALTER TABLE employment.contact_info OWNER TO postgres;
+
+--
+-- TOC entry 206 (class 1259 OID 109170)
+-- Name: contact_info_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE contact_info_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.contact_info_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2424 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: contact_info_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE contact_info_id_seq OWNED BY contact_info.id;
+
+
+--
+-- TOC entry 211 (class 1259 OID 109330)
+-- Name: educations; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE educations (
+    id integer NOT NULL,
+    conutry_id integer,
+    city_id integer,
+    major text,
+    certificate character varying,
+    rate_id integer,
+    rate_degree character varying,
+    enddate date,
+    "desc" text,
+    cv_id integer,
+    instatute_name character varying
+);
+
+
+ALTER TABLE employment.educations OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 109328)
+-- Name: educations_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE educations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.educations_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2425 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: educations_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE educations_id_seq OWNED BY educations.id;
+
+
+--
+-- TOC entry 174 (class 1259 OID 108899)
+-- Name: employment_status; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE employment_status (
+    id integer NOT NULL,
+    name character(1)
+);
+
+
+ALTER TABLE employment.employment_status OWNER TO postgres;
+
+--
+-- TOC entry 173 (class 1259 OID 108897)
+-- Name: employment_status_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE employment_status_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.employment_status_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2426 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: employment_status_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE employment_status_id_seq OWNED BY employment_status.id;
+
+
+--
+-- TOC entry 172 (class 1259 OID 108891)
+-- Name: employment_type; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE employment_type (
+    id integer NOT NULL,
+    name character(40)
+);
+
+
+ALTER TABLE employment.employment_type OWNER TO postgres;
+
+--
+-- TOC entry 171 (class 1259 OID 108889)
+-- Name: employment_type_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE employment_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.employment_type_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2427 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: employment_type_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE employment_type_id_seq OWNED BY employment_type.id;
+
+
+--
+-- TOC entry 209 (class 1259 OID 109288)
+-- Name: experience; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE experience (
+    id integer NOT NULL,
+    startdate date,
+    enddate date,
+    national_id integer,
+    address character varying,
+    companyname character varying,
+    company_industry_id integer,
+    career_role_id integer,
+    role_name character varying,
+    jobdesc text,
+    cv_id integer
+);
+
+
+ALTER TABLE employment.experience OWNER TO postgres;
+
+--
+-- TOC entry 208 (class 1259 OID 109286)
+-- Name: experience_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE experience_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.experience_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2428 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: experience_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE experience_id_seq OWNED BY experience.id;
+
+
+--
+-- TOC entry 196 (class 1259 OID 108993)
+-- Name: skillexperience_level; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE skillexperience_level (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.skillexperience_level OWNER TO postgres;
+
+--
+-- TOC entry 195 (class 1259 OID 108991)
+-- Name: experience_level_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE experience_level_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.experience_level_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2429 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: experience_level_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE experience_level_id_seq OWNED BY skillexperience_level.id;
+
+
+--
+-- TOC entry 205 (class 1259 OID 109146)
+-- Name: info; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE info (
+    id integer NOT NULL,
+    f_name character varying,
+    surename character varying,
+    dob date,
+    gender character varying,
+    nationality_id integer,
+    visa_status_id integer,
+    material_status character varying,
+    no_of_own integer,
+    driving_license integer,
+    cv_user_id integer
+);
+
+
+ALTER TABLE employment.info OWNER TO postgres;
+
+--
+-- TOC entry 204 (class 1259 OID 109144)
+-- Name: info_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE info_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.info_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2430 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: info_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE info_id_seq OWNED BY info.id;
+
+
+--
+-- TOC entry 182 (class 1259 OID 108931)
+-- Name: nationality_type; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE nationality_type (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.nationality_type OWNER TO postgres;
+
+--
+-- TOC entry 181 (class 1259 OID 108929)
+-- Name: nationality_type_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE nationality_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.nationality_type_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2431 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: nationality_type_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE nationality_type_id_seq OWNED BY nationality_type.id;
+
+
+--
+-- TOC entry 180 (class 1259 OID 108923)
+-- Name: notice_period; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE notice_period (
+    id integer NOT NULL,
+    name character(1)
+);
+
+
+ALTER TABLE employment.notice_period OWNER TO postgres;
+
+--
+-- TOC entry 179 (class 1259 OID 108921)
+-- Name: notice_period_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE notice_period_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.notice_period_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2432 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: notice_period_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE notice_period_id_seq OWNED BY notice_period.id;
+
+
+--
+-- TOC entry 192 (class 1259 OID 108976)
+-- Name: rate_level; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE rate_level (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.rate_level OWNER TO postgres;
+
+--
+-- TOC entry 191 (class 1259 OID 108974)
+-- Name: rate_level_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE rate_level_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.rate_level_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2433 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: rate_level_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE rate_level_id_seq OWNED BY rate_level.id;
+
+
+--
+-- TOC entry 203 (class 1259 OID 109110)
+-- Name: required_job; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE required_job (
+    id integer NOT NULL,
+    job_name character varying,
+    employment_type_id integer,
+    employement_status_id integer,
+    salary_amount double precision,
+    salary_id integer,
+    career_level_id integer,
+    notice_period_id integer,
+    last_salary_amount double precision,
+    last_salary_id integer,
+    users_cvs_id integer,
+    job_desc text
+);
+
+
+ALTER TABLE employment.required_job OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 109108)
+-- Name: required_job_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE required_job_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.required_job_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2434 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: required_job_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE required_job_id_seq OWNED BY required_job.id;
+
+
+--
+-- TOC entry 176 (class 1259 OID 108907)
+-- Name: salary_type; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE salary_type (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.salary_type OWNER TO postgres;
+
+--
+-- TOC entry 175 (class 1259 OID 108905)
+-- Name: salary_type_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE salary_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.salary_type_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2435 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: salary_type_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE salary_type_id_seq OWNED BY salary_type.id;
+
+
+--
+-- TOC entry 194 (class 1259 OID 108985)
+-- Name: skill_level; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE skill_level (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.skill_level OWNER TO postgres;
+
+--
+-- TOC entry 193 (class 1259 OID 108983)
+-- Name: skill_level_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE skill_level_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.skill_level_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2436 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: skill_level_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE skill_level_id_seq OWNED BY skill_level.id;
+
+
+--
+-- TOC entry 198 (class 1259 OID 109001)
+-- Name: skill_level_last_working; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE skill_level_last_working (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.skill_level_last_working OWNER TO postgres;
+
+--
+-- TOC entry 197 (class 1259 OID 108999)
+-- Name: skill_level_last_working_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE skill_level_last_working_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.skill_level_last_working_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2437 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: skill_level_last_working_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE skill_level_last_working_id_seq OWNED BY skill_level_last_working.id;
+
+
+--
+-- TOC entry 213 (class 1259 OID 142729)
+-- Name: skill_list; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE skill_list (
+    id integer NOT NULL,
+    skill_name character varying,
+    skill_level_id integer,
+    skill_leve_last_work_id integer,
+    skillexperince_leve_id integer,
+    cv_id integer
+);
+
+
+ALTER TABLE employment.skill_list OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 142727)
+-- Name: skill_list_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE skill_list_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.skill_list_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2438 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: skill_list_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE skill_list_id_seq OWNED BY skill_list.id;
+
+
+--
+-- TOC entry 231 (class 1259 OID 142977)
+-- Name: user_saved_job; Type: VIEW; Schema: employment; Owner: postgres
+--
+
+CREATE VIEW user_saved_job AS
+ SELECT j."ID",
+    j."NAME",
+    j."DESCRIPTION",
+    j."POST_DATE",
+    j."IS_OPEN",
+    sj."user"
+   FROM ("JOBS" j
+     JOIN "SavedJob" sj ON ((j."ID" = sj.job_id)));
+
+
+ALTER TABLE employment.user_saved_job OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 109010)
+-- Name: users; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE users (
+    u_name character varying(20) NOT NULL,
+    password character varying,
+    f_name character varying(20),
+    l_name character varying(20),
+    bod date,
+    nationality_id integer,
+    mail character varying,
+    hear_about_us character varying,
+    gender character varying,
+    notification_register integer DEFAULT 0
+);
+
+
+ALTER TABLE employment.users OWNER TO postgres;
+
+--
+-- TOC entry 201 (class 1259 OID 109023)
+-- Name: users_cvs; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE users_cvs (
+    id integer NOT NULL,
+    username character varying,
+    cv_name character varying,
+    "IS_DEFAULT" integer DEFAULT 0,
+    date_of_creation date DEFAULT now()
+);
+
+
+ALTER TABLE employment.users_cvs OWNER TO postgres;
+
+--
+-- TOC entry 228 (class 1259 OID 142943)
+-- Name: userjobs; Type: VIEW; Schema: employment; Owner: postgres
+--
+
+CREATE VIEW userjobs AS
+ SELECT j."NAME",
+    j."DESCRIPTION",
+    j."POST_DATE",
+    j."IS_OPEN",
+    u.u_name,
+    j."ID",
+    a.user_cv_id,
+    a.applied_status
+   FROM ((("JOBS" j
+     LEFT JOIN "Applied_job" a ON ((a.job_id = j."ID")))
+     LEFT JOIN users_cvs uc ON ((uc.id = a.user_cv_id)))
+     LEFT JOIN users u ON (((u.u_name)::text = (a."user")::text)));
+
+
+ALTER TABLE employment.userjobs OWNER TO postgres;
+
+--
+-- TOC entry 200 (class 1259 OID 109021)
+-- Name: users_cvs_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE users_cvs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.users_cvs_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2439 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: users_cvs_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE users_cvs_id_seq OWNED BY users_cvs.id;
+
+
+--
+-- TOC entry 184 (class 1259 OID 108939)
+-- Name: visa_status; Type: TABLE; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE visa_status (
+    id integer NOT NULL,
+    name character varying
+);
+
+
+ALTER TABLE employment.visa_status OWNER TO postgres;
+
+--
+-- TOC entry 183 (class 1259 OID 108937)
+-- Name: visa_status_id_seq; Type: SEQUENCE; Schema: employment; Owner: postgres
+--
+
+CREATE SEQUENCE visa_status_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE employment.visa_status_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2440 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: visa_status_id_seq; Type: SEQUENCE OWNED BY; Schema: employment; Owner: postgres
+--
+
+ALTER SEQUENCE visa_status_id_seq OWNED BY visa_status.id;
+
+
+--
+-- TOC entry 2132 (class 2604 OID 142922)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "Applied_job" ALTER COLUMN id SET DEFAULT nextval('"Applied_job_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2128 (class 2604 OID 142850)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "Department" ALTER COLUMN id SET DEFAULT nextval('"Department_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2126 (class 2604 OID 142812)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "IdentifierList" ALTER COLUMN id SET DEFAULT nextval('"IdentifierList_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2129 (class 2604 OID 142861)
+-- Name: ID; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "JOBS" ALTER COLUMN "ID" SET DEFAULT nextval('"JOBS_ID_seq"'::regclass);
+
+
+--
+-- TOC entry 2125 (class 2604 OID 142779)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "LanguageList" ALTER COLUMN id SET DEFAULT nextval('"LanguageList_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2124 (class 2604 OID 142763)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "Languages" ALTER COLUMN id SET DEFAULT nextval('"Languages_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2127 (class 2604 OID 142834)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "Memebar_ship" ALTER COLUMN id SET DEFAULT nextval('"Memebar_ship_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2134 (class 2604 OID 142960)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "SavedJob" ALTER COLUMN id SET DEFAULT nextval('"SavedJob_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2103 (class 2604 OID 108918)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY career_level ALTER COLUMN id SET DEFAULT nextval('career_level_id_seq'::regclass);
+
+
+--
+-- TOC entry 2109 (class 2604 OID 108971)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY career_role ALTER COLUMN id SET DEFAULT nextval('career_role_id_seq'::regclass);
+
+
+--
+-- TOC entry 2107 (class 2604 OID 108950)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY cities ALTER COLUMN id SET DEFAULT nextval('cities_id_seq'::regclass);
+
+
+--
+-- TOC entry 2108 (class 2604 OID 108963)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY company_industry_type ALTER COLUMN id SET DEFAULT nextval('company_industry_type_id_seq'::regclass);
+
+
+--
+-- TOC entry 2120 (class 2604 OID 109175)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY contact_info ALTER COLUMN id SET DEFAULT nextval('contact_info_id_seq'::regclass);
+
+
+--
+-- TOC entry 2122 (class 2604 OID 109333)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY educations ALTER COLUMN id SET DEFAULT nextval('educations_id_seq'::regclass);
+
+
+--
+-- TOC entry 2101 (class 2604 OID 108902)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY employment_status ALTER COLUMN id SET DEFAULT nextval('employment_status_id_seq'::regclass);
+
+
+--
+-- TOC entry 2100 (class 2604 OID 108894)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY employment_type ALTER COLUMN id SET DEFAULT nextval('employment_type_id_seq'::regclass);
+
+
+--
+-- TOC entry 2121 (class 2604 OID 109291)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY experience ALTER COLUMN id SET DEFAULT nextval('experience_id_seq'::regclass);
+
+
+--
+-- TOC entry 2119 (class 2604 OID 109149)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY info ALTER COLUMN id SET DEFAULT nextval('info_id_seq'::regclass);
+
+
+--
+-- TOC entry 2105 (class 2604 OID 108934)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY nationality_type ALTER COLUMN id SET DEFAULT nextval('nationality_type_id_seq'::regclass);
+
+
+--
+-- TOC entry 2104 (class 2604 OID 108926)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY notice_period ALTER COLUMN id SET DEFAULT nextval('notice_period_id_seq'::regclass);
+
+
+--
+-- TOC entry 2110 (class 2604 OID 108979)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY rate_level ALTER COLUMN id SET DEFAULT nextval('rate_level_id_seq'::regclass);
+
+
+--
+-- TOC entry 2118 (class 2604 OID 109113)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY required_job ALTER COLUMN id SET DEFAULT nextval('required_job_id_seq'::regclass);
+
+
+--
+-- TOC entry 2102 (class 2604 OID 108910)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY salary_type ALTER COLUMN id SET DEFAULT nextval('salary_type_id_seq'::regclass);
+
+
+--
+-- TOC entry 2111 (class 2604 OID 108988)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY skill_level ALTER COLUMN id SET DEFAULT nextval('skill_level_id_seq'::regclass);
+
+
+--
+-- TOC entry 2113 (class 2604 OID 109004)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY skill_level_last_working ALTER COLUMN id SET DEFAULT nextval('skill_level_last_working_id_seq'::regclass);
+
+
+--
+-- TOC entry 2123 (class 2604 OID 142732)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY skill_list ALTER COLUMN id SET DEFAULT nextval('skill_list_id_seq'::regclass);
+
+
+--
+-- TOC entry 2112 (class 2604 OID 108996)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY skillexperience_level ALTER COLUMN id SET DEFAULT nextval('experience_level_id_seq'::regclass);
+
+
+--
+-- TOC entry 2116 (class 2604 OID 109026)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY users_cvs ALTER COLUMN id SET DEFAULT nextval('users_cvs_id_seq'::regclass);
+
+
+--
+-- TOC entry 2106 (class 2604 OID 108942)
+-- Name: id; Type: DEFAULT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY visa_status ALTER COLUMN id SET DEFAULT nextval('visa_status_id_seq'::regclass);
+
+
+--
+-- TOC entry 2401 (class 0 OID 142918)
+-- Dependencies: 227
+-- Data for Name: Applied_job; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY "Applied_job" (job_id, user_cv_id, applied_status, applied_date, id, "user") FROM stdin;
+1	602	Not Viewed	2015-02-28	1	dasd
+2	604	Not Viewed	2015-03-01	14	dasd
+2	604	Not Viewed	2015-03-01	15	dasd
+1	604	Not Viewed	2015-03-01	16	dasd
+1	599	Not Viewed	2015-03-02	17	dasd
+1	598	Not Viewed	2015-03-02	18	dasd
+\.
+
+
+--
+-- TOC entry 2441 (class 0 OID 0)
+-- Dependencies: 226
+-- Name: Applied_job_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Applied_job_id_seq"', 18, true);
+
+
+--
+-- TOC entry 2397 (class 0 OID 142847)
+-- Dependencies: 223
+-- Data for Name: Department; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY "Department" (id, "NAME") FROM stdin;
+1	it
+\.
+
+
+--
+-- TOC entry 2442 (class 0 OID 0)
+-- Dependencies: 222
+-- Name: Department_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Department_id_seq"', 1, true);
+
+
+--
+-- TOC entry 2393 (class 0 OID 142809)
+-- Dependencies: 219
+-- Data for Name: IdentifierList; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY "IdentifierList" (id, "NAME", "COMPANY_NAME", "POSITION_NAME", "PHONE", "EMAIL", "USER_CV") FROM stdin;
+7	hfjerh	hjhj	hjhjh	jhjh	jh	604
+8	fdhjbjh	bjh	b	jhb	jhb	604
+10	jrenk	kjnkj	nkjn	kjn	kjn	604
+\.
+
+
+--
+-- TOC entry 2443 (class 0 OID 0)
+-- Dependencies: 218
+-- Name: IdentifierList_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"IdentifierList_id_seq"', 13, true);
+
+
+--
+-- TOC entry 2399 (class 0 OID 142858)
+-- Dependencies: 225
+-- Data for Name: JOBS; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY "JOBS" ("ID", "NAME", "DEPT_ID", "DESCRIPTION", "POST_DATE", "IS_OPEN") FROM stdin;
+2	oracle	1	12121	2015-02-28	1
+1	java	1	testLorem ipsum minim quis mollit occaecat consectetur irure. Lorem ipsum officia Excepteur ut aliqua cillum est laboris. Lorem ipsum in exercitation enim veniam exercitation consectetur. Lorem ipsum cupidatat ea culpa cupidatat sed proident officia consequat irure dolore Excepteur consectetur. Lorem ipsum sunt ut aliquip commodo mollit ad culpa. Lorem ipsum aliquip sit laborum reprehenderit amet et anim pariatur. Lorem ipsum Ut quis irure enim quis commodo ullamco ad qui qui ut id.\n\n	2015-02-28	0
+\.
+
+
+--
+-- TOC entry 2444 (class 0 OID 0)
+-- Dependencies: 224
+-- Name: JOBS_ID_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"JOBS_ID_seq"', 2, true);
+
+
+--
+-- TOC entry 2391 (class 0 OID 142776)
+-- Dependencies: 217
+-- Data for Name: LanguageList; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY "LanguageList" (id, "SKILL_LEVEL_ID", "SKILL_LAST_WORK_ID", "SKILL_EXPERINCE_ID", "LANG_ID", "CV_ID") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2445 (class 0 OID 0)
+-- Dependencies: 216
+-- Name: LanguageList_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"LanguageList_id_seq"', 5, true);
+
+
+--
+-- TOC entry 2389 (class 0 OID 142760)
+-- Dependencies: 215
+-- Data for Name: Languages; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY "Languages" (id, "NAME") FROM stdin;
+1	151
+2	dfsfsf
+3	dsfsdf
+\.
+
+
+--
+-- TOC entry 2446 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: Languages_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Languages_id_seq"', 3, true);
+
+
+--
+-- TOC entry 2395 (class 0 OID 142831)
+-- Dependencies: 221
+-- Data for Name: Memebar_ship; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY "Memebar_ship" (id, member_since, rolement, cv_id, "COMP_NAME") FROM stdin;
+\.
+
+
+--
+-- TOC entry 2447 (class 0 OID 0)
+-- Dependencies: 220
+-- Name: Memebar_ship_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"Memebar_ship_id_seq"', 2, true);
+
+
+--
+-- TOC entry 2403 (class 0 OID 142957)
+-- Dependencies: 230
+-- Data for Name: SavedJob; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY "SavedJob" (id, job_id, "user", date_of_save) FROM stdin;
+1	1	dasd	2015-03-02
+\.
+
+
+--
+-- TOC entry 2448 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: SavedJob_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"SavedJob_id_seq"', 1, true);
+
+
+--
+-- TOC entry 2352 (class 0 OID 108915)
+-- Dependencies: 178
+-- Data for Name: career_level; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY career_level (id, name) FROM stdin;
+1	testing
+\.
+
+
+--
+-- TOC entry 2449 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: career_level_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('career_level_id_seq', 1, false);
+
+
+--
+-- TOC entry 2364 (class 0 OID 108968)
+-- Dependencies: 190
+-- Data for Name: career_role; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY career_role (id, name) FROM stdin;
+1	12
+\.
+
+
+--
+-- TOC entry 2450 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: career_role_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('career_role_id_seq', 1, true);
+
+
+--
+-- TOC entry 2360 (class 0 OID 108947)
+-- Dependencies: 186
+-- Data for Name: cities; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY cities (id, name, nationality_fk) FROM stdin;
+1	1	1
+2	2	1
+\.
+
+
+--
+-- TOC entry 2451 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: cities_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('cities_id_seq', 2, true);
+
+
+--
+-- TOC entry 2362 (class 0 OID 108960)
+-- Dependencies: 188
+-- Data for Name: company_industry_type; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY company_industry_type (id, name) FROM stdin;
+1	55151
+2	515
+\.
+
+
+--
+-- TOC entry 2452 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: company_industry_type_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('company_industry_type_id_seq', 2, true);
+
+
+--
+-- TOC entry 2381 (class 0 OID 109172)
+-- Dependencies: 207
+-- Data for Name: contact_info; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY contact_info (id, mail, phone1, phone2, counrty_id, citiy_id, if_other, address1, address2, postalcode, box, fax, weburl, cv_id, mobile) FROM stdin;
+4	eMaM151987@gmail.com	01212121	22120121	1	1	\N	121	2121	2121	21121	212121	www.google.com	602	2012002102
+6	daskdj	qjkb	qwdjhb	1	1	\N	dskajd	kkj	564	jkn	54	5	605	kjskjdj
+7	eMaM151987@gmail.com	2992832903	543545353	2	1	\N	adبب	بي	545	43434	98989	kjdnsjkdnskjdns	598	0123130909
+5	eMaM151987@gmail.com	2992832903	543545353	2	1	\N	adبب	بي	545	43434	98989	kjdnsjkdnskjdns	598	999999
+\.
+
+
+--
+-- TOC entry 2453 (class 0 OID 0)
+-- Dependencies: 206
+-- Name: contact_info_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('contact_info_id_seq', 7, true);
+
+
+--
+-- TOC entry 2385 (class 0 OID 109330)
+-- Dependencies: 211
+-- Data for Name: educations; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY educations (id, conutry_id, city_id, major, certificate, rate_id, rate_degree, enddate, "desc", cv_id, instatute_name) FROM stdin;
+3	1	1	dasd	دبلوم 	1	5	2015-01-01	dasdsadasd 	605	fdshfjh
+4	1	1	ybdsjhbdhsjd	بكالوريوس/ دبلوم عالي	1	45	2019-01-01	lkdalskdmalskd 	598	bshdbj
+\.
+
+
+--
+-- TOC entry 2454 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: educations_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('educations_id_seq', 4, true);
+
+
+--
+-- TOC entry 2348 (class 0 OID 108899)
+-- Dependencies: 174
+-- Data for Name: employment_status; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY employment_status (id, name) FROM stdin;
+1	1
+2	2
+3	3
+\.
+
+
+--
+-- TOC entry 2455 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: employment_status_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('employment_status_id_seq', 3, true);
+
+
+--
+-- TOC entry 2346 (class 0 OID 108891)
+-- Dependencies: 172
+-- Data for Name: employment_type; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY employment_type (id, name) FROM stdin;
+1	s                                       
+2	s                                       
+3	f                                       
+4	g                                       
+5	g                                       
+6	r                                       
+7	y                                       
+\.
+
+
+--
+-- TOC entry 2456 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: employment_type_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('employment_type_id_seq', 7, true);
+
+
+--
+-- TOC entry 2383 (class 0 OID 109288)
+-- Dependencies: 209
+-- Data for Name: experience; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY experience (id, startdate, enddate, national_id, address, companyname, company_industry_id, career_role_id, role_name, jobdesc, cv_id) FROM stdin;
+6	2015-01-04	2020-01-10	1	Tnat	sadgash	1	1	dksdjsdh	dsod	605
+7	2015-01-01	2015-01-01	2	Tanta	eSmart	2	1	Senoir Java Developer	CRM 	605
+8	2014-01-01	2015-01-01	1	Tanta	HyperTech LL	1	1	Senior Java Developer	ERP System @ iDempiere	598
+\.
+
+
+--
+-- TOC entry 2457 (class 0 OID 0)
+-- Dependencies: 208
+-- Name: experience_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('experience_id_seq', 9, true);
+
+
+--
+-- TOC entry 2458 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: experience_level_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('experience_level_id_seq', 2, true);
+
+
+--
+-- TOC entry 2379 (class 0 OID 109146)
+-- Dependencies: 205
+-- Data for Name: info; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY info (id, f_name, surename, dob, gender, nationality_id, visa_status_id, material_status, no_of_own, driving_license, cv_user_id) FROM stdin;
+4	AHmed	Soltan	2015-01-09	m	2	1	غير محدد	15	2	602
+5	Noha 	Ahmed	2015-01-09	f	1	1	غير محدد	14	1	598
+\.
+
+
+--
+-- TOC entry 2459 (class 0 OID 0)
+-- Dependencies: 204
+-- Name: info_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('info_id_seq', 5, true);
+
+
+--
+-- TOC entry 2356 (class 0 OID 108931)
+-- Dependencies: 182
+-- Data for Name: nationality_type; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY nationality_type (id, name) FROM stdin;
+1	Egy
+2	KW
+\.
+
+
+--
+-- TOC entry 2460 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: nationality_type_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('nationality_type_id_seq', 1, false);
+
+
+--
+-- TOC entry 2354 (class 0 OID 108923)
+-- Dependencies: 180
+-- Data for Name: notice_period; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY notice_period (id, name) FROM stdin;
+1	4
+2	2
+3	5
+\.
+
+
+--
+-- TOC entry 2461 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: notice_period_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('notice_period_id_seq', 3, true);
+
+
+--
+-- TOC entry 2366 (class 0 OID 108976)
+-- Dependencies: 192
+-- Data for Name: rate_level; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY rate_level (id, name) FROM stdin;
+1	R1
+2	R2
+3	R3
+\.
+
+
+--
+-- TOC entry 2462 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: rate_level_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('rate_level_id_seq', 3, true);
+
+
+--
+-- TOC entry 2377 (class 0 OID 109110)
+-- Dependencies: 203
+-- Data for Name: required_job; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY required_job (id, job_name, employment_type_id, employement_status_id, salary_amount, salary_id, career_level_id, notice_period_id, last_salary_amount, last_salary_id, users_cvs_id, job_desc) FROM stdin;
+5		1	1	500	1	1	1	0	1	606	 sadsdsad
+6	Java Developer	3	3	700	3	1	3	0	1	602	Testing  
+7	dasdasd	1	1	878	1	1	1	0	1	605	ewrwerwer 
+8	Java Developer	3	2	900	2	1	1	100	2	598	dasjdsjk asjd  
+\.
+
+
+--
+-- TOC entry 2463 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: required_job_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('required_job_id_seq', 8, true);
+
+
+--
+-- TOC entry 2350 (class 0 OID 108907)
+-- Dependencies: 176
+-- Data for Name: salary_type; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY salary_type (id, name) FROM stdin;
+1	fdf
+2	fdv
+3	fwe
+4	fer
+\.
+
+
+--
+-- TOC entry 2464 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: salary_type_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('salary_type_id_seq', 4, true);
+
+
+--
+-- TOC entry 2368 (class 0 OID 108985)
+-- Dependencies: 194
+-- Data for Name: skill_level; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY skill_level (id, name) FROM stdin;
+1	متوسط
+2	محترف
+\.
+
+
+--
+-- TOC entry 2465 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: skill_level_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('skill_level_id_seq', 2, true);
+
+
+--
+-- TOC entry 2372 (class 0 OID 109001)
+-- Dependencies: 198
+-- Data for Name: skill_level_last_working; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY skill_level_last_working (id, name) FROM stdin;
+1	منذ سنة
+2	سنتين
+\.
+
+
+--
+-- TOC entry 2466 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: skill_level_last_working_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('skill_level_last_working_id_seq', 2, true);
+
+
+--
+-- TOC entry 2387 (class 0 OID 142729)
+-- Dependencies: 213
+-- Data for Name: skill_list; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY skill_list (id, skill_name, skill_level_id, skill_leve_last_work_id, skillexperince_leve_id, cv_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2467 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: skill_list_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('skill_list_id_seq', 8, true);
+
+
+--
+-- TOC entry 2370 (class 0 OID 108993)
+-- Dependencies: 196
+-- Data for Name: skillexperience_level; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY skillexperience_level (id, name) FROM stdin;
+1	151
+2	rerer
+\.
+
+
+--
+-- TOC entry 2373 (class 0 OID 109010)
+-- Dependencies: 199
+-- Data for Name: users; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY users (u_name, password, f_name, l_name, bod, nationality_id, mail, hear_about_us, gender, notification_register) FROM stdin;
+ahmed	ahmed	ahme	has	2015-01-09	1	sdad	\N	m	1
+dasd	e10adc3949ba59abbe56e057f20f883e	152	414	2015-01-07	1	cdsdsf	\N	m	1
+asd	e10adc3949ba59abbe56e057f20f883e	122	321	2015-01-09	1	50510	\N	m	1
+\.
+
+
+--
+-- TOC entry 2375 (class 0 OID 109023)
+-- Dependencies: 201
+-- Data for Name: users_cvs; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY users_cvs (id, username, cv_name, "IS_DEFAULT", date_of_creation) FROM stdin;
+609	dasd	\N	0	2015-03-03
+598	dasd	fdfd	0	2015-03-03
+599	dasd	fdfhbd	0	2015-03-03
+600	dasd	\N	0	2015-03-03
+601	dasd	\N	0	2015-03-03
+602	dasd	\N	0	2015-03-03
+603	dasd	\N	0	2015-03-03
+604	dasd	\N	0	2015-03-03
+605	dasd	\N	0	2015-03-03
+606	dasd	\N	0	2015-03-03
+607	dasd	\N	0	2015-03-03
+608	dasd	\N	0	2015-03-03
+610	dasd	\N	0	2015-03-03
+611	dasd	\N	0	2015-03-03
+612	dasd	Testing	0	2015-03-03
+613	dasd	hdbsjdbsd	0	2015-03-03
+614	dasd	fbdfd	0	2015-03-03
+\.
+
+
+--
+-- TOC entry 2468 (class 0 OID 0)
+-- Dependencies: 200
+-- Name: users_cvs_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_cvs_id_seq', 614, true);
+
+
+--
+-- TOC entry 2358 (class 0 OID 108939)
+-- Dependencies: 184
+-- Data for Name: visa_status; Type: TABLE DATA; Schema: employment; Owner: postgres
+--
+
+COPY visa_status (id, name) FROM stdin;
+1	1
+\.
+
+
+--
+-- TOC entry 2469 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: visa_status_id_seq; Type: SEQUENCE SET; Schema: employment; Owner: postgres
+--
+
+SELECT pg_catalog.setval('visa_status_id_seq', 1, true);
+
+
+--
+-- TOC entry 2193 (class 2606 OID 142927)
+-- Name: APPLIED_ID_PK; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Applied_job"
+    ADD CONSTRAINT "APPLIED_ID_PK" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2189 (class 2606 OID 142855)
+-- Name: DEPARTMENT_PK; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Department"
+    ADD CONSTRAINT "DEPARTMENT_PK" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2183 (class 2606 OID 142781)
+-- Name: ID_FK; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "LanguageList"
+    ADD CONSTRAINT "ID_FK" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2185 (class 2606 OID 142817)
+-- Name: Identify_FK; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "IdentifierList"
+    ADD CONSTRAINT "Identify_FK" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2191 (class 2606 OID 142867)
+-- Name: JOB_PK; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "JOBS"
+    ADD CONSTRAINT "JOB_PK" PRIMARY KEY ("ID");
+
+
+--
+-- TOC entry 2181 (class 2606 OID 142768)
+-- Name: Language_fk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Languages"
+    ADD CONSTRAINT "Language_fk" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2187 (class 2606 OID 142839)
+-- Name: Member_ship_PK; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "Memebar_ship"
+    ADD CONSTRAINT "Member_ship_PK" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2143 (class 2606 OID 108920)
+-- Name: career_level_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY career_level
+    ADD CONSTRAINT career_level_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2155 (class 2606 OID 108973)
+-- Name: career_role_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY career_role
+    ADD CONSTRAINT career_role_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2151 (class 2606 OID 108952)
+-- Name: cities_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY cities
+    ADD CONSTRAINT cities_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2153 (class 2606 OID 108965)
+-- Name: company_industry_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY company_industry_type
+    ADD CONSTRAINT company_industry_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2173 (class 2606 OID 109180)
+-- Name: contact_info_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY contact_info
+    ADD CONSTRAINT contact_info_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2177 (class 2606 OID 109338)
+-- Name: edu_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY educations
+    ADD CONSTRAINT edu_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2137 (class 2606 OID 108896)
+-- Name: employment__type_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY employment_type
+    ADD CONSTRAINT employment__type_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2139 (class 2606 OID 108904)
+-- Name: employment_status_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY employment_status
+    ADD CONSTRAINT employment_status_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2161 (class 2606 OID 108998)
+-- Name: experience_level_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY skillexperience_level
+    ADD CONSTRAINT experience_level_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2175 (class 2606 OID 109296)
+-- Name: experience_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY experience
+    ADD CONSTRAINT experience_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2171 (class 2606 OID 109154)
+-- Name: info_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY info
+    ADD CONSTRAINT info_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2169 (class 2606 OID 109118)
+-- Name: job_required_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY required_job
+    ADD CONSTRAINT job_required_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2147 (class 2606 OID 108936)
+-- Name: nationality_type_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY nationality_type
+    ADD CONSTRAINT nationality_type_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2145 (class 2606 OID 108928)
+-- Name: notice_period_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY notice_period
+    ADD CONSTRAINT notice_period_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2157 (class 2606 OID 108981)
+-- Name: role_level_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY rate_level
+    ADD CONSTRAINT role_level_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2141 (class 2606 OID 108912)
+-- Name: salary_type_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY salary_type
+    ADD CONSTRAINT salary_type_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2195 (class 2606 OID 142966)
+-- Name: saved_job_id; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY "SavedJob"
+    ADD CONSTRAINT saved_job_id PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2163 (class 2606 OID 109006)
+-- Name: skill_leve_last_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY skill_level_last_working
+    ADD CONSTRAINT skill_leve_last_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2159 (class 2606 OID 108990)
+-- Name: skill_level_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY skill_level
+    ADD CONSTRAINT skill_level_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2179 (class 2606 OID 142737)
+-- Name: skill_list_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY skill_list
+    ADD CONSTRAINT skill_list_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2165 (class 2606 OID 109199)
+-- Name: username_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT username_pk PRIMARY KEY (u_name);
+
+
+--
+-- TOC entry 2167 (class 2606 OID 109192)
+-- Name: users_cvspk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY users_cvs
+    ADD CONSTRAINT users_cvspk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2149 (class 2606 OID 108944)
+-- Name: visa_status_pk; Type: CONSTRAINT; Schema: employment; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY visa_status
+    ADD CONSTRAINT visa_status_pk PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2230 (class 2606 OID 142868)
+-- Name: DEPARTMENT_ID; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "JOBS"
+    ADD CONSTRAINT "DEPARTMENT_ID" FOREIGN KEY ("DEPT_ID") REFERENCES "Department"(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2231 (class 2606 OID 142928)
+-- Name: JOB_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "Applied_job"
+    ADD CONSTRAINT "JOB_FK" FOREIGN KEY (job_id) REFERENCES "JOBS"("ID") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2234 (class 2606 OID 142967)
+-- Name: JOB_ID; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "SavedJob"
+    ADD CONSTRAINT "JOB_ID" FOREIGN KEY (job_id) REFERENCES "JOBS"("ID") ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2226 (class 2606 OID 142797)
+-- Name: LANGUAGE_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "LanguageList"
+    ADD CONSTRAINT "LANGUAGE_FK" FOREIGN KEY ("LANG_ID") REFERENCES "Languages"(id);
+
+
+--
+-- TOC entry 2225 (class 2606 OID 142792)
+-- Name: SKILL_EXP_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "LanguageList"
+    ADD CONSTRAINT "SKILL_EXP_FK" FOREIGN KEY ("SKILL_EXPERINCE_ID") REFERENCES skillexperience_level(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2224 (class 2606 OID 142787)
+-- Name: SKILL_LAST_WORK_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "LanguageList"
+    ADD CONSTRAINT "SKILL_LAST_WORK_FK" FOREIGN KEY ("SKILL_LAST_WORK_ID") REFERENCES skill_level_last_working(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2223 (class 2606 OID 142782)
+-- Name: SKILL_LEVEL_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "LanguageList"
+    ADD CONSTRAINT "SKILL_LEVEL_FK" FOREIGN KEY ("SKILL_LEVEL_ID") REFERENCES skill_level(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2235 (class 2606 OID 142972)
+-- Name: USER; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "SavedJob"
+    ADD CONSTRAINT "USER" FOREIGN KEY ("user") REFERENCES users(u_name) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2229 (class 2606 OID 142840)
+-- Name: USER_CV; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "Memebar_ship"
+    ADD CONSTRAINT "USER_CV" FOREIGN KEY (cv_id) REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2227 (class 2606 OID 142802)
+-- Name: USER_CV_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "LanguageList"
+    ADD CONSTRAINT "USER_CV_FK" FOREIGN KEY ("CV_ID") REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2228 (class 2606 OID 142824)
+-- Name: USER_CV_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "IdentifierList"
+    ADD CONSTRAINT "USER_CV_FK" FOREIGN KEY ("USER_CV") REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2232 (class 2606 OID 142933)
+-- Name: USER_CV_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "Applied_job"
+    ADD CONSTRAINT "USER_CV_FK" FOREIGN KEY (user_cv_id) REFERENCES users_cvs(id);
+
+
+--
+-- TOC entry 2233 (class 2606 OID 142938)
+-- Name: USER_FK; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY "Applied_job"
+    ADD CONSTRAINT "USER_FK" FOREIGN KEY ("user") REFERENCES users(u_name) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2201 (class 2606 OID 109134)
+-- Name: career_level_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY required_job
+    ADD CONSTRAINT career_level_fk FOREIGN KEY (career_level_id) REFERENCES career_level(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2213 (class 2606 OID 109307)
+-- Name: career_role_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY experience
+    ADD CONSTRAINT career_role_fk FOREIGN KEY (career_role_id) REFERENCES career_role(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2209 (class 2606 OID 109186)
+-- Name: city_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY contact_info
+    ADD CONSTRAINT city_fk FOREIGN KEY (citiy_id) REFERENCES cities(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2216 (class 2606 OID 109344)
+-- Name: city_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY educations
+    ADD CONSTRAINT city_fk FOREIGN KEY (city_id) REFERENCES cities(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2212 (class 2606 OID 109302)
+-- Name: company_industry_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY experience
+    ADD CONSTRAINT company_industry_fk FOREIGN KEY (company_industry_id) REFERENCES company_industry_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2208 (class 2606 OID 109181)
+-- Name: country_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY contact_info
+    ADD CONSTRAINT country_fk FOREIGN KEY (counrty_id) REFERENCES nationality_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2215 (class 2606 OID 109339)
+-- Name: country_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY educations
+    ADD CONSTRAINT country_fk FOREIGN KEY (conutry_id) REFERENCES nationality_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2203 (class 2606 OID 109229)
+-- Name: cv_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY required_job
+    ADD CONSTRAINT cv_fk FOREIGN KEY (users_cvs_id) REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2207 (class 2606 OID 109254)
+-- Name: cv_fk_1; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY info
+    ADD CONSTRAINT cv_fk_1 FOREIGN KEY (cv_user_id) REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2214 (class 2606 OID 109312)
+-- Name: cv_id_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY experience
+    ADD CONSTRAINT cv_id_fk FOREIGN KEY (cv_id) REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2210 (class 2606 OID 109193)
+-- Name: cv_user_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY contact_info
+    ADD CONSTRAINT cv_user_fk FOREIGN KEY (cv_id) REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2199 (class 2606 OID 109124)
+-- Name: emp_status_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY required_job
+    ADD CONSTRAINT emp_status_fk FOREIGN KEY (employement_status_id) REFERENCES employment_status(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2198 (class 2606 OID 109119)
+-- Name: emp_type_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY required_job
+    ADD CONSTRAINT emp_type_fk FOREIGN KEY (employment_type_id) REFERENCES employment_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2206 (class 2606 OID 109165)
+-- Name: license_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY info
+    ADD CONSTRAINT license_fk FOREIGN KEY (driving_license) REFERENCES nationality_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2211 (class 2606 OID 109297)
+-- Name: national_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY experience
+    ADD CONSTRAINT national_fk FOREIGN KEY (national_id) REFERENCES nationality_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2196 (class 2606 OID 108953)
+-- Name: nationality_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY cities
+    ADD CONSTRAINT nationality_fk FOREIGN KEY (nationality_fk) REFERENCES nationality_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2204 (class 2606 OID 109155)
+-- Name: nationality_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY info
+    ADD CONSTRAINT nationality_fk FOREIGN KEY (nationality_id) REFERENCES nationality_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2197 (class 2606 OID 109016)
+-- Name: nationality_pk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT nationality_pk FOREIGN KEY (nationality_id) REFERENCES nationality_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2202 (class 2606 OID 109139)
+-- Name: notice_period_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY required_job
+    ADD CONSTRAINT notice_period_fk FOREIGN KEY (notice_period_id) REFERENCES notice_period(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2217 (class 2606 OID 109349)
+-- Name: rate_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY educations
+    ADD CONSTRAINT rate_fk FOREIGN KEY (rate_id) REFERENCES rate_level(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2200 (class 2606 OID 109129)
+-- Name: salaru_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY required_job
+    ADD CONSTRAINT salaru_fk FOREIGN KEY (salary_id) REFERENCES salary_type(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2221 (class 2606 OID 142748)
+-- Name: skill_experince_level_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY skill_list
+    ADD CONSTRAINT skill_experince_level_fk FOREIGN KEY (skillexperince_leve_id) REFERENCES skillexperience_level(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2219 (class 2606 OID 142738)
+-- Name: skill_level_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY skill_list
+    ADD CONSTRAINT skill_level_fk FOREIGN KEY (skill_level_id) REFERENCES skill_level(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2220 (class 2606 OID 142743)
+-- Name: skill_level_last_work_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY skill_list
+    ADD CONSTRAINT skill_level_last_work_fk FOREIGN KEY (skill_leve_last_work_id) REFERENCES skill_level_last_working(id);
+
+
+--
+-- TOC entry 2222 (class 2606 OID 142753)
+-- Name: user_cv; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY skill_list
+    ADD CONSTRAINT user_cv FOREIGN KEY (cv_id) REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2218 (class 2606 OID 142682)
+-- Name: user_cv_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY educations
+    ADD CONSTRAINT user_cv_fk FOREIGN KEY (cv_id) REFERENCES users_cvs(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2205 (class 2606 OID 109160)
+-- Name: visa_status_fk; Type: FK CONSTRAINT; Schema: employment; Owner: postgres
+--
+
+ALTER TABLE ONLY info
+    ADD CONSTRAINT visa_status_fk FOREIGN KEY (visa_status_id) REFERENCES visa_status(id) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- TOC entry 2410 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2015-03-04 17:55:25 EET
+
+--
+-- PostgreSQL database dump complete
+--
+
