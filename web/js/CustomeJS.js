@@ -73,7 +73,8 @@ $(document).ready(function() {
             var id = $('#jobid').val();
             $.post('getEditJob', {id: id}, function(responseText) {
                 $('#job').html(responseText);
-                $('#editjob').click(function() {
+                $('#editjobaction').click(function() {
+                    
                     var job_name = $('#job_name').val();
                     var job_desc = $('#job_desc').val();
                     var employment_type_id = $('#employment_type_id').val();
@@ -116,10 +117,10 @@ $(document).ready(function() {
                     var f_name = $('#f_name').val();
                     var surename = $('#surename').val();
                     var dob = $('#dob').val();
-                    var gender = $('#gender').val();
+                    var gender = $("input[name=Gender]:checked").val();
                     var nationality_id = $('#nationality_id').val();
                     var visa_status_id = $('#visa_status_id').val();
-                    var material_status = $('#material_status').val();
+                    var material_status = $("input[name=m]:checked").val();
                     var no_of_own = $('#no_of_own').val();
                     var driving_license = $('#driving_license').val();
                     $.post('saveinfo', {f_name: f_name, surename: surename, dob: dob, gender: gender, nationality_id: nationality_id, visa_status_id: visa_status_id, material_status: material_status, no_of_own: no_of_own, driving_license: driving_license}, function(responseText) {
@@ -136,14 +137,15 @@ $(document).ready(function() {
 
             $.post('getEditInfo', {id: id}, function(responseText) {
                 $('#info').html(responseText);
-                $('#editinfo').click(function() {
+                $('#editinfoaction').click(function() {
                     var f_name = $('#f_name').val();
                     var surename = $('#surename').val();
                     var dob = $('#dob').val();
-                    var gender = $('#gender').val();
+                    var gender = $("input[name=Gender]:checked").val();
                     var nationality_id = $('#nationality_id').val();
                     var visa_status_id = $('#visa_status_id').val();
-                    var material_status = $('#material_status').val();
+                    
+                    var material_status = $("input[name=m]:checked").val();
                     var no_of_own = $('#no_of_own').val();
                     var driving_license = $('#driving_license').val();
                     $.post('editInfo', {f_name: f_name, surename: surename, dob: dob, gender: gender, nationality_id: nationality_id, visa_status_id: visa_status_id, material_status: material_status, no_of_own: no_of_own, driving_license: driving_license, id: id}, function() {
@@ -198,7 +200,7 @@ $(document).ready(function() {
             var id = $('#id').val();
             $.post('getEditContactInfo', null, function(responseText) {
                 $('#contactinfo').html(responseText);
-                $('#editcontactinfo').click(function() {
+                $('#editcontactinfoaction').click(function() {
                     var mail = $('#mail').val();
                     var phone1 = $('#phone1').val();
                     var phone2 = $('#phone2').val();
@@ -457,7 +459,7 @@ function EditExperView(id){
                     var career_role_id = $('#career_role_id').val();
                     var role_name = $('#role_name').val();
                     var jobdesc = $('#jobdesc').val();
-                    var id = $('#id').val();
+                    //var id = $('#id').val();
                     $.post('editExperince', {startdate: startdate, enddate: enddate, national_id: national_id, address: address, companyname: companyname, company_industry_id: company_industry_id, career_role_id: career_role_id, role_name: role_name, jobdesc: jobdesc, id: id}, function(responseText) {
                         location.reload();
                     });

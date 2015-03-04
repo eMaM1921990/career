@@ -141,9 +141,13 @@ public class SQLCommon {
     public String GET_RATE_LEVEL = "SELECT id, name\n"
             + "  FROM employment.rate_level";
 
-    public String GET_CURRENT_EDU = "SELECT id, conutry_id, city_id, major, certificate, rate_id, rate_degree, \n"
-            + "       enddate, \"desc\", cv_id,instatute_name\n"
-            + "  FROM employment.educations  WHERE cv_id=?";
+    public String GET_CURRENT_EDU = "SELECT * FROM employment.educations E INNER JOIN \n"
+            + "employment.cities C ON E.city_id=C.id\n"
+            + "INNER JOIN employment.nationality_type N\n"
+            + "ON \n"
+            + "N.id=E.conutry_id\n"
+            + "INNER JOIN employment.rate_level R\n"
+            + "ON R.id=E.rate_id  WHERE E.cv_id=?";
 
     public String INSERT_EDU = "INSERT INTO employment.educations(\n"
             + "            conutry_id, city_id, major, certificate, rate_id, rate_degree, \n"
@@ -254,7 +258,6 @@ public class SQLCommon {
     public String GET_JOB_APPLIEDBYNAME = "SELECT \"NAME\", \"DESCRIPTION\", \"POST_DATE\", \"IS_OPEN\", u_name, \"ID\",applied_status\n"
             + "  FROM employment.userjobs where u_name=?";
 
-    
     public String APPLY_TO_JOB = "INSERT INTO employment.\"Applied_job\"(\n"
             + "            job_id, user_cv_id, \"user\")\n"
             + "    VALUES (?, ?, ?)";

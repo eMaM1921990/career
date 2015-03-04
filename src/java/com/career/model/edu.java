@@ -24,7 +24,25 @@ public class edu implements Serializable{
     private String desc;
     private int cv_id;
     private String name;
+    private String countryname;
+    private String cityname;
     
+    
+    public void setCityname(String s){
+        this.cityname=s;
+    }
+    
+    public String getCityname(){
+        return cityname;
+    }
+    public void setCountryname(String s){
+        this.countryname=s;
+        
+    }
+    
+    public String getCountryname(){
+        return countryname;
+    }
     public void setName(String n){
         this.name=n;
     }

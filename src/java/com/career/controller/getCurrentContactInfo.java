@@ -103,7 +103,7 @@ public class getCurrentContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">رقم الهاتف الجوال</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Mobile Number\" id=\"mobile\" autocomplete=\"off\" value='"+i.getMobile()+"'>"
+                + "<input type=\"text\" placeholder=\"Mobile Number\" id=\"mobile\" autocomplete=\"off\" value='"+i.getMobile()+"' style='pointer-events:none;border:none;background:#fff'>"
                 + "</div>"
                 + "</div>"
                 + "</div>";

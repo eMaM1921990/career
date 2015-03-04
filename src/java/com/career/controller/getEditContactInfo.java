@@ -235,7 +235,7 @@ public class getEditContactInfo extends HttpServlet {
         
         buffer=buffer+row10;
         String actionrow="<div class=\"form-actions\">"
-                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"button\" id=\"editcontactinfo\">"
+                + "<input class=\"btn btn-primary\" value=\"تعديل\" type=\"button\" id=\"editcontactinfoaction\">"
                 + "<button type=\"button\" class=\"btn\">إلغاء</button>"
                 + "</div>";
         buffer=buffer+actionrow;

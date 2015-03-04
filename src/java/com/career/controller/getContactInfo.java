@@ -80,7 +80,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">البريد الالكترونى </label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" onkeypress=\"EnglishOnly()\">"
+                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";

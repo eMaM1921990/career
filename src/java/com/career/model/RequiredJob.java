@@ -160,7 +160,7 @@ public class RequiredJob {
     }
     
     public void setLastSalary(double sal){
-        this.salary=sal;
+        this.lastsalary=sal;
     }
     
     public double getLastSalary(){
