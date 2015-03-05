@@ -6,11 +6,11 @@
 
 package com.career.controller;
 
-import com.career.DAO.CareerLeverdao;
-import com.career.DAO.EmpStatusdao;
-import com.career.DAO.EmpTypedao;
-import com.career.DAO.NoticePerioddao;
-import com.career.DAO.Salarydao;
+import com.career.daos.CareerLeverdao;
+import com.career.daos.EmpStatusdao;
+import com.career.daos.EmpTypedao;
+import com.career.daos.NoticePerioddao;
+import com.career.daos.Salarydao;
 import com.career.model.CareerLevel;
 import com.career.model.EmpStatus;
 import com.career.model.EmpType;

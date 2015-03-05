@@ -5,9 +5,9 @@
  */
 package com.career.controller;
 
-import com.career.DAO.Infodao;
-import com.career.DAO.NationalDAO;
-import com.career.DAO.VisaStatusdao;
+import com.career.daos.Infodao;
+import com.career.daos.NationalDAO;
+import com.career.daos.VisaStatusdao;
 import com.career.model.Info;
 import com.career.model.National;
 import com.career.model.User;

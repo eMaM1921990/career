@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.EmpStatus;
+import com.career.model.Salary;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -20,17 +20,18 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class EmpStatusdao implements dao<EmpStatus>{
+public class Salarydao implements dao<Salary>{
 
+    
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(EmpStatus o) {
+    public String Presist(Salary o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public EmpStatus Find(String phone) {
+    public Salary Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,44 +40,45 @@ public class EmpStatusdao implements dao<EmpStatus>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+  
 
     @Override
-    public List<EmpStatus> FindAll() {
-        List<EmpStatus> list=new ArrayList<>();
+    public List<Salary> FindAll() {
+        List<Salary> list=new ArrayList<>();
         try {
+            
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.EMPLOYMENT_STATUS);
+            db.pstm=db.con.prepareStatement(sql.GET_SALARY);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                EmpStatus e=new EmpStatus();
-                e.setId(db.rs.getInt(1));
-                e.setName(db.rs.getString(2));
-                list.add(e);
-                
+                Salary s=new Salary();
+                s.setId(db.rs.getInt(1));
+                s.setName(db.rs.getString(2));
+                list.add(s);
             }
             
             db.rs.close();
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(EmpStatusdao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Salarydao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return list;
         
+        return list;
     }
 
     @Override
-    public List<EmpStatus> FindByParentId(int parentID) {
+    public List<Salary> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(EmpStatus o) {
+    public String update(Salary o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<EmpStatus> FindBy(EmpStatus o) {
+    public List<Salary> FindBy(Salary o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

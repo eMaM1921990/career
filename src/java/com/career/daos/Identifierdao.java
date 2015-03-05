@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
 import com.career.model.Identifier;

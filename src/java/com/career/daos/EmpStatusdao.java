@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.Languages;
+import com.career.model.EmpStatus;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -20,17 +20,17 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class Languagesdao implements dao<Languages>{
+public class EmpStatusdao implements dao<EmpStatus>{
 
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(Languages o) {
+    public String Presist(EmpStatus o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Languages Find(String phone) {
+    public EmpStatus Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,62 +39,44 @@ public class Languagesdao implements dao<Languages>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+
     @Override
-    public List<Languages> FindAll() {
-        List<Languages> data=new ArrayList<>();
+    public List<EmpStatus> FindAll() {
+        List<EmpStatus> list=new ArrayList<>();
         try {
-            
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_LANGAUGE);
+            db.pstm=db.con.prepareStatement(sql.EMPLOYMENT_STATUS);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                Languages l=new Languages();
-                l.setId(db.rs.getInt(1));
-                l.setName(db.rs.getString(2));
-                data.add(l);
+                EmpStatus e=new EmpStatus();
+                e.setId(db.rs.getInt(1));
+                e.setName(db.rs.getString(2));
+                list.add(e);
+                
             }
+            
+            db.rs.close();
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(Languagesdao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EmpStatusdao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return list;
         
-        return data;
-       
-       
     }
 
     @Override
-    public List<Languages> FindByParentId(int parentID) {
-         List<Languages> data=new ArrayList<>();
-        try {
-            
-            db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_LANGAUGE_CURRENT);
-            db.pstm.setInt(1, parentID);
-            db.rs=db.pstm.executeQuery();
-            while(db.rs.next()){
-                Languages l=new Languages();
-                l.setId(db.rs.getInt(1));
-                l.setName(db.rs.getString(2));
-                data.add(l);
-            }
-            db.closeConnection();
-        } catch (SQLException ex) {
-            db.closeConnection();
-            Logger.getLogger(Languagesdao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return data;
-    }
-
-    @Override
-    public List<Languages> FindBy(Languages o) {
+    public List<EmpStatus> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(Languages o) {
+    public String update(EmpStatus o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<EmpStatus> FindBy(EmpStatus o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -6,7 +6,7 @@
 
 package com.career.controller;
 
-import com.career.DAO.SkillListdao;
+import com.career.daos.SkillListdao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

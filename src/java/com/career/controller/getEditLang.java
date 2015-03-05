@@ -5,11 +5,11 @@
  */
 package com.career.controller;
 
-import com.career.DAO.LangListdao;
-import com.career.DAO.Languagesdao;
-import com.career.DAO.skill_level_lastworkingdao;
-import com.career.DAO.skillsexperinceleveldao;
-import com.career.DAO.skillsleveldao;
+import com.career.daos.LangListdao;
+import com.career.daos.Languagesdao;
+import com.career.daos.skill_level_lastworkingdao;
+import com.career.daos.skillsexperinceleveldao;
+import com.career.daos.skillsleveldao;
 import com.career.model.LangList;
 import com.career.model.Languages;
 import com.career.model.skill_level_lastworking;

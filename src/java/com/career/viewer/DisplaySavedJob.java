@@ -7,8 +7,8 @@
 package com.career.viewer;
 
 
-import com.career.DAO.cvdao;
-import com.career.DAO.savedjobdao;
+import com.career.daos.cvdao;
+import com.career.daos.savedjobdao;
 import com.career.model.Cv;
 import com.career.model.SavedJob;
 import com.career.model.User;

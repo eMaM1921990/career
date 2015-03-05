@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.skill_level_lastworking;
+import com.career.model.skillslevel;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -20,17 +20,17 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class skill_level_lastworkingdao implements dao<skill_level_lastworking>{
+public class skillsleveldao implements dao<skillslevel>{
 
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(skill_level_lastworking o) {
+    public String Presist(skillslevel o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public skill_level_lastworking Find(String phone) {
+    public skillslevel Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -40,14 +40,14 @@ public class skill_level_lastworkingdao implements dao<skill_level_lastworking>{
     }
 
     @Override
-    public List<skill_level_lastworking> FindAll() {
-        List<skill_level_lastworking> data=new ArrayList<>();
+    public List<skillslevel> FindAll() {
+        List<skillslevel> data=new ArrayList<>();
         try {
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_LASTWORKING_SKILLS);
+            db.pstm=db.con.prepareStatement(sql.GET_SKILLS_LEVEL);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                skill_level_lastworking s=new skill_level_lastworking();
+                skillslevel s=new skillslevel();
                 s.setId(db.rs.getInt(1));
                 s.setName(db.rs.getString(2));
                 data.add(s);
@@ -56,24 +56,24 @@ public class skill_level_lastworkingdao implements dao<skill_level_lastworking>{
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(skill_level_lastworkingdao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(skillsleveldao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+        
         return data;
     }
 
     @Override
-    public List<skill_level_lastworking> FindByParentId(int parentID) {
+    public List<skillslevel> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<skill_level_lastworking> FindBy(skill_level_lastworking o) {
+    public List<skillslevel> FindBy(skillslevel o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(skill_level_lastworking o) {
+    public String update(skillslevel o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

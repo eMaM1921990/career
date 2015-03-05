@@ -5,10 +5,10 @@
  */
 package com.career.controller;
 
-import com.career.DAO.Citiesdao;
-import com.career.DAO.NationalDAO;
-import com.career.DAO.edudao;
-import com.career.DAO.ratedao;
+import com.career.daos.Citiesdao;
+import com.career.daos.NationalDAO;
+import com.career.daos.edudao;
+import com.career.daos.ratedao;
 import com.career.model.Cities;
 import com.career.model.National;
 import com.career.model.User;

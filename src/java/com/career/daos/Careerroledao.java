@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.Salary;
+import com.career.model.CareerRole;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -20,18 +20,16 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class Salarydao implements dao<Salary>{
-
-    
+public class Careerroledao implements dao<CareerRole>{
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(Salary o) {
+    public String Presist(CareerRole o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Salary Find(String phone) {
+    public CareerRole Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -40,45 +38,43 @@ public class Salarydao implements dao<Salary>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-  
-
     @Override
-    public List<Salary> FindAll() {
-        List<Salary> list=new ArrayList<>();
+    public List<CareerRole> FindAll() {
+        List<CareerRole> list=new ArrayList<>();
         try {
             
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_SALARY);
+            db.pstm=db.con.prepareStatement(sql.GET_CAREER_ROLE);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                Salary s=new Salary();
-                s.setId(db.rs.getInt(1));
-                s.setName(db.rs.getString(2));
-                list.add(s);
+                CareerRole c=new CareerRole();
+                c.setId(db.rs.getInt(1));
+                c.setName(db.rs.getString(2));
+                list.add(c);
             }
             
             db.rs.close();
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(Salarydao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Careerroledao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return list;
     }
 
     @Override
-    public List<Salary> FindByParentId(int parentID) {
+    public List<CareerRole> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(Salary o) {
+    public List<CareerRole> FindBy(CareerRole o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Salary> FindBy(Salary o) {
+    public String update(CareerRole o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

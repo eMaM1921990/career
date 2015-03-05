@@ -6,9 +6,9 @@
 
 package com.career.controller;
 
-import com.career.DAO.Citiesdao;
-import com.career.DAO.Contactinfodao;
-import com.career.DAO.NationalDAO;
+import com.career.daos.Citiesdao;
+import com.career.daos.Contactinfodao;
+import com.career.daos.NationalDAO;
 import com.career.model.Cities;
 import com.career.model.ContactInfo;
 import com.career.model.National;

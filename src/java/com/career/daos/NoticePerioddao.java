@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.CareerRole;
+import com.career.model.NoticePeriod;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -20,16 +20,17 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class Careerroledao implements dao<CareerRole>{
+public class NoticePerioddao implements dao<NoticePeriod>{
+
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(CareerRole o) {
+    public String Presist(NoticePeriod o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public CareerRole Find(String phone) {
+    public NoticePeriod Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,42 +40,40 @@ public class Careerroledao implements dao<CareerRole>{
     }
 
     @Override
-    public List<CareerRole> FindAll() {
-        List<CareerRole> list=new ArrayList<>();
+    public List<NoticePeriod> FindAll() {
+         List<NoticePeriod> list=new ArrayList<>();
         try {
-            
+           
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_CAREER_ROLE);
+            db.pstm=db.con.prepareStatement(sql.GET_PERID);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                CareerRole c=new CareerRole();
-                c.setId(db.rs.getInt(1));
-                c.setName(db.rs.getString(2));
-                list.add(c);
+                NoticePeriod n=new NoticePeriod();
+                n.setId(db.rs.getInt(1));
+                n.setName(db.rs.getString(2));
+                list.add(n);
             }
             
-            db.rs.close();
             db.closeConnection();
         } catch (SQLException ex) {
-            db.closeConnection();
-            Logger.getLogger(Careerroledao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NoticePerioddao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return list;
     }
 
     @Override
-    public List<CareerRole> FindByParentId(int parentID) {
+    public List<NoticePeriod> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<CareerRole> FindBy(CareerRole o) {
+    public String update(NoticePeriod o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(CareerRole o) {
+    public List<NoticePeriod> FindBy(NoticePeriod o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

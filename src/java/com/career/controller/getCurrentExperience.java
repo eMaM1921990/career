@@ -5,10 +5,10 @@
  */
 package com.career.controller;
 
-import com.career.DAO.Careerroledao;
-import com.career.DAO.Experincedao;
-import com.career.DAO.NationalDAO;
-import com.career.DAO.industrydao;
+import com.career.daos.Careerroledao;
+import com.career.daos.Experincedao;
+import com.career.daos.NationalDAO;
+import com.career.daos.industrydao;
 import com.career.model.CareerRole;
 import com.career.model.Experince;
 import com.career.model.Industry;

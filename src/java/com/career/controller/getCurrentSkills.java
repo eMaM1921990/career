@@ -5,10 +5,10 @@
  */
 package com.career.controller;
 
-import com.career.DAO.SkillListdao;
-import com.career.DAO.skill_level_lastworkingdao;
-import com.career.DAO.skillsexperinceleveldao;
-import com.career.DAO.skillsleveldao;
+import com.career.daos.SkillListdao;
+import com.career.daos.skill_level_lastworkingdao;
+import com.career.daos.skillsexperinceleveldao;
+import com.career.daos.skillsleveldao;
 import com.career.model.SkillList;
 import com.career.model.User;
 import com.career.model.skill_level_lastworking;

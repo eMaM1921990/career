@@ -6,7 +6,7 @@
 
 package com.career.viewer;
 
-import com.career.DAO.NationalDAO;
+import com.career.daos.NationalDAO;
 import com.career.model.National;
 import java.io.IOException;
 import java.io.PrintWriter;

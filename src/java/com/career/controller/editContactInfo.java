@@ -6,7 +6,7 @@
 
 package com.career.controller;
 
-import com.career.DAO.Contactinfodao;
+import com.career.daos.Contactinfodao;
 import com.career.model.ContactInfo;
 import com.career.model.User;
 import java.io.IOException;

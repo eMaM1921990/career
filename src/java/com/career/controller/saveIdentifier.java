@@ -6,7 +6,7 @@
 
 package com.career.controller;
 
-import com.career.DAO.Identifierdao;
+import com.career.daos.Identifierdao;
 import com.career.model.Identifier;
 import com.career.model.User;
 import java.io.IOException;

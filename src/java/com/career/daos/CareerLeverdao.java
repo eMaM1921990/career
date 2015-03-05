@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.skillsexperincelevel;
+import com.career.model.CareerLevel;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -20,18 +20,17 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class skillsexperinceleveldao implements dao<skillsexperincelevel>{
+public class CareerLeverdao implements dao<CareerLevel>{
 
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    
-    public String Presist(skillsexperincelevel o) {
+    public String Presist(CareerLevel o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public skillsexperincelevel Find(String phone) {
+    public CareerLevel Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -40,41 +39,44 @@ public class skillsexperinceleveldao implements dao<skillsexperincelevel>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+  
     @Override
-    public List<skillsexperincelevel> FindAll() {
-        List<skillsexperincelevel> data=new ArrayList<>();
+    public List<CareerLevel> FindAll() {
+        List<CareerLevel> list=new ArrayList<>();
         try {
+            
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_SKILLS_EXPERIENCE_LEVEL);
+            db.pstm=db.con.prepareStatement(sql.GET_CAREER_LEVEL);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                skillsexperincelevel s=new skillsexperincelevel();
-                s.setId(db.rs.getInt(1));
-                s.setName(db.rs.getString(2));
-                data.add(s);
-                       
+                CareerLevel c=new CareerLevel();
+                c.setId(db.rs.getInt(1));
+                c.setName(db.rs.getString(2));
+                list.add(c);
             }
+            
+            db.rs.close();
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(skillsexperinceleveldao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CareerLeverdao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return data;
+        return list;
     }
 
     @Override
-    public List<skillsexperincelevel> FindByParentId(int parentID) {
+    public List<CareerLevel> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<skillsexperincelevel> FindBy(skillsexperincelevel o) {
+    public String update(CareerLevel o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(skillsexperincelevel o) {
+    public List<CareerLevel> FindBy(CareerLevel o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

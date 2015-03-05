@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.NoticePeriod;
+import com.career.model.Cities;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -20,17 +20,17 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class NoticePerioddao implements dao<NoticePeriod>{
+public class Citiesdao implements dao<Cities>{
 
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(NoticePeriod o) {
+    public String Presist(Cities o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public NoticePeriod Find(String phone) {
+    public Cities Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,41 +39,44 @@ public class NoticePerioddao implements dao<NoticePeriod>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+   
+
     @Override
-    public List<NoticePeriod> FindAll() {
-         List<NoticePeriod> list=new ArrayList<>();
+    public List<Cities> FindAll() {
+       List<Cities> list=new ArrayList<>();
         try {
-           
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_PERID);
+            db.pstm=db.con.prepareStatement(sql.GET_CITY);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                NoticePeriod n=new NoticePeriod();
-                n.setId(db.rs.getInt(1));
-                n.setName(db.rs.getString(2));
-                list.add(n);
+                Cities c=new Cities();
+                c.setId(db.rs.getInt(1));
+                c.setName(db.rs.getString(2));
+                list.add(c);
+                
             }
             
+            db.rs.close();
             db.closeConnection();
         } catch (SQLException ex) {
-            Logger.getLogger(NoticePerioddao.class.getName()).log(Level.SEVERE, null, ex);
+            db.closeConnection();
+            Logger.getLogger(Citiesdao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return list;
+        return list; 
     }
 
     @Override
-    public List<NoticePeriod> FindByParentId(int parentID) {
+    public List<Cities> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(NoticePeriod o) {
+    public String update(Cities o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<NoticePeriod> FindBy(NoticePeriod o) {
+    public List<Cities> FindBy(Cities o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -6,7 +6,7 @@
 
 package com.career.controller;
 
-import com.career.DAO.Infodao;
+import com.career.daos.Infodao;
 import com.career.model.Info;
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -6,7 +6,7 @@
 
 package com.career.controller;
 
-import com.career.DAO.MemberShipdao;
+import com.career.daos.MemberShipdao;
 import com.career.model.MemberShip;
 import java.io.IOException;
 import java.io.PrintWriter;

@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.rate_level;
+import com.career.model.skill_level_lastworking;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -15,23 +15,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.tomcat.jni.Pool;
 
 /**
  *
  * @author emam
  */
-public class ratedao implements dao<rate_level>{
+public class skill_level_lastworkingdao implements dao<skill_level_lastworking>{
 
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(rate_level o) {
+    public String Presist(skill_level_lastworking o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public rate_level Find(String phone) {
+    public skill_level_lastworking Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -41,40 +40,40 @@ public class ratedao implements dao<rate_level>{
     }
 
     @Override
-    public List<rate_level> FindAll() {
-        List<rate_level> data=new ArrayList<>();
+    public List<skill_level_lastworking> FindAll() {
+        List<skill_level_lastworking> data=new ArrayList<>();
         try {
-            
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_RATE_LEVEL);
+            db.pstm=db.con.prepareStatement(sql.GET_LASTWORKING_SKILLS);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                rate_level r=new rate_level();
-                r.setId(db.rs.getInt(1));
-                r.setName(db.rs.getString(2));
-                data.add(r);
+                skill_level_lastworking s=new skill_level_lastworking();
+                s.setId(db.rs.getInt(1));
+                s.setName(db.rs.getString(2));
+                data.add(s);
             }
             
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(ratedao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(skill_level_lastworkingdao.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
         return data;
     }
 
     @Override
-    public List<rate_level> FindByParentId(int parentID) {
+    public List<skill_level_lastworking> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<rate_level> FindBy(rate_level o) {
+    public List<skill_level_lastworking> FindBy(skill_level_lastworking o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(rate_level o) {
+    public String update(skill_level_lastworking o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 
-package com.career.DAO;
+package com.career.daos;
 
 import com.career.dao.i.dao;
-import com.career.model.skillslevel;
+import com.career.model.VisaStatus;
 import com.career.utils.DBConnection;
 import com.career.utils.SQLCommon;
 import java.sql.SQLException;
@@ -20,17 +20,17 @@ import java.util.logging.Logger;
  *
  * @author emam
  */
-public class skillsleveldao implements dao<skillslevel>{
+public class VisaStatusdao implements dao<VisaStatus>{
 
     DBConnection db=new DBConnection();
     SQLCommon sql=new SQLCommon();
     @Override
-    public String Presist(skillslevel o) {
+    public String Presist(VisaStatus o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public skillslevel Find(String phone) {
+    public VisaStatus Find(String phone) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -39,41 +39,45 @@ public class skillsleveldao implements dao<skillslevel>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+   
+
     @Override
-    public List<skillslevel> FindAll() {
-        List<skillslevel> data=new ArrayList<>();
+    public List<VisaStatus> FindAll() {
+         List<VisaStatus> list=new ArrayList<>();
         try {
+            
             db.connect();
-            db.pstm=db.con.prepareStatement(sql.GET_SKILLS_LEVEL);
+            db.pstm=db.con.prepareStatement(sql.GET_VISA);
             db.rs=db.pstm.executeQuery();
             while(db.rs.next()){
-                skillslevel s=new skillslevel();
-                s.setId(db.rs.getInt(1));
-                s.setName(db.rs.getString(2));
-                data.add(s);
+                VisaStatus v=new VisaStatus();
+                v.setId(db.rs.getInt(1));
+                v.setName(db.rs.getString(2));
+                list.add(v);
             }
             
+            db.rs.close();
             db.closeConnection();
         } catch (SQLException ex) {
             db.closeConnection();
-            Logger.getLogger(skillsleveldao.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VisaStatusdao.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return data;
+        return list;
     }
 
     @Override
-    public List<skillslevel> FindByParentId(int parentID) {
+    public List<VisaStatus> FindByParentId(int parentID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<skillslevel> FindBy(skillslevel o) {
+    public String update(VisaStatus o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public String update(skillslevel o) {
+    public List<VisaStatus> FindBy(VisaStatus o) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
