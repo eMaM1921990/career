@@ -65,7 +65,7 @@
                 <ul class="dropdown-menu pull-right">
 
                     <li>
-                        <a href="#">تسجيل خروج</a>
+                        <a href="Logout">تسجيل خروج</a>
                     </li>
                 </ul>
             </div>
