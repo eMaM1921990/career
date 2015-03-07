@@ -96,4 +96,24 @@ public class savedjobdao implements dao<SavedJob>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    
+    public int getSavedJob(String username){
+        int count=0;
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.GET_NO_OF_SAVE);
+            db.pstm.setString(1, username);
+            db.rs=db.pstm.executeQuery();
+            while(db.rs.next()){
+                count=db.rs.getInt(1);
+            }
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(savedjobdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return count;
+    }
+    
 }

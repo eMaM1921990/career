@@ -100,4 +100,24 @@ public class cvdao implements dao<Cv>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    
+    public int getCount(String username){
+         int count=0;
+        try {
+           
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.COUNT_NO_CV_BY_USER_ID);
+            db.pstm.setString(1, username);
+            db.rs=db.pstm.executeQuery();;
+            while(db.rs.next()){
+                count=db.rs.getInt(1);
+            }
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(cvdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return count;
+    }
+    
 }

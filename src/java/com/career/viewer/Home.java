@@ -5,6 +5,10 @@
  */
 package com.career.viewer;
 
+import com.career.daos.Jobsdao;
+import com.career.daos.cvdao;
+import com.career.daos.savedjobdao;
+import com.career.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -12,6 +16,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,7 +37,22 @@ public class Home extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
        
+        HttpSession session= request.getSession();
+        User u=(User)session.getAttribute("login");
+        
+        cvdao c_dao=new cvdao();
+        int no_of_cv=c_dao.getCount(u.getU_name());
+        
+        Jobsdao j_dao=new Jobsdao();
+        int no_of_applied=j_dao.getAppliedJob(u.getU_name());
+        
+        savedjobdao s_dao=new savedjobdao();
+        int no_of_saved=s_dao.getSavedJob(u.getU_name());
+        
         RequestDispatcher send = request.getRequestDispatcher("home.jsp");
+        request.setAttribute("no_of_cv", no_of_cv);
+        request.setAttribute("no_of_applied", no_of_applied);
+        request.setAttribute("no_of_saved", no_of_saved);
         send.forward(request, response);
     }
 

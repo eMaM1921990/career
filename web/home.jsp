@@ -4,6 +4,8 @@
     Author     : emam
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!doctype html>
@@ -54,6 +56,9 @@
         <link rel="stylesheet" href="css/style.css">
         <!-- Color CSS -->
         <link rel="stylesheet" href="css/themes.css">
+
+        <!-- Easy pie  -->
+        <link rel="stylesheet" href="css/plugins/easy-pie-chart/jquery.easy-pie-chart.css">
 
 
         <!-- jQuery -->
@@ -110,6 +115,11 @@
         <!-- Mockjax -->
         <script src="js/plugins/mockjax/jquery.mockjax.js"></script>
 
+        <!-- Easy pie -->
+        <script src="js/plugins/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+        <!-- Flot -->
+        <script src="js/plugins/flot/jquery.flot.min.js"></script>
+        <script src="js/plugins/flot/jquery.flot.resize.min.js"></script>
 
         <!-- Theme framework -->
         <script src="js/eakroko.min.js"></script>
@@ -137,59 +147,88 @@
         <%@include file="header_segment.jsp" %>
         <div id="main">
             <div class="container-fluid">
+
+                <!--               
+                                <div class="row-fluid">
+                                    <div class="span12">
+                                        <div class="box">
+                
+                                            <div class="box-content">
+                                                <h5><div class="progress progress-striped">
+                                                        30%<div class="bar" style="width: 10%;"></div>
+                                                    </div></h5>
+                                                <p>يتعين عليك تحسين سيرتك الذاتية من خلال تعبئة المزيد من الأقسام الناقصة من أجل تعزيز فرصة حصولك على وظيفة.
+                
+                                                </p>
+                                                <div class="span3">
+                                                    <a title="Edit" href="/en/mycvs/?cv_id=18000260" class="l">
+                                                        <span class="icon-pencil">&nbsp;</span>&nbsp;
+                                                        تعديل سيرتك الذاتية
+                                                    </a>
+                                                </div>
+                
+                                                <div class="span3">
+                                                    <a title="Edit" href="/en/mycvs/?cv_id=18000260" class="l">
+                                                        <span class="icon-print">&nbsp;</span>&nbsp;
+                                                        مشاهدة سيرتك الذاتية
+                                                    </a>
+                                                </div>
+                
+                
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                
+                
+                                </div>
+                -->
+
                 <div class="row-fluid">
-                    <div class="span6">
-                        <div class="box">
-                            <div class="box-title">
-                                <h3>
-                                    <i class="icon-font"></i>
-                                    نسبة اكتمال السيرة الذاتية
-                                </h3>
-                            </div>
-                            <div class="box-content">
-                                <h5><div class="progress progress-striped">
-                                        30%<div class="bar" style="width: 10%;"></div>
-                                    </div></h5>
-                                <p>يتعين عليك تحسين سيرتك الذاتية من خلال تعبئة المزيد من الأقسام الناقصة من أجل تعزيز فرصة حصولك على وظيفة.
+                    <div class="box">
 
-                                </p>
+                        <div class="box-content">
+                            <div class="span12">
                                 <div class="span3">
-                                    <a title="Edit" href="/en/mycvs/?cv_id=18000260" class="l">
-                                        <span class="icon-pencil">&nbsp;</span>&nbsp;
-                                        تعديل سيرتك الذاتية
-                                    </a>
+                                    <ul class="pagestats style-3">
+                                        <li>
+                                            <div class="spark">
+                                                <div class="chart" data-percent="<c:out value="${no_of_cv}"/>" data-color="#56af45" data-trackcolor="#dcf8d7"><c:out value="${no_of_cv}"/></div>
+                                            </div>
+                                            <div class="bottom">
+                                                <span class="name">عدد السير الذاتية</span>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
 
                                 <div class="span3">
-                                    <a title="Edit" href="/en/mycvs/?cv_id=18000260" class="l">
-                                        <span class="icon-print">&nbsp;</span>&nbsp;
-                                       مشاهدة سيرتك الذاتية
-                                    </a>
+                                    <ul class="pagestats style-3">
+                                        <li>
+                                            <div class="spark">
+                                                <div class="chart" data-percent="<c:out value="${no_of_applied}"/>" data-color="#56af45" data-trackcolor="#d5e7f7"><c:out value="${no_of_applied}"/></div>
+                                            </div>
+                                            <div class="bottom">
+                                                <span class="name">عدد الوظائف المقدم لها</span>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </div>
 
-
+                                <div class="span3">
+                                    <ul class="pagestats style-3">
+                                        <li>
+                                            <div class="spark">
+                                                <div class="chart" data-percent="<c:out value="${no_of_saved}"/>" data-color="#56af45" data-trackcolor="#fae2e2"><c:out value="${no_of_saved}"/></div>
+                                            </div>
+                                            <div class="bottom">
+                                                <span class="name">عدد الوظائف المحفوظة</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="span5">
-                        <div class="box">
-                            
-                            <div class="box-content">
-                                <blockquote>
-                                    
-                                   
-                                     <span> <i class="icon-pencil">&nbsp;</i>&nbsp;   Lorem ipsum velit ullamco anim pariatur proident eu deserunt laborum. Lorem ipsum ad in nostrud adipisicing cupidatat anim officia ad id cupidatat veniam quis elit ullamco Excepteur ullamco.
-                                    </span>
-               
-                                </blockquote>
-                                <blockquote class="pull-right">
-                                    <p>
-                                        Lorem ipsum velit ullamco anim pariatur proident eu deserunt laborum. Lorem ipsum ad in nostrud adipisicing cupidatat anim officia ad id cupidatat veniam quis elit ullamco Excepteur ullamco.
-                                    </p>
-                                    <small>@JohnDoe</small>
-                                </blockquote>
-                            </div>
                         </div>
                     </div>
                 </div>

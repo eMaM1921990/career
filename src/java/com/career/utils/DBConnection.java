@@ -23,7 +23,7 @@ public class DBConnection {
     public String url ="jdbc:postgresql://localhost:5432/CAREER";
  
     public String user ="postgres";
-    public String password ="admin";
+    public String password ="postgres";
     public PreparedStatement pstm;
     int colcount;
 

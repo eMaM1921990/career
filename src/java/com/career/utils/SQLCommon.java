@@ -280,4 +280,13 @@ public class SQLCommon {
             + "   SET  conutry_id=?, city_id=?, major=?, certificate=?, rate_id=?, \n"
             + "       rate_degree=?, enddate=?::date, \"desc\"=?, cv_id=?, instatute_name=?\n"
             + " WHERE id=?";
+
+    public String COUNT_NO_CV_BY_USER_ID = "SELECT distinct count(id)\n"
+            + "  FROM employment.users_cvs WHERE username=?";
+
+    public String GET_NO_OF_APPLIED_JOB_BY_USER = "SELECT count(distinct job_id)\n"
+            + "  FROM employment.\"Applied_job\" WHERE \"user\"=?";
+
+    public String GET_NO_OF_SAVE = "SELECT COUNT(DISTINCT job_id)\n"
+            + "  FROM employment.\"SavedJob\" WHERE \"user\"=?";
 }
