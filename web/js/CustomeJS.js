@@ -416,9 +416,11 @@ $(document).ready(function() {
     /// Member Block
     $.get('getCurrentMember', null, function(responseText) {
         $('#member').html(responseText);
+        
         $('#addMember').click(function(event) {
             $.get('getMember', null, function(responseText) {
                 $('#member').html(responseText);
+                $( "#member_since" ).datepicker();
                 $('#savemember').click(function(responseText) {
                     var member_since = $('#member_since').val();
                     var rolement = $('#rolement').val();
@@ -535,6 +537,7 @@ function deletemember(id) {
 function editmember(id) {
     $.get('getEditMember', {id: id}, function(responseText) {
         $('#member').html(responseText);
+        $( "#member_since" ).datepicker();
         $('#editmember').click(function(event) {
             var member_since = $('#member_since').val();
             var rolement = $('#rolement').val();
@@ -577,7 +580,7 @@ function editedu(id){
 function EnglishOnly(){
     
     var ew = event.which;
-    alert(ew);
+    console.log(ew);
     if(ew === 32)
         return true;
     if(48 <= ew && ew <= 57)

@@ -126,7 +126,7 @@ public class getEditEdu extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">التخصص </label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"\" id=\"major\" autocomplete=\"off\" value='" + e.getMajor() + "'>"
+                + "<input type=\"text\" placeholder=\"\" id=\"major\" autocomplete=\"off\" value='" + e.getMajor() + "' onkeypress=\"return EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";

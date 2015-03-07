@@ -90,7 +90,7 @@ public class getEditContactInfo extends HttpServlet {
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 +"<input type='hidden' id='id' value='"+i.getID()+"'/>"
-                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\"  value='"+i.getMail()+"'>"
+                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\"  value='"+i.getMail()+"' onkeypress=\"return EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -228,7 +228,7 @@ public class getEditContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">الموقع الالكترونى</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Web Site url\" id=\"weburl\" autocomplete=\"off\"  value='"+i.getURL()+"'>"
+                + "<input type=\"text\" placeholder=\"Web Site url\" id=\"weburl\" autocomplete=\"off\"  value='"+i.getURL()+"' onkeypress=\"return EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";

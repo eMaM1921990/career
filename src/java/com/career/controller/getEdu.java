@@ -130,7 +130,7 @@ public class getEdu extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">التخصص </label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"\" id=\"major\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"\" id=\"major\" autocomplete=\"off\" onkeypress=\"return EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";

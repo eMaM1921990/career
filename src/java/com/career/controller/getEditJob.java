@@ -102,7 +102,7 @@ public class getEditJob extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">اللقب الوظيفة للوظيفة المرغوية</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\"><input type='hidden' id='jobid' value='" + j.getID() + "'/>"
-                + "<input type=\"text\" placeholder=\"Required Job\" id=\"job_name\" autocomplete=\"off\" value='" + j.getName() + "' >"
+                + "<input type=\"text\" placeholder=\"Required Job\" id=\"job_name\" autocomplete=\"off\" value='" + j.getName() + "' onkeypress=\"return EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -110,7 +110,7 @@ public class getEditJob extends HttpServlet {
         buffer = buffer + row;
 
         String row2 = "<div class=\"control-group\">"
-                + "<label for=\"textfield\" class=\"control-label\">اللقب الوظيفة للوظيفة المرغوية</label>"
+                + "<label for=\"textfield\" class=\"control-label\">الوصف</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<textarea name=\"job_desc\" id=\"job_desc\" class=\"input-block-level\" >" + j.getDesc() + "</textarea>"

@@ -80,7 +80,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">البريد الالكترونى </label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"mail\" id=\"mail\" autocomplete=\"off\" onkeypress=\"return EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -208,7 +208,7 @@ public class getContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">الموقع الالكترونى</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Web Site url\" id=\"weburl\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Web Site url\" id=\"weburl\" autocomplete=\"off\" onkeypress=\"return EnglishOnly()\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";

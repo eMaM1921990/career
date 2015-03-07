@@ -74,7 +74,7 @@ public class getSkills extends HttpServlet {
                         + "<label for=\"textfield\" class=\"control-label\">المهارة</label>"
                         + " <div class=\"controls\">"
                         + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\" placeholder=\"\" id=\"skill_name\" autocomplete=\"off\" >"
+                        + "<input type=\"text\" placeholder=\"\" id=\"skill_name\" autocomplete=\"off\" onkeypress=\"return EnglishOnly()\">"
                         + "</div>"
                         + "</div>"
                         + "</div>";

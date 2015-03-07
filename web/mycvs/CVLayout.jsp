@@ -135,7 +135,7 @@
         <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-precomposed.png" />
 
 
-        
+
 
 
     </head>
@@ -297,66 +297,64 @@
 
                                                 <div id="lang"></div>
 
-                                                <form>
+                                            </form>
 
-                                                    </div>
-                                                    </div>
-
-
-                                                    </div>
-                                                    </div>
-
-                                                    <div class="row-fluid">
-                                                        <div class="span8">
-                                                            <div class="box box-bordered">
-                                                                <div class="box-title">
-                                                                    <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addIden">إضافة<i class="icon-plus"></i></h3>
-                                                                    <h3><i class="icon-user"></i>المعرفون</h3>
-                                                                </div>
-                                                                <div class="box-content nopadding">
-                                                                    <form  method="POST" class='form-horizontal form-bordered'>
+                                        </div>
+                                    </div>
 
 
+                                </div>
+                            </div>
 
-                                                                        <div id="identifier"></div>
+                            <div class="row-fluid">
 
-                                                                        <form>
-
-                                                                            </div>
-                                                                            </div>
-
-
-                                                                            </div>
-                                                                            </div>
-
-
-                                                                            <div class="row-fluid">
-                                                                                <div class="span8">
-                                                                                    <div class="box box-bordered">
-                                                                                        <div class="box-title">
-                                                                                            <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addMember">إضافة<i class="icon-plus"></i></h3>
-                                                                                            <h3><i class="icon-user"></i>العضويات</h3>
-                                                                                        </div>
-                                                                                        <div class="box-content nopadding">
-                                                                                            <form  method="POST" class='form-horizontal form-bordered'>
+                                <div class="span8">
+                                    <div class="box box-bordered">
+                                        <div class="box-title">
+                                            <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addIden">إضافة<i class="icon-plus"></i></h3>
+                                            <h3><i class="icon-user"></i>المعرفون</h3>
+                                        </div>
+                                        <div class="box-content nopadding">
+                                            <form  method="POST" class='form-horizontal form-bordered'>
 
 
 
-                                                                                                <div id="member"></div>
+                                                <div id="identifier"></div>
 
-                                                                                                <form>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                                                                                    </div>
-                                                                                                    </div>
+
+                            <div class="row-fluid">
+                                <div class="span8">
+                                    <div class="box box-bordered">
+                                        <div class="box-title">
+                                            <h3 style="float: left;margin-right: 10px;color: green;cursor: pointer;" id="addMember">إضافة<i class="icon-plus"></i></h3>
+                                            <h3><i class="icon-user"></i>العضويات</h3>
+                                        </div>
+                                        <div class="box-content nopadding">
+                                            <form  method="POST" class='form-horizontal form-bordered'>
 
 
-                                                                                                    </div>
-                                                                                                    </div>
 
-                                                                                                    </div>
+                                                <div id="member"></div>
 
-                                                                                                    </body>
+                                            </form>
 
-                                                                                                    </html>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        </body>
+
+                        </html>
 
 

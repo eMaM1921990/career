@@ -110,7 +110,7 @@ public class getEditIdentifier extends HttpServlet {
                     + " <div class=\"controls\">"
                     + "<div class=\"input-prepend\">"
                     
-                    + "<input type=\"text\"  id=\"EMAIL\" autocomplete=\"off\" value='"+i.getEmail()+"'>"
+                    + "<input type=\"text\"  id=\"EMAIL\" autocomplete=\"off\" value='"+i.getEmail()+"' onkeypress=\"return EnglishOnly()\">"
                     + "</div>"
                     + "</div>"
                     + "</div>";
