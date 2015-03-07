@@ -26,7 +26,15 @@ public class edu implements Serializable{
     private String name;
     private String countryname;
     private String cityname;
+    private String ratename;
     
+    public void setRatename(String s){
+        this.ratename=s;
+    }
+    
+    public String getRatename(){
+        return ratename;
+    }
     
     public void setCityname(String s){
         this.cityname=s;

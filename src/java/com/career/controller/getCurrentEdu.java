@@ -78,125 +78,23 @@ public class getCurrentEdu extends HttpServlet {
 
             for (edu e:elist) {
 
-                String row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">المؤسسة التعليمية </label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\" placeholder=\"\" id=\"instatute_name\" autocomplete=\"off\" value='"+e.getName()+"'>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-
-                buffer = buffer + row;
-
-                String country_row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">الدولة</label>"
-                        + "<div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<div class=\"input-xlarge\">"
-                        + "<select name=\"conutry_id\" id=\"conutry_id\" class='chosen-select'>";
-
-                for (National na : n) {
-                    if(na.getId()==e.getCounrtyID()){
-                        country_row = country_row + "<option value=" + na.getId() + " selected>" + na.getName() + "</option>";
-                    }else{
-                        country_row = country_row + "<option value=" + na.getId() + ">" + na.getName() + "</option>";
-                    }
-                    
-                }
-
-                country_row = country_row + "</select></div></div></div>";
-
-                buffer = buffer + country_row;
-
-                String city_row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">المدينة</label>"
-                        + "<div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<div class=\"input-xlarge\">"
-                        + "<select name=\"city_id\" id=\"city_id\" class='chosen-select'>";
-
-                for (Cities ci : lc) {
-                    if(ci.getId()==e.getCityID()){
-                        city_row = city_row + "<option value=" + ci.getId() + " selected>" + ci.getName() + "</option>";
-                    }else{
-                        city_row = city_row + "<option value=" + ci.getId() + ">" + ci.getName() + "</option>";
-                    }
-                    
-                }
-
-                city_row = city_row + "</select></div></div></div>";
-
-                buffer = buffer + city_row;
-
-                String certifited_row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">الشهادة</label>"
-                        + "<div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<div class=\"input-xlarge\">"
-                        + "<select name=\"certificate\" id=\"certificate\" class='chosen-select'>";
-                certifited_row = certifited_row + "<option value=\"الثانوية العامة أو ما يعادلها\">الثانوية العامة أو ما يعادلها</option>"
-                        + "<option value=\"دبلوم \">دبلوم </option>"
-                        + "<option value=\"بكالوريوس/ دبلوم عالي\">بكالوريوس/ دبلوم عالي<option>"
-                        + "<option value=\"ماجستير\">ماجستير</option>"
-                        + "<option value=\"دكتوراة\">دكتوراة</option>"
-                        + "</select></div></div></div>";
-
-                buffer = buffer + certifited_row;
-
-                String major_row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">التخصص </label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\" placeholder=\"\" id=\"major\" autocomplete=\"off\" value='"+e.getMajor()+"'>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-
-                buffer = buffer + major_row;
-
-                String rate_row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">المعدل</label>"
-                        + "<div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<div class=\"input-xlarge\">"
-                        + "<select name=\"rate_id\" id=\"rate_id\" class='chosen-select'>";
-
-                for (rate_level er : rlist) {
-                    if(er.getId()==e.getRateID()){
-                        rate_row = rate_row + "<option value=" + er.getId() + " selected>" + er.getName() + "</option>";
-                    }else{
-                        rate_row = rate_row + "<option value=" + er.getId() + ">" + er.getName() + "</option>";
-                    }
-                    
-                }
-
-                rate_row = rate_row + "</select>"
-                        + "<input type=\"text\" placeholder=\"\" id=\"rate_degree\" autocomplete=\"off\" value='"+e.getDegree()+"'>"
-                        + "</div></div></div>";
-
-                buffer = buffer + rate_row;
-
-                String enddate_row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">تاريخ الانتهاء </label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<input type=\"text\" placeholder=\"\" id=\"enddate\" autocomplete=\"off\" value='"+e.getEndate()+"'>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-
-                buffer = buffer + enddate_row;
-
-                String desc_row = "<div class=\"control-group\">"
-                        + "<label for=\"textfield\" class=\"control-label\">الوصف</label>"
-                        + " <div class=\"controls\">"
-                        + "<div class=\"input-prepend\">"
-                        + "<textarea name=\"desc\" id=\"desc\" class=\"input-block-level\">"+e.getDesc()+"</textarea>"
-                        + "</div>"
-                        + "</div>"
-                        + "</div>";
-                buffer = buffer + desc_row;
+                String row = "<div class=\"box-content\">"
+                    + "<div class=\"tab-content\">\n"
+                    + "<div class=\"tab-pane active\" id=\"t7\">"
+                    + "<a onclick=\"editedu('"+e.getID()+"')\"> <span style=\"float: left;margin-right: 10px;color: green;cursor: pointer;\">تعديل <i class=\"icon-edit\"></i></span> </a>"
+                    + "<a   onclick=\"deleteedu('"+e.getID()+"')\"><span style=\"float: left;margin-right: 10px;color: brown;cursor: pointer;\">حذف <i class=\"icon-remove\"></i> </span></a>"
+                    + "<h4>"+e.getName()+"</h4>\n"
+                   + "<h4>"+e.getCert()+"</h4>\n"
+                    + "<p><b> الموقع </b> : "+e.getCountryname()+","+e.getCityname()+"</p>"
+                        + "<p><b> الشهادة </b> : "+e.getMajor()+"</p>"
+                        + "<p><b>المعدل </b> : "+e.getRatename()+":"+e.getDegree()+"</p>"
+                        
+                        + "<p><b>ناريخ النهاية </b> : "+e.getEndate()+"</p>"
+                        + "<p><b>الوصف </b> </p>"
+                        + "<p>"+e.getDesc()+" </p>"
+                        
+                    + "</div></div></div>";
+                buffer=buffer+row;
             }
         } else {
             

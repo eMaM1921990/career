@@ -5,11 +5,15 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    int timeout = session.getMaxInactiveInterval();
+    response.setHeader("Refresh", timeout + "; URL = Login");
+%>
 <jsp:useBean id="login" scope="session" class="com.career.model.User"/>
 <!DOCTYPE html>
 <div id="navigation">
     <div class="container-fluid">
-        <a href="#" id="brand">Career CV</a>
+        <a href="#" id="brand">إنشاء السيرة الذاتية</a>
         <a href="#" class="toggle-nav" rel="tooltip" data-placement="bottom" title="Toggle navigation"><i class="icon-reorder"></i></a>
         <ul class='main-nav'>
             <li >
@@ -29,7 +33,7 @@
                     <li >
                         <a href="Lists">مشاهدة السيرة الذاتية</a>
                     </li>
-                    
+
                 </ul>
             </li>
             <li >
@@ -49,17 +53,17 @@
                         <a href="DisplayAppliedJob">
                             عرض الوظائف المقدم اليها</a>
                     </li>
-                    
+
                 </ul>
             </li>
-            
+
         </ul>
         <div class="user">
-           
+
             <div class="dropdown">
                 <a href="#" class='dropdown-toggle' data-toggle="dropdown"><jsp:getProperty name="login" property="u_name"/> <img src="img/demo/user-avatar.jpg" alt=""></a>
                 <ul class="dropdown-menu pull-right">
-                    
+
                     <li>
                         <a href="#">تسجيل خروج</a>
                     </li>

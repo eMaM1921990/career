@@ -236,6 +236,22 @@
         <servlet-name>deleteExperience</servlet-name>
         <servlet-class>com.career.controller.deleteExperience</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>deleteedu</servlet-name>
+        <servlet-class>com.career.controller.deleteedu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getEditEdu</servlet-name>
+        <servlet-class>com.career.controller.getEditEdu</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editeducation</servlet-name>
+        <servlet-class>com.career.controller.editeducation</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>com.career.controller.Logout</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -471,6 +487,22 @@
     <servlet-mapping>
         <servlet-name>deleteExperience</servlet-name>
         <url-pattern>/deleteExperience</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteedu</servlet-name>
+        <url-pattern>/deleteedu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEditEdu</servlet-name>
+        <url-pattern>/getEditEdu</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editeducation</servlet-name>
+        <url-pattern>/editeducation</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

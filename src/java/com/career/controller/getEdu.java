@@ -160,7 +160,7 @@ public class getEdu extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">تاريخ الانتهاء </label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"\" id=\"enddate\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"\" id=\"enddate\" >"
                 + "</div>"
                 + "</div>"
                 + "</div>";

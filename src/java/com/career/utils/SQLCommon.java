@@ -268,4 +268,16 @@ public class SQLCommon {
 
     public String GET_SAVE_JOB = "SELECT \"ID\", \"NAME\", \"DESCRIPTION\", \"POST_DATE\", \"IS_OPEN\", \"user\"\n"
             + "  FROM employment.user_saved_job WHERE \"user\"=?";
+
+    public String DELETE_EDU = "DELETE FROM employment.educations\n"
+            + " WHERE id=?";
+
+    public String GET_EDU_BY_ID = "SELECT id, conutry_id, city_id, major, certificate, rate_id, rate_degree, \n"
+            + "       enddate, \"desc\", cv_id, instatute_name\n"
+            + "  FROM employment.educations WHERE id=?";
+
+    public String UPDATE_EDU = "UPDATE employment.educations\n"
+            + "   SET  conutry_id=?, city_id=?, major=?, certificate=?, rate_id=?, \n"
+            + "       rate_degree=?, enddate=?::date, \"desc\"=?, cv_id=?, instatute_name=?\n"
+            + " WHERE id=?";
 }

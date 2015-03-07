@@ -15,7 +15,7 @@ $(document).ready(function() {
             if(responseText==="y"){
                 window.open('Home','_self');
             }else{
-                $('#err').text("Invalid username or password");
+                $('#err').text("إسم المستخدم او كلمة المرور غير صحيح");
             }
         });
     });
