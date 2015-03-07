@@ -98,7 +98,7 @@ public class getEditIdentifier extends HttpServlet {
                     + " <div class=\"controls\">"
                     + "<div class=\"input-prepend\">"
                     
-                    + "<input type=\"text\"  id=\"PHONE\" autocomplete=\"off\" value='"+i.getPhone()+"'>"
+                    + "<input type=\"text\"  id=\"PHONE\" autocomplete=\"off\" value='"+i.getPhone()+"' onkeypress=\"return isNumber(event)\">"
                     + "</div>"
                     + "</div>"
                     + "</div>";

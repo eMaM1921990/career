@@ -67,28 +67,21 @@
 		
                 <div class="login-body">
                     
-			<h2>تسجيل دخول</h2>
+			<h2>استعادة  كلمة المرور</h2>
 			<form  class='form-validate' id="test">
 				<div class="control-group">
 					<div class="email controls">
 						<input type="text" id='u_name' placeholder="Email address" class='input-block-level' data-rule-required="true" >
 					</div>
 				</div>
-				<div class="control-group">
-					<div class="pw controls">
-						<input type="password" id="password" placeholder="Password" class='input-block-level' data-rule-required="true">
-					</div>
-				</div>
+				
 				<div class="submit">
 					
-                                    <input type="button" value="تسجيل دخول" class='btn btn-orange' id="login">
-                                        <input type="button" value="مستخدم جديد" class='btn btn-green' id="newuser">
+                                    <input type="button" value="استعادة كلمة المرور" class='btn btn-orange' id="login">
+                                        <input type="button" value="رجوع" class='btn btn-green' id="newuser">
 				</div>
 			</form>
-			<div class="forget">
-				<a href="ForgetPassword"><span>نسيت كلمة المرور</span></a>
-                                <center><span id="err" style="color: red"></span></center>
-			</div>
+			
 		</div>
 	</div>
 </body>

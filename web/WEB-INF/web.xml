@@ -252,6 +252,10 @@
         <servlet-name>Logout</servlet-name>
         <servlet-class>com.career.controller.Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ForgetPassword</servlet-name>
+        <servlet-class>com.career.viewer.ForgetPassword</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -503,6 +507,10 @@
     <servlet-mapping>
         <servlet-name>Logout</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgetPassword</servlet-name>
+        <url-pattern>/ForgetPassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

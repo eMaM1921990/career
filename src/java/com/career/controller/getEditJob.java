@@ -164,7 +164,7 @@ public class getEditJob extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<input type=\"text\" placeholder=\"Salary\" id=\"salary_amount\" autocomplete=\"off\" value='" + j.getSalary() + "' >"
+                + "<input type=\"text\" placeholder=\"Salary\" id=\"salary_amount\" autocomplete=\"off\" value='" + j.getSalary() + "' onkeypress=\"return isNumber(event)\">"
                 + "<select name=\"salary_id\" id=\"salary_id\" class='chosen-select' >";
 
         for (Salary e : salary) {
@@ -225,7 +225,7 @@ public class getEditJob extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<input type=\"text\" placeholder=\"Salary\" id=\"last_salary_amount\" autocomplete=\"off\" value='" + j.getLastSalary() + "' >"
+                + "<input type=\"text\" placeholder=\"Salary\" id=\"last_salary_amount\" autocomplete=\"off\" value='" + j.getLastSalary() + "' onkeypress=\"return isNumber(event)\">"
                 + "<select name=\"last_salary_id\" id=\"last_salary_id\" class='chosen-select' >";
 
         for (Salary e : salary) {

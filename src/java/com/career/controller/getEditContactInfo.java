@@ -101,7 +101,7 @@ public class getEditContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">رقم الهاتف الجوال</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Mobile Number\" id=\"mobile\" autocomplete=\"off\" value='"+i.getMobile()+"'>"
+                + "<input type=\"text\" placeholder=\"Mobile Number\" id=\"mobile\" autocomplete=\"off\" value='"+i.getMobile()+"' onkeypress=\"return isNumber(event)\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -112,7 +112,7 @@ public class getEditContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">هاتف للاتصال اثناء النهار</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"phone1\" id=\"phone1\" autocomplete=\"off\"  value='"+i.getPhone1()+"'>"
+                + "<input type=\"text\" placeholder=\"phone1\" id=\"phone1\" autocomplete=\"off\"  value='"+i.getPhone1()+"' onkeypress=\"return isNumber(event)\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -123,7 +123,7 @@ public class getEditContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">هاتف للاتصال اثناء المساء</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"phone1\" id=\"phone2\" autocomplete=\"off\"  value='"+i.getPhone()+"'>"
+                + "<input type=\"text\" placeholder=\"phone1\" id=\"phone2\" autocomplete=\"off\"  value='"+i.getPhone()+"' onkeypress=\"return isNumber(event)\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";
@@ -217,7 +217,7 @@ public class getEditContactInfo extends HttpServlet {
                 + "<label for=\"textfield\" class=\"control-label\">رقم الفاكس</label>"
                 + " <div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
-                + "<input type=\"text\" placeholder=\"Fax Number\" id=\"fax\" autocomplete=\"off\"  value='"+i.getFax()+"'>"
+                + "<input type=\"text\" placeholder=\"Fax Number\" id=\"fax\" autocomplete=\"off\"  value='"+i.getFax()+"' onkeypress=\"return isNumber(event)\">"
                 + "</div>"
                 + "</div>"
                 + "</div>";

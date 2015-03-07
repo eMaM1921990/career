@@ -133,7 +133,7 @@ public class getJobDescription extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<input type=\"text\" placeholder=\"Salary\" id=\"salary_amount\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Salary\" id=\"salary_amount\" autocomplete=\"off\" onkeypress=\"return isNumber(event)\">"
                 + "<select name=\"salary_id\" id=\"salary_id\" class='chosen-select'>";
         
         for(Salary e:salary){
@@ -179,7 +179,7 @@ public class getJobDescription extends HttpServlet {
                 + "<div class=\"controls\">"
                 + "<div class=\"input-prepend\">"
                 + "<div class=\"input-xlarge\">"
-                + "<input type=\"text\" placeholder=\"Salary\" id=\"last_salary_amount\" autocomplete=\"off\" >"
+                + "<input type=\"text\" placeholder=\"Salary\" id=\"last_salary_amount\" autocomplete=\"off\" onkeypress=\"return isNumber(event)\">"
                 + "<select name=\"last_salary_id\" id=\"last_salary_id\" class='chosen-select'>";
         
         for(Salary e:salary){

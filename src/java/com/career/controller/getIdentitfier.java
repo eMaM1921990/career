@@ -91,7 +91,7 @@ public class getIdentitfier extends HttpServlet {
                     + " <div class=\"controls\">"
                     + "<div class=\"input-prepend\">"
                     
-                    + "<input type=\"text\"  id=\"PHONE\" autocomplete=\"off\" >"
+                    + "<input type=\"text\"  id=\"PHONE\" autocomplete=\"off\" onkeypress=\"return isNumber(event)\">"
                     + "</div>"
                     + "</div>"
                     + "</div>";
