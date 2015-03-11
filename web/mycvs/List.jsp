@@ -177,7 +177,7 @@
                                             <th>اسم السيرة الذاتية</th>
                                             <th>تاريخ الأنشاء</th>
                                             <th class="hidden-350">إفتراضى</th>
-                                            <th class="hidden-1024">تحكم</th>
+                                            <th class="hidden-350">تحكم</th>
                                             
                                         </tr>
                                     </thead>
@@ -198,7 +198,7 @@
                                                     </c:otherwise>
                                                 </c:choose>
                                                 </td>
-                                            <td class="hidden-1024"><a href="myCvs?id=<c:out value="${l.getId()}"/>"><i class="icon-eye-open"></i>عرض السيرة</a></td>
+                                            <td class="hidden-350"><a href="myCvs?id=<c:out value="${l.getId()}"/>"><i class="icon-eye-open"></i>عرض السيرة</a></td>
                                             
                                         </tr>
                                         
