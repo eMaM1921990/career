@@ -4894,7 +4894,7 @@ label,input,button,select,textarea{
 }
 
 #navigation .toggle-nav:hover{
-	background-color:#1b67af
+	background-color:#E64F07
 }
 
 #navigation #brand{
@@ -4922,7 +4922,7 @@ label,input,button,select,textarea{
 
 #navigation .toggle-mobile{
 	color:#fff;
-	background:#1b67af;
+	background: #E64F07;
 	display:block;
 	padding:11px 10px 9px 10px;
 	text-decoration:none;
