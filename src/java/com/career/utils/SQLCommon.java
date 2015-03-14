@@ -170,6 +170,9 @@ public class SQLCommon {
     public String GET_SKILL_LIST = "SELECT id, skill_name, skill_level_id, skill_leve_last_work_id, skillexperince_leve_id\n"
             + "  FROM employment.skill_list WHERE cv_id=?";
 
+    public String GET_SKILL_LIST_By_ID = "SELECT id, skill_name, skill_level_id, skill_leve_last_work_id, skillexperince_leve_id\n"
+            + "  FROM employment.skill_list WHERE id=?";
+
     public String INSERT_SKILL_LIST = "INSERT INTO employment.skill_list(\n"
             + "             skill_name, skill_level_id, skill_leve_last_work_id, skillexperince_leve_id, \n"
             + "            cv_id,createdin)\n"
@@ -292,4 +295,9 @@ public class SQLCommon {
 
     public String GET_NO_OF_SAVE = "SELECT COUNT(DISTINCT job_id)\n"
             + "  FROM employment.\"SavedJob\" WHERE \"user\"=?";
+
+    public String UPDATE_SKILL = "UPDATE employment.skill_list\n"
+            + "   SET  skill_name=?, skill_level_id=?, skill_leve_last_work_id=?, \n"
+            + "       skillexperince_leve_id=?,  updatedin=NOW()\n"
+            + " WHERE id=?";
 }

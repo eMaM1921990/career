@@ -47,8 +47,28 @@ public class SkillListdao implements dao<SkillList> {
     }
 
     @Override
-    public SkillList Find(String phone) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public SkillList Find(String id) {
+        SkillList s = new SkillList();
+         try {
+            db.connect();
+            db.pstm = db.con.prepareStatement(sql.GET_SKILL_LIST);
+            db.pstm.setInt(1, Integer.valueOf(id));
+            db.rs = db.pstm.executeQuery();
+            while (db.rs.next()) {
+                
+                s.setId(db.rs.getInt(1));
+                s.setSkillname(db.rs.getString(2));
+                s.setSkill_level_id(db.rs.getInt(3));
+                s.setSkill_last_work_id(db.rs.getInt(4));
+                s.setskillexperince_level_id(db.rs.getInt(5));
+               
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SkillListdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        db.closeConnection();
+        return s;
     }
 
     @Override
@@ -109,7 +129,23 @@ public class SkillListdao implements dao<SkillList> {
 
     @Override
     public String update(SkillList o) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            db.connect();
+            db.pstm=db.con.prepareStatement(sql.UPDATE_SKILL);
+            db.pstm.setString(1, o.getSkillname());
+            db.pstm.setInt(2, o.getSkill_level_id());
+            db.pstm.setInt(3, o.getSkill_last_work_id());
+            db.pstm.setInt(4, o.getskillexperince_level_id());
+            db.pstm.setInt(5, o.getId());
+            db.pstm.executeUpdate();
+            db.closeConnection();
+        } catch (SQLException ex) {
+            db.closeConnection();
+            Logger.getLogger(SkillListdao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return "updated";
+        
     }
 
 }

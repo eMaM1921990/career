@@ -256,6 +256,14 @@
         <servlet-name>ForgetPassword</servlet-name>
         <servlet-class>com.career.viewer.ForgetPassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getEditSkill</servlet-name>
+        <servlet-class>com.career.controller.getEditSkill</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>editskills</servlet-name>
+        <servlet-class>com.career.controller.editskills</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/Register</url-pattern>
@@ -511,6 +519,14 @@
     <servlet-mapping>
         <servlet-name>ForgetPassword</servlet-name>
         <url-pattern>/ForgetPassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getEditSkill</servlet-name>
+        <url-pattern>/getEditSkill</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>editskills</servlet-name>
+        <url-pattern>/editskills</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

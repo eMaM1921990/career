@@ -35,11 +35,11 @@ $(document).ready(function() {
 
     $.post('getcurrentJob', null, function(responseText) {
         $('#job').html(responseText);
-        
-        if(responseText.indexOf('<p>')>-1){
+
+        if (responseText.indexOf('<p>') > -1) {
             $('#getjob').show();
             $('#editjob').hide();
-        }else{
+        } else {
             $('#getjob').hide();
             $('#editjob').show();
         }
@@ -60,8 +60,8 @@ $(document).ready(function() {
                     var last_salary_id = $('#last_salary_id').val();
 
                     $.post('saveJob', {job_name: job_name, job_desc: job_desc, employment_type_id: employment_type_id, employement_status_id: employement_status_id, salary_amount: salary_amount, salary_id: salary_id, career_level_id: career_level_id, notice_period_id: notice_period_id, last_salary_amount: last_salary_amount, last_salary_id: last_salary_id}, function(responseText) {
-                            location.reload();
-                            
+                        location.reload();
+
                     });
 
                 });
@@ -75,7 +75,7 @@ $(document).ready(function() {
             $.post('getEditJob', {id: id}, function(responseText) {
                 $('#job').html(responseText);
                 $('#editjobaction').click(function() {
-                    
+
                     var job_name = $('#job_name').val();
                     var job_desc = $('#job_desc').val();
                     var employment_type_id = $('#employment_type_id').val();
@@ -103,10 +103,10 @@ $(document).ready(function() {
 
     $.post('getCurrentInfo', null, function(responseText) {
         $('#info').html(responseText);
-        if(responseText.indexOf('<p>')>-1){
+        if (responseText.indexOf('<p>') > -1) {
             $('#addinfo').show();
             $('#editinfo').hide();
-        }else{
+        } else {
             $('#addinfo').hide();
             $('#editinfo').show();
         }
@@ -114,7 +114,7 @@ $(document).ready(function() {
         $('#addinfo').click(function(event) {
             $.post('getInfo', null, function(responseText) {
                 $('#info').html(responseText);
-                        $( "#dob" ).datepicker();
+                $("#dob").datepicker();
 
                 $('#saveinfo').click(function() {
                     var f_name = $('#f_name').val();
@@ -140,7 +140,7 @@ $(document).ready(function() {
 
             $.post('getEditInfo', {id: id}, function(responseText) {
                 $('#info').html(responseText);
-                $( "#dob" ).datepicker();
+                $("#dob").datepicker();
                 $('#editinfoaction').click(function() {
                     var f_name = $('#f_name').val();
                     var surename = $('#surename').val();
@@ -148,7 +148,7 @@ $(document).ready(function() {
                     var gender = $("input[name=Gender]:checked").val();
                     var nationality_id = $('#nationality_id').val();
                     var visa_status_id = $('#visa_status_id').val();
-                    
+
                     var material_status = $("input[name=m]:checked").val();
                     var no_of_own = $('#no_of_own').val();
                     var driving_license = $('#driving_license').val();
@@ -169,10 +169,10 @@ $(document).ready(function() {
 
     $.post('getCurrentContactInfo', null, function(responseText) {
         $('#contactinfo').html(responseText);
-        if(responseText.indexOf('<p>')>-1){
+        if (responseText.indexOf('<p>') > -1) {
             $('#addcontactinfo').show();
             $('#editcontactinfo').hide();
-        }else{
+        } else {
             $('#addcontactinfo').hide();
             $('#editcontactinfo').show();
         }
@@ -244,8 +244,8 @@ $(document).ready(function() {
         $('#addexperince').click(function(event) {
             $.post('getExperince', null, function(responseText) {
                 $('#experience').html(responseText);
-                $( "#startdate" ).datepicker();
-                $( "#enddate" ).datepicker();
+                $("#startdate").datepicker();
+                $("#enddate").datepicker();
                 $('#saveexp').click(function(event) {
                     var startdate = $('#startdate').val();
                     var enddate = $('#enddate').val();
@@ -274,8 +274,8 @@ $(document).ready(function() {
 
             $.post('getEditExperience', {id: id}, function(responseText) {
                 $('#experience').html(responseText);
-                $( "#startdate" ).datepicker();
-                $( "#enddate" ).datepicker();
+                $("#startdate").datepicker();
+                $("#enddate").datepicker();
                 $('#editexpert').click(function(event) {
                     var startdate = $('#startdate').val();
                     var enddate = $('#enddate').val();
@@ -307,12 +307,12 @@ $(document).ready(function() {
     $.get('getCurrentEdu', null, function(responseText) {
 
         $('#edu').html(responseText);
-        
+
 
         $('#addedu').click(function(event) {
             $.get('getEdu', null, function(responseText) {
                 $('#edu').html(responseText);
-                $( "#enddate" ).datepicker();
+                $("#enddate").datepicker();
                 $('#saveedu').click(function(event) {
                     var conutry_id = $('#conutry_id').val();
                     var city_id = $('#city_id').val();
@@ -324,7 +324,7 @@ $(document).ready(function() {
                     var desc = $('#desc').val();
                     var instatute_name = $('#instatute_name').val();
                     $.post('saveedu', {conutry_id: conutry_id, city_id: city_id, major: major, certificate: certificate, rate_id: rate_id, rate_degree: rate_degree, enddate: enddate, desc: desc, instatute_name: instatute_name}, function(responseText) {
-                            location.reload();
+                        location.reload();
                     });
 
                 });
@@ -416,11 +416,11 @@ $(document).ready(function() {
     /// Member Block
     $.get('getCurrentMember', null, function(responseText) {
         $('#member').html(responseText);
-        
+
         $('#addMember').click(function(event) {
             $.get('getMember', null, function(responseText) {
                 $('#member').html(responseText);
-                $( "#member_since" ).datepicker();
+                $("#member_since").datepicker();
                 $('#savemember').click(function(responseText) {
                     var member_since = $('#member_since').val();
                     var rolement = $('#rolement').val();
@@ -447,39 +447,50 @@ function DeleteSkill(id) {
 
 function EditSkillView(id) {
     $.post('editskill', {id: id}, function(responseText) {
+        $('#skill').html(responseText);
+
+        $('#editskillaction').click(function(event) {
+            var skill_name = $('#skill_name').val();
+            var skill_level_id = $('#skill_level_id').val();
+            var skill_leve_last_work_id = $('#skill_leve_last_work_id').val();
+            var skillexperince_leve_id = $('#skillexperince_leve_id').val();
+            $.post('editskills', {skill_name: skill_name, skill_level_id: skill_level_id, skill_leve_last_work_id: skill_leve_last_work_id, skillexperince_leve_id: skillexperince_leve_id,id:id}, function(responseText) {
+                location.reload();
+            });
+        });
     });
 }
 
 
-function deleteexp(id){
+function deleteexp(id) {
     $.post('deleteExperience', {id: id}, function(responseText) {
         location.reload();
     });
 }
 
-function EditExperView(id){
+function EditExperView(id) {
     $.post('getEditExperience', {id: id}, function(responseText) {
-                $('#experience').html(responseText);
-                $( "#startdate" ).datepicker();
-                $( "#enddate" ).datepicker();
-                $('#editexpert').click(function(event) {
-                    var startdate = $('#startdate').val();
-                    var enddate = $('#enddate').val();
-                    var national_id = $('#national_id').val();
-                    var address = $('#address').val();
-                    var companyname = $('#companyname').val();
-                    var company_industry_id = $('#company_industry_id').val();
-                    var career_role_id = $('#career_role_id').val();
-                    var role_name = $('#role_name').val();
-                    var jobdesc = $('#jobdesc').val();
-                    //var id = $('#id').val();
-                    $.post('editExperince', {startdate: startdate, enddate: enddate, national_id: national_id, address: address, companyname: companyname, company_industry_id: company_industry_id, career_role_id: career_role_id, role_name: role_name, jobdesc: jobdesc, id: id}, function(responseText) {
-                        location.reload();
-                    });
-
-
-                });
+        $('#experience').html(responseText);
+        $("#startdate").datepicker();
+        $("#enddate").datepicker();
+        $('#editexpert').click(function(event) {
+            var startdate = $('#startdate').val();
+            var enddate = $('#enddate').val();
+            var national_id = $('#national_id').val();
+            var address = $('#address').val();
+            var companyname = $('#companyname').val();
+            var company_industry_id = $('#company_industry_id').val();
+            var career_role_id = $('#career_role_id').val();
+            var role_name = $('#role_name').val();
+            var jobdesc = $('#jobdesc').val();
+            //var id = $('#id').val();
+            $.post('editExperince', {startdate: startdate, enddate: enddate, national_id: national_id, address: address, companyname: companyname, company_industry_id: company_industry_id, career_role_id: career_role_id, role_name: role_name, jobdesc: jobdesc, id: id}, function(responseText) {
+                location.reload();
             });
+
+
+        });
+    });
 }
 
 function deleteLang(id) {
@@ -497,7 +508,7 @@ function editLang(id) {
             var SKILL_EXPERINCE_ID = $('#SKILL_EXPERINCE_ID').val();
             var LANG_ID = $('#LANG_ID').val();
             $.post('EditLang', {id: id, SKILL_LEVEL_ID: SKILL_LEVEL_ID, SKILL_LAST_WORK_ID: SKILL_LAST_WORK_ID, SKILL_EXPERINCE_ID: SKILL_EXPERINCE_ID, LANG_ID: LANG_ID}, function(responseText) {
-                   location.reload();
+                location.reload();
             });
         });
     });
@@ -537,57 +548,57 @@ function deletemember(id) {
 function editmember(id) {
     $.get('getEditMember', {id: id}, function(responseText) {
         $('#member').html(responseText);
-        $( "#member_since" ).datepicker();
+        $("#member_since").datepicker();
         $('#editmember').click(function(event) {
             var member_since = $('#member_since').val();
             var rolement = $('#rolement').val();
             var COMP_NAME = $('#COMP_NAME').val();
-            $.post('editMember',{id:id,member_since: member_since, rolement: rolement, COMP_NAME: COMP_NAME},function(responseText){
-               location.reload() ;
+            $.post('editMember', {id: id, member_since: member_since, rolement: rolement, COMP_NAME: COMP_NAME}, function(responseText) {
+                location.reload();
             });
         });
     });
 }
 
-function deleteedu(id){
+function deleteedu(id) {
     $.post('deleteedu', {id: id}, function(responseText) {
         location.reload();
     });
 }
 
-function editedu(id){
+function editedu(id) {
     $.get('getEditEdu', {id: id}, function(responseText) {
         $('#edu').html(responseText);
-        $( "#enddate" ).datepicker();
+        $("#enddate").datepicker();
         $('#editecuaction').click(function(event) {
-                    var conutry_id = $('#conutry_id').val();
-                    var city_id = $('#city_id').val();
-                    var major = $('#major').val();
-                    var certificate = $('#certificate').val();
-                    var rate_id = $('#rate_id').val();
-                    var rate_degree = $('#rate_degree').val();
-                    var enddate = $('#enddate').val();
-                    var desc = $('#desc').val();
-                    var instatute_name = $('#instatute_name').val();
-                    $.post('editeducation', {conutry_id: conutry_id, city_id: city_id, major: major, certificate: certificate, rate_id: rate_id, rate_degree: rate_degree, enddate: enddate, desc: desc, instatute_name: instatute_name,id:id}, function(responseText) {
-                            location.reload();
-                    });
+            var conutry_id = $('#conutry_id').val();
+            var city_id = $('#city_id').val();
+            var major = $('#major').val();
+            var certificate = $('#certificate').val();
+            var rate_id = $('#rate_id').val();
+            var rate_degree = $('#rate_degree').val();
+            var enddate = $('#enddate').val();
+            var desc = $('#desc').val();
+            var instatute_name = $('#instatute_name').val();
+            $.post('editeducation', {conutry_id: conutry_id, city_id: city_id, major: major, certificate: certificate, rate_id: rate_id, rate_degree: rate_degree, enddate: enddate, desc: desc, instatute_name: instatute_name, id: id}, function(responseText) {
+                location.reload();
+            });
 
-                });
+        });
     });
 }
 
-function EnglishOnly(){
-    
+function EnglishOnly() {
+
     var ew = event.which;
     console.log(ew);
-    if(ew === 32)
+    if (ew === 32)
         return true;
-    if(48 <= ew && ew <= 57)
+    if (48 <= ew && ew <= 57)
         return true;
-    if(65 <= ew && ew <= 90)
+    if (65 <= ew && ew <= 90)
         return true;
-    if(97 <= ew && ew <= 122)
+    if (97 <= ew && ew <= 122)
         return true;
     return false;
 }
