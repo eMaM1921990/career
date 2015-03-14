@@ -93,6 +93,7 @@ public class Userdao implements dao<User> {
                 u.setU_name(db.rs.getString(1));
                 u.setF_name(db.rs.getString(3));
                 u.setL_name(db.rs.getString(4));
+                u.setCv(db.rs.getInt(11));
             }
             
             db.closeConnection();

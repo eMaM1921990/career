@@ -4,6 +4,7 @@
     Author     : emam
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int timeout = session.getMaxInactiveInterval();
@@ -27,12 +28,22 @@
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li>
-                        <a href="NewCV">أنشاء السيرة الذاتية </a>
-                    </li>
-                    <li >
-                        <a href="Lists">مشاهدة السيرة الذاتية</a>
-                    </li>
+                    <c:choose>
+                        <c:when test="${login.cv==0}">
+                            <li>
+                                <a href="NewCV">أنشاء السيرة الذاتية </a>
+                            </li>
+                        </c:when>
+                        <c:otherwise>
+                            
+                            
+                            <li >
+                                <a href="Lists">مشاهدة السيرة الذاتية</a>
+                            </li>
+                        </c:otherwise>
+                    </c:choose>
+
+
 
                 </ul>
             </li>

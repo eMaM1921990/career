@@ -71,7 +71,7 @@
 			<form  class='form-validate' id="test">
 				<div class="control-group">
 					<div class="email controls">
-						<input type="text" id='u_name' placeholder="Email address" class='input-block-level' data-rule-required="true" >
+						<input type="text" id='u_name' placeholder="Username" class='input-block-level' data-rule-required="true" >
 					</div>
 				</div>
 				<div class="control-group">

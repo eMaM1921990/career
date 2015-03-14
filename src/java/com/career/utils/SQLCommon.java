@@ -40,9 +40,12 @@ public class SQLCommon {
     public String GET_CITY = "SELECT id, name, nationality_fk"
             + "  FROM employment.cities;";
 
-    public String GET_LOGIN = "SELECT u_name, password, f_name, l_name, bod, nationality_id, mail, "
-            + "       hear_about_us, gender, notification_register"
-            + "  FROM employment.users WHERE u_name=? AND password=?;";
+    public String GET_LOGIN = "SELECT u_name, password, f_name, l_name, bod, nationality_id, mail,\n"
+            + "hear_about_us, gender, notification_register,V.id\n"
+            + " FROM employment.users U\n"
+            + " LEFT JOIN employment.users_cvs V\n"
+            + " ON U.u_name=V.username\n"
+            + "  WHERE u_name=? AND password=?;";
 
     public String GET_JOB = "SELECT  id,job_name, job_desc, employment_type_id, employement_status_id, \n"
             + "       salary_amount, salary_id, career_level_id, notice_period_id, \n"

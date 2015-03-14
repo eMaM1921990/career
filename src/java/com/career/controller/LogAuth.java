@@ -81,6 +81,8 @@ public class LogAuth extends HttpServlet {
 
         u = dao.FindBydata(u);
         u.setU_name(u.getU_name());
+        System.out.println("User Login CV :"+u.getCv());
+        u.setCv(u.getCv());
 
         String stats=null;
         if (u.getU_name() != null) {
